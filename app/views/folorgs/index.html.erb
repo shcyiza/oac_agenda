@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Folorgs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Orgn</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @folorgs.each do |folorg| %>
+      <tr>
+        <td><%= folorg.user_id %></td>
+        <td><%= folorg.orgn_id %></td>
+        <td><%= link_to 'Show', folorg %></td>
+        <td><%= link_to 'Edit', edit_folorg_path(folorg) %></td>
+        <td><%= link_to 'Destroy', folorg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Folorg', new_folorg_path %>

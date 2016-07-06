@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Foldates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Datefolwd</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foldates.each do |foldate| %>
+      <tr>
+        <td><%= foldate.user_id %></td>
+        <td><%= foldate.datefolwd %></td>
+        <td><%= link_to 'Show', foldate %></td>
+        <td><%= link_to 'Edit', edit_foldate_path(foldate) %></td>
+        <td><%= link_to 'Destroy', foldate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Foldate', new_foldate_path %>

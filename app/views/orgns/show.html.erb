@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @orgn.user_id %>
+</p>
+
+<p>
+  <strong>Oname:</strong>
+  <%= @orgn.oname %>
+</p>
+
+<p>
+  <strong>Odesc:</strong>
+  <%= @orgn.odesc %>
+</p>
+
+<p>
+  <strong>Oemail:</strong>
+  <%= @orgn.oemail %>
+</p>
+
+<p>
+  <strong>Onum:</strong>
+  <%= @orgn.onum %>
+</p>
+
+<%= link_to 'Edit', edit_orgn_path(@orgn) %> |
+<%= link_to 'Back', orgns_path %>

@@ -1,0 +1,2 @@
+module FoleventsHelper
+end

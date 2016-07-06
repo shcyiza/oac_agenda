@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  orgn_id: 1
+  enom: MyString
+  edesc: MyText
+  edate: 2016-07-06 12:05:14
+  pafpre: 9.99
+  pafplace: 9.99
+  pays: MyString
+  ville: MyString
+  codepostal: MyString
+  rue: MyString
+  nrrue: MyString
+
+two:
+  orgn_id: 1
+  enom: MyString
+  edesc: MyText
+  edate: 2016-07-06 12:05:14
+  pafpre: 9.99
+  pafplace: 9.99
+  pays: MyString
+  ville: MyString
+  codepostal: MyString
+  rue: MyString
+  nrrue: MyString

@@ -1,0 +1,21 @@
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :orgn_id %>
+    <%= f.input :enom %>
+    <%= f.input :edesc %>
+    <%= f.input :edate %>
+    <%= f.input :pafpre %>
+    <%= f.input :pafplace %>
+    <%= f.input :pays %>
+    <%= f.input :ville %>
+    <%= f.input :codepostal %>
+    <%= f.input :rue %>
+    <%= f.input :nrrue %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

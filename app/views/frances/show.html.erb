@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ville:</strong>
+  <%= @france.ville %>
+</p>
+
+<p>
+  <strong>Codepostal:</strong>
+  <%= @france.codepostal %>
+</p>
+
+<%= link_to 'Edit', edit_france_path(@france) %> |
+<%= link_to 'Back', frances_path %>

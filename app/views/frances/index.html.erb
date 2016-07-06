@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Frances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ville</th>
+      <th>Codepostal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @frances.each do |france| %>
+      <tr>
+        <td><%= france.ville %></td>
+        <td><%= france.codepostal %></td>
+        <td><%= link_to 'Show', france %></td>
+        <td><%= link_to 'Edit', edit_france_path(france) %></td>
+        <td><%= link_to 'Destroy', france, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New France', new_france_path %>

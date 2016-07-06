@@ -18,7 +18,7 @@ development:
   encoding: unicode
   database: oac_agenda_development
   pool:     5
-  username: oac_agenda
+  username: patick
   password: freestyle
   template: template0
 
@@ -46,7 +46,7 @@ test:
   encoding: unicode
   database: oac_agenda_test
   pool:     5
-  username: oac_agenda
+  username: patick
   password: freestyle
   template: template0
 
@@ -56,6 +56,6 @@ production:
   encoding: unicode
   database: oac_agenda_production
   pool:     5
-  username: oac_agenda
+  username: patick
   password: freestyle
   template: template0
