@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706103841) do
+ActiveRecord::Schema.define(version: 20160713223832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160706103841) do
     t.integer  "orgn_id"
     t.string   "enom"
     t.text     "edesc"
-    t.datetime "edate"
+    t.datetime "esdate"
     t.decimal  "pafpre"
     t.decimal  "pafplace"
     t.string   "pays"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160706103841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "public"
+    t.datetime "eedate"
   end
 
   create_table "foldates", force: :cascade do |t|
@@ -76,6 +77,15 @@ ActiveRecord::Schema.define(version: 20160706103841) do
     t.string   "onum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "resas", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.string   "resanr"
+    t.boolean  "resa_claimed"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

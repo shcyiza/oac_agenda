@@ -3,6 +3,7 @@
 
 // override for the 'Home' navigation link
 .top-bar .name {
+  background: #333333;
   font-size: rem-calc(13);
   line-height: 45px; }
 .top-bar .name a {
@@ -40,7 +41,7 @@
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #eee;
+  background-color: #dcedc8;
   }
 section {
   @extend .row;

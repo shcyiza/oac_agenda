@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @resa.user_id %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @resa.event_id %>
+</p>
+
+<p>
+  <strong>Resanr:</strong>
+  <%= @resa.resanr %>
+</p>
+
+<p>
+  <strong>Resa claimed:</strong>
+  <%= @resa.resa_claimed %>
+</p>
+
+<%= link_to 'Edit', edit_resa_path(@resa) %> |
+<%= link_to 'Back', resas_path %>

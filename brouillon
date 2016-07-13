@@ -1,0 +1,11 @@
+rails g scaffold event orgn_id:integer enom:string edesc:text edate:datetime pafpre:decimal pafplace:decimal pays:string ville:string codepostal:string rue:string nrrue:string
+rails g scaffold orgn user_id:integer onom:string odesc:text oemail:string onum:string
+rails g scaffold foldate user_id:integer datefolwd:date
+rails g scaffold folorg user_id:integer orgn_id:integer
+rails g scaffold folevent user_id:integer event_id:integer
+rails g migration add_pro_to_user pro:boolean
+rails g migration add_public_to_event public:boolean
+rails g scaffold france ville:string codepostal:string
+
+rails g scaffold resa user_id:integer event_id:integer resanr:string resa_claimed:boolean
+git remote set-url website shcyiza@github.com:path/to/repo

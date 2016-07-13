@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resas
   resources :frances
   resources :belgia
   resources :folevents
