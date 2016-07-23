@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :resas
   resources :frances
   resources :belgia
@@ -10,4 +11,6 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
   devise_for :users
   resources :users
+
+  get '/proagenda', to: 'agenda#index'
 end

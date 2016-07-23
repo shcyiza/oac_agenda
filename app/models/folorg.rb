@@ -1,6 +1,6 @@
 class Folorg < ActiveRecord::Base
   belongs_to :user
-  belongs_to :orgns
-  
+  belongs_to :orgn
+
 
 end

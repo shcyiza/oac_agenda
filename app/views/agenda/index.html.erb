@@ -1,0 +1,30 @@
+<h1>Agenda des evenement en court d'organisation</h1>
+<br>
+<br>
+<% start_date = params.fetch(:start_date, Date.today).to_date %>
+<% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lun</th>
+      <th>Mar</th>
+      <th>Mer</th>
+      <th>Jeu</th>
+      <th>Ven</th>
+      <th>Sam</th>
+      <th>Dim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% date_range.each_slice(7) do 	|semain| %>
+    <tr>
+      <% semain.each do 	|jour| %>
+      <td>
+        <%= jour %>
+      </td>
+      <%end%>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

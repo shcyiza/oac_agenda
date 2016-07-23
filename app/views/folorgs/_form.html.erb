@@ -2,11 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :user_id %>
-    <%= f.input :orgn_id %>
+    <%= f.input :user_id,:as => :hidden, :readonly => true %>
+    <%= f.input :orgn_id,:as => :hidden, :readonly => true %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Suivre l'organisation" %>
   </div>
 <% end %>

@@ -10,11 +10,20 @@ class OrgnsController < ApplicationController
   # GET /orgns/1
   # GET /orgns/1.json
   def show
+    unless current_user.id == @orgn.user.id
+      @folorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
+    end
   end
 
   # GET /orgns/new
   def new
-    @orgn = Orgn.new
+    # un user ne peut créer un magazin que si il a fait la demande de signé un contract
+    if current_user.pro == true
+      #lier user a son new shop automatiquement
+      @orgn = Orgn.new(user_id: current_user.id)
+    else
+      redirect_to :back, :alert => "Vous devez être enrgistré comme commercant pour cette fonctionalité"
+    end
   end
 
   # GET /orgns/1/edit
@@ -70,5 +79,9 @@ class OrgnsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def orgn_params
       params.require(:orgn).permit(:user_id, :oname, :odesc, :oemail, :onum)
+    end
+
+    def folorg_params
+      params.require(:folorg).permit(:user_id, :orgn_id)
     end
 end

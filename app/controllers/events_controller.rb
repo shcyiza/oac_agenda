@@ -10,6 +10,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    unless current_user.id == @event.orgn.user.id
+      @folevent = Folevent.new(event_id: params[:id], user_id: current_user.id)
+    end
   end
 
   # GET /events/new
@@ -69,6 +72,10 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:orgn_id, :enom, :edesc, :edate, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue)
+      params.require(:event).permit(:orgn_id, :enom, :edesc, :esdate, :eedate, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue)
+    end
+
+    def folevent_params
+      params.require(:folevent).permit(:user_id, :event_id)
     end
 end

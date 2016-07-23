@@ -2,7 +2,7 @@
 
 <p>
   <strong>Orgn:</strong>
-  <%= @event.orgn_id %>
+  <%= @event.orgn.oname %>
 </p>
 
 <p>
@@ -16,10 +16,11 @@
 </p>
 
 <p>
-  <strong>Edate:</strong>
-  <%= @event.edate %>
+  <strong>Esdate:</strong>
+  <%= @event.esdate %>
 </p>
-
+<strong>Eedate:</strong>
+<%= @event.eedate %>
 <p>
   <strong>Pafpre:</strong>
   <%= @event.pafpre %>
@@ -57,3 +58,6 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+<% unless current_user.id == @event.orgn.user.id %>
+<%= render 'folevents/form' %>
+<% end %>

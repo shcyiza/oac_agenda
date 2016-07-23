@@ -2,10 +2,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :orgn_id %>
+    <br>
+    <B> Qui l'organise? </B>
+    <%= collection_select(:event, :orgn_id, current_user.orgn, :id, :oname) %>
+    <br>
     <%= f.input :enom %>
     <%= f.input :edesc %>
-    <%= f.input :edate %>
+    <%= f.input :esdate %>
+    <%= f.input :eedate %>
     <%= f.input :pafpre %>
     <%= f.input :pafplace %>
     <%= f.input :pays %>

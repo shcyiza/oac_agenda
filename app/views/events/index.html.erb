@@ -23,10 +23,10 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.orgn_id %></td>
+        <td><%= event.orgn.oname %></td>
         <td><%= event.enom %></td>
         <td><%= event.edesc %></td>
-        <td><%= event.edate %></td>
+        <td><%= event.esdate %></td>
         <td><%= event.pafpre %></td>
         <td><%= event.pafplace %></td>
         <td><%= event.pays %></td>

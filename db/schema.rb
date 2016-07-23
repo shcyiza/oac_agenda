@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713223832) do
+ActiveRecord::Schema.define(version: 20160719192926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160713223832) do
     t.string   "enom"
     t.text     "edesc"
     t.datetime "esdate"
+    t.datetime "eedate"
     t.decimal  "pafpre"
     t.decimal  "pafplace"
     t.string   "pays"
@@ -35,10 +36,8 @@ ActiveRecord::Schema.define(version: 20160713223832) do
     t.string   "codepostal"
     t.string   "rue"
     t.string   "nrrue"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "public"
-    t.datetime "eedate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "foldates", force: :cascade do |t|

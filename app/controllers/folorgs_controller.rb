@@ -13,8 +13,8 @@ class FolorgsController < ApplicationController
   end
 
   # GET /folorgs/new
-  def new
-    @folorg = Folorg.new
+  def new 
+      @folorg = Folorg.new
   end
 
   # GET /folorgs/1/edit

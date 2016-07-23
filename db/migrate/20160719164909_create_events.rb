@@ -1,10 +1,12 @@
 class CreateEvents < ActiveRecord::Migration
-  def change
+
+  def self.up
     create_table :events do |t|
       t.integer :orgn_id
-      t.string :enom
-      t.text :edesc
-      t.datetime :edate
+      t.string :name
+      t.text :edescr
+      t.datetime :start_at
+      t.datetime :end_at
       t.decimal :pafpre
       t.decimal :pafplace
       t.string :pays
@@ -12,8 +14,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :codepostal
       t.string :rue
       t.string :nrrue
-
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end
