@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   def show
     unless current_user.id == @event.orgn.user.id
       @folevent = Folevent.new(event_id: params[:id], user_id: current_user.id)
+    else
     end
   end
 

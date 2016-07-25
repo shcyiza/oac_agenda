@@ -9,3 +9,27 @@ rails g scaffold france ville:string codepostal:string
 
 rails g scaffold resa user_id:integer event_id:integer resanr:string resa_claimed:boolean
 git remote set-url website shcyiza@github.com:path/to/repo
+
+Date.today.beginning_of_month.beginning_of_week..Date.today.end_of_month.end_of_week
+
+Day.where(Event.find(1).esdate.to_date..Event.find(1).eedate.to_date).to_a
+
+<div id="calendar">
+  <h2 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+    <%=h @date.strftime("%B %Y") %>
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+  </h2>
+  <% calendar_for date_range.each_slice(7) do 	|calendar| %>
+    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+    <% calendar.each do 	|jour| %>
+    <% calendar.day(:day_method => jour) do |date| %>
+      <%= date.day %>
+      <ul>
+        <% for article in articles %>
+          <li><%= link_to h(article.name), article %></li>
+      </ul>
+    <% end %>
+    <% end %>
+  <% end %>
+</div>

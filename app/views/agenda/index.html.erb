@@ -1,30 +1,109 @@
+<!--Attach the Table CSS and Javascript-->
+
 <h1>Agenda des evenement en court d'organisation</h1>
 <br>
 <br>
-<% start_date = params.fetch(:start_date, Date.today).to_date %>
-<% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Lun</th>
-      <th>Mar</th>
-      <th>Mer</th>
-      <th>Jeu</th>
-      <th>Ven</th>
-      <th>Sam</th>
-      <th>Dim</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% date_range.each_slice(7) do 	|semain| %>
-    <tr>
-      <% semain.each do 	|jour| %>
-      <td>
-        <%= jour %>
-      </td>
-      <%end%>
-    </tr>
+</div>
+<br>
+<div class="row calendar">
+<div class=" large-10 columns">
+  <div class="text-center">
+    <% start_date = params.fetch(:start_date, Date.today).to_date %>
+    <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
+    <%= link_to start_date: date_range.first - 1.day do %><t class="button success round"><b><</b></t><% end %>
+    <font style="text-transform: uppercase;"><%= l(start_date, format: :mname) %> </font>
+    <%= link_to start_date: date_range.last + 1.day do %><t class="button success round"><b>></b></t><% end %>
+  </div>
+  <table class="calendar" style="border-spacing: 0">
+    <thead>
+      <tr>
+        <th width="300">Lun</th>
+        <th width="300">Mar</th>
+        <th width="300">Mer</th>
+        <th width="300">Jeu</th>
+        <th width="300">Ven</th>
+        <th width="300">Sam</th>
+        <th width="300">Dim</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% date_range.each_slice(7) do 	|semain| %>
+      <tr>
+        <% semain.each do 	|jour| %>
+
+        <td class="active">
+          <div>
+          <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
+          <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
+          <!--les dates anterieur au mois actuelle en gris-->
+          <% if jour.month < Date.today.month %>
+            <span class="day"><font color="grey"><del><%=l(jour, format: :justd)%></del></font><hr></hr></span>
+
+          <!--les dates posterieur au mois actuelle en verts avec l'option de suivre la dates-->
+          <% elsif jour.month > Date.today.month %>
+            <span class="day" >
+              <font color="green"><%= l(jour, format: :justd) %></font>
+              <b size="4">
+                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><i class="icon-ok icon-white"></i></grey</a>
+                <font color="#00cc99"><b><i class="fi-plus"></i></font>
+              </b>
+              <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <h2 id="modalTitle">suivre la date du <%= jour %>?</h2>
+                  <%= render "foldate" %>
+                </div>
+            <hr></hr>
+            </span>
+          <!--les dates du mois actuelle mais anterieur a today en verts barré-->
+          <% elsif jour < Date.today %>
+            <span class="day"><del><font color="green"><%= l(jour, format: :justd) %>.</font></del><hr></hr></span>
+
+          <!--today en bien visible avec l'option de suivre la dates-->
+          <% elsif jour == Date.today %>
+            <span class="day">
+                <font color="orange"><b><%= l(jour, format: :justd) %>.</font>
+                <b size="4">
+                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><i class="icon-ok icon-white"></i></grey</a>
+                  <font color="#00cc99"><b><i class="fi-plus"></i></font>
+                </b>
+              <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <h2 id="modalTitle">suivre la date du <%= jour %>?</h2>
+                  <%= render "foldate" %>
+                </div>
+              <hr></hr>
+              </span>
+
+
+          <!--les dates du mois actuelle apres today verts gras avec l'option de suivre la dates-->
+          <% else %>
+            <span class="day">
+              <b size="4">
+                <font color="green"><%= l(jour, format: :justd) %>.</font>
+                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><i class="icon-ok icon-white"></i></grey</a>
+                <font color="#00cc99"><b><i class="fi-plus"></i></font>
+              </b>
+              <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <h2 id="modalTitle">suivre la date du <%= jour %>?</h2>
+                  <%= render "foldate" %>
+                </div>
+            <hr></hr>
+            </span>
+
+          <% end %>
+          </div>
+          <% @events.each do |event| %>
+            <% event.event_dates.select{ |m| m == jour}.each do |ed| %>
+              <div>
+                <span class="event green"><%= link_to event.enom, event %></span></span>
+              </div>
+            <% end %>
+          <% end %>
+        </td>
+        <%end%>
+      </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
+</div>
+<br>
