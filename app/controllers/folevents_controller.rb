@@ -1,5 +1,5 @@
 class FoleventsController < ApplicationController
-  before_action :set_folevent, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_folevent, only: [:show, :edit, :update, :destroy]
 
   # GET /folevents
   # GET /folevents.json

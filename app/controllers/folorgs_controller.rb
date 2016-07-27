@@ -1,5 +1,5 @@
 class FolorgsController < ApplicationController
-  before_action :set_folorg, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_folorg, only: [:show, :edit, :update, :destroy]
 
   # GET /folorgs
   # GET /folorgs.json
@@ -13,7 +13,7 @@ class FolorgsController < ApplicationController
   end
 
   # GET /folorgs/new
-  def new 
+  def new
       @folorg = Folorg.new
   end
 

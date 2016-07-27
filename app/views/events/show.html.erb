@@ -56,8 +56,11 @@
   <%= @event.nrrue %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
-<% unless current_user.id == @event.orgn.user.id %>
-<%= render 'folevents/form' %>
+<%= link_to 'Back', events_path %> |
+<% if user_signed_in? %>
+  <% unless current_user.id == @event.orgn.user.id %>
+    <%= link_to "modifier l'evenement", edit_event_path(@event) %>
+    <%= render 'folevents/form' %>
+  <% end %>
+<% else %>
 <% end %>

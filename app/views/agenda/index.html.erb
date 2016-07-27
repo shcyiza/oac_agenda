@@ -31,11 +31,12 @@
       <% date_range.each_slice(7) do 	|semain| %>
       <tr>
         <% semain.each do 	|jour| %>
-
         <td class="active">
-          <div>
           <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
-          <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
+          <% @addevent = Event.new(esdate: jour.to_time + 1.day, orgn_id: current_user.orgn.first.id, eedate: jour.to_time + 1.day ) %>
+          <% @user_date = current_user.foldates.where(:datefolwd => jour) %>
+          <% @del_date = current_user.foldates.where(:datefolwd => jour).first %>
+          <% @followed_date = Foldate.where(:datefolwd => jour) %>
           <!--les dates anterieur au mois actuelle en gris-->
           <% if jour.month < Date.today.month %>
             <span class="day"><font color="grey"><del><%=l(jour, format: :justd)%></del></font><hr></hr></span>
@@ -44,16 +45,25 @@
           <% elsif jour.month > Date.today.month %>
             <span class="day" >
               <font color="green"><%= l(jour, format: :justd) %></font>
-              <b size="4">
-                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><i class="icon-ok icon-white"></i></grey</a>
-                <font color="#00cc99"><b><i class="fi-plus"></i></font>
-              </b>
-              <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                <h2 id="modalTitle">suivre la date du <%= jour %>?</h2>
-                  <%= render "foldate" %>
+              <% if @user_date.count < 1 %>
+              <!-- popups avec les formulaire pour suivre un date et faire un nouvelle evenement -->
+                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><% if Foldate.where(:datefolwd => jour).count > 0 %><%= Foldate.where(:datefolwd => jour).count %><% end %></font></a>
+                <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                  <b>suivre la date du <%= jour %>?</b><br>
+                    <%= render "foldate" %>
                 </div>
+              <% else %>
+                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="#ff6600"><i class="fi-heart"></i><%= Foldate.where(:datefolwd => jour).count %></font></a>
+                <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                  <b>suivre la date du <%= jour %>?</b><br>
+                    <%= link_to destroy_fd_path(@del_date.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
+                </div>
+              <% end %>
+              <font color="#00cc99"><b><i class="fi-plus"></i></font></b>
+            <!-- /popups -->
             <hr></hr>
             </span>
+
           <!--les dates du mois actuelle mais anterieur a today en verts barré-->
           <% elsif jour < Date.today %>
             <span class="day"><del><font color="green"><%= l(jour, format: :justd) %>.</font></del><hr></hr></span>
@@ -61,15 +71,23 @@
           <!--today en bien visible avec l'option de suivre la dates-->
           <% elsif jour == Date.today %>
             <span class="day">
-                <font color="orange"><b><%= l(jour, format: :justd) %>.</font>
-                <b size="4">
-                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><i class="icon-ok icon-white"></i></grey</a>
-                  <font color="#00cc99"><b><i class="fi-plus"></i></font>
-                </b>
-              <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                <h2 id="modalTitle">suivre la date du <%= jour %>?</h2>
-                  <%= render "foldate" %>
-                </div>
+                <font color="orange"><b><%= l(jour, format: :justd) %>.<b></font>
+                  <% if @user_date.count < 1 %>
+                  <!-- popups avec les formulaire pour suivre un date et faire un nouvelle evenement -->
+                    <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><% if Foldate.where(:datefolwd => jour).count > 0 %><%= Foldate.where(:datefolwd => jour).count %><% end %></font></a>
+                    <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                      <b>suivre la date du <%= jour %>?</b><br>
+                        <%= render "foldate" %>
+                    </div>
+                  <% else %>
+                    <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="#ff6600"><i class="fi-heart"></i><%= Foldate.where(:datefolwd => jour).count %></font></a>
+                    <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                      <b>suivre la date du <%= jour %>?</b><br>
+                        <%= link_to destroy_fd_path(@del_date.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
+                    </div>
+                  <% end %>
+                  <font color="#00cc99"><b><i class="fi-plus"></i></font></b>
+                <!-- /popups -->
               <hr></hr>
               </span>
 
@@ -77,25 +95,35 @@
           <!--les dates du mois actuelle apres today verts gras avec l'option de suivre la dates-->
           <% else %>
             <span class="day">
-              <b size="4">
-                <font color="green"><%= l(jour, format: :justd) %>.</font>
-                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><i class="icon-ok icon-white"></i></grey</a>
-                <font color="#00cc99"><b><i class="fi-plus"></i></font>
-              </b>
-              <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                <h2 id="modalTitle">suivre la date du <%= jour %>?</h2>
-                  <%= render "foldate" %>
+                <b><font color="green"><%= l(jour, format: :justd) %>.</font></b>
+                <% if @user_date.count < 1 %>
+                <!-- popups avec les formulaire pour suivre un date et faire un nouvelle evenement -->
+                  <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><% if Foldate.where(:datefolwd => jour).count > 0 %><%= Foldate.where(:datefolwd => jour).count %><% end %></font></a>
+                  <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    <b>suivre la date du <%= jour %>?</b><br>
+                      <%= render "foldate" %>
+                  </div>
+                <% else %>
+                  <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="#ff6600"><i class="fi-heart"></i><%= Foldate.where(:datefolwd => jour).count %></font></a>
+                  <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                    <b>suivre la date du <%= jour %>?</b><br>
+                      <%= link_to destroy_fd_path(@del_date.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
+                  </div>
+                <% end %>
+                <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99"><b><i class="fi-plus"></i></font></b></a>
+                <div id="addevent_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                  <b>suivre la date du <%= jour %>?</b><br>
+                    <%= render "addevent" %>
                 </div>
+              <!-- /popups -->
             <hr></hr>
             </span>
 
           <% end %>
-          </div>
+
           <% @events.each do |event| %>
             <% event.event_dates.select{ |m| m == jour}.each do |ed| %>
-              <div>
-                <span class="event green"><%= link_to event.enom, event %></span></span>
-              </div>
+                <font size="1"><span class="event green"><%= link_to event.enom, event %></span></font>
             <% end %>
           <% end %>
         </td>

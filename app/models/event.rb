@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   validates :eedate, date: { after: :esdate, allow_blank: true, message: "Doit etre après le debut de l'événement" }
 
   def event_dates
-   r = (self.esdate.to_date..self.eedate.to_date).to_a
+    r = (self.esdate.to_date..self.eedate.to_date).to_a
   end
 
 end

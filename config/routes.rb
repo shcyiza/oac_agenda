@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :users
 
   get '/proagenda', to: 'agenda#index'
+  get 'foldates/:id/destroy_fd' => 'foldates#destroy', as: :destroy_fd
+
 end

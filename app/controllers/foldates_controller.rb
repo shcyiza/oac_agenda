@@ -1,5 +1,5 @@
 class FoldatesController < ApplicationController
-  before_action :set_foldate, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_foldate, only: [:show, :edit, :update, :destroy]
 
   # GET /foldates
   # GET /foldates.json
@@ -28,10 +28,10 @@ class FoldatesController < ApplicationController
 
     respond_to do |format|
       if @foldate.save
-        format.html { redirect_to @foldate, notice: 'Foldate was successfully created.' }
+        format.html { redirect_to :back, notice: 'Vous suivez desormais la date du #{ current_user.foldates.last.datefolwd}' }
         format.json { render :show, status: :created, location: @foldate }
       else
-        format.html { render :new }
+        format.html { redirect_to :back }
         format.json { render json: @foldate.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class FoldatesController < ApplicationController
   def destroy
     @foldate.destroy
     respond_to do |format|
-      format.html { redirect_to foldates_url, notice: 'Foldate was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Foldate was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -25,8 +25,12 @@
   <%= @orgn.onum %>
 </p>
 
-<%= link_to 'Edit', edit_orgn_path(@orgn) %> |
-<%= link_to 'Back', orgns_path %>
-<% unless current_user.id == @orgn.user.id %>
-<%= render 'folorgs/form' %>
+
+<%= link_to 'Back', orgns_path %>|
+<% if user_signed_in? %>
+  <% unless current_user.id == @orgn.user.id %>
+    <%= link_to "modifier l'organisation", edit_orgn_path(@orgn) %>
+    <%= render partial: 'folorgs/form'%>
+  <% end %>
+<% else %>
 <% end %>

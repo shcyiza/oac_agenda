@@ -1,5 +1,5 @@
 class ResasController < ApplicationController
-  before_action :set_resa, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_resa, only: [:show, :edit, :update, :destroy]
 
   # GET /resas
   # GET /resas.json

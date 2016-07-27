@@ -10,15 +10,16 @@ class OrgnsController < ApplicationController
   # GET /orgns/1
   # GET /orgns/1.json
   def show
-    unless current_user.id == @orgn.user.id
+    if user_signed_in? && current_user.id != @orgn.user.id
       @folorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
+    else
     end
   end
 
   # GET /orgns/new
   def new
     # un user ne peut créer un magazin que si il a fait la demande de signé un contract
-    if current_user.pro == true
+    if user_signed_in? && current_user.pro == true
       #lier user a son new shop automatiquement
       @orgn = Orgn.new(user_id: current_user.id)
     else

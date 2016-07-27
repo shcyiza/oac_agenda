@@ -10,48 +10,67 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    unless current_user.id == @event.orgn.user.id
-      @folevent = Folevent.new(event_id: params[:id], user_id: current_user.id)
-    else
+    if user_signed_in?
+      unless current_user.id == @event.orgn.user.id
+        @folevent = Folevent.new(event_id: params[:id], user_id: current_user.id)
+      else
+      end
     end
   end
 
   # GET /events/new
   def new
-    @event = Event.new
+    if user_signed_in?
+      if current_user.orgn.count > 0
+        @event = Event.new
+      elsif current_user.pro == true
+        redirect_to new_orgn_path, :alert => "Vous avez pas encore d'organisation"
+      else
+        redirect_to :back, :alert => "demande invalide"
+      end
+    else
+      redirect_to :back, :alert => "demande invalide"
+    end
   end
 
   # GET /events/1/edit
   def edit
+    if current_user.id == @orgn.user.id
+    else
+      redirect_to :back, :alert => "Vous n'êtes pas l'organisateur de cette evenement"
+    end
   end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+      @event = Event.new(event_params)
+      respond_to do |format|
+        if @event.save
+          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.json { render :show, status: :created, location: @event }
+        else
+          format.html { render :new }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if current_user.id == @orgn.user.id
+      respond_to do |format|
+        if @event.update(event_params)
+          format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+          format.json { render :show, status: :ok, location: @event }
+        else
+          format.html { render :edit }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to :back, :alert => "demande invalide"
     end
   end
 
