@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   get '/proagenda', to: 'agenda#index'
   get 'foldates/:id/destroy_fd' => 'foldates#destroy', as: :destroy_fd
+  get 'event/hashtag/:name', to: 'events#hashtags'
 
 end

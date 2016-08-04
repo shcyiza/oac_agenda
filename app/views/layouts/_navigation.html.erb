@@ -1,11 +1,8 @@
 <%# navigation styled for Zurb Foundation 5 %>
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name"><%= link_to 'Home', root_path %></li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
+<nav    >
   <div class="top-bar-section">
     <ul>
+      <li><%= link_to 'Home', root_path %></li>
       <% if user_signed_in? %>
         <li><%= link_to 'Edit account', edit_user_registration_path %></li>
         <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>

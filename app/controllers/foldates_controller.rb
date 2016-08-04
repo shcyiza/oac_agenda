@@ -4,7 +4,7 @@ class FoldatesController < ApplicationController
   # GET /foldates
   # GET /foldates.json
   def index
-    @foldates = Foldate.all
+    @foldates = Foldate.where(:user_id => current_user.id).all
   end
 
   # GET /foldates/1
@@ -28,7 +28,7 @@ class FoldatesController < ApplicationController
 
     respond_to do |format|
       if @foldate.save
-        format.html { redirect_to :back, notice: 'Vous suivez desormais la date du #{ current_user.foldates.last.datefolwd}' }
+        format.html { redirect_to :back, notice: 'Vous suivez desormais la date du #{current_user.foldates.last.datefolwd}' }
         format.json { render :show, status: :created, location: @foldate }
       else
         format.html { redirect_to :back }

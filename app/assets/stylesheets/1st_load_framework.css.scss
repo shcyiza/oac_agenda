@@ -2,13 +2,27 @@
 @import "foundation";
 
 // override for the 'Home' navigation link
+.top-bar {
+  background-color: #4caf50;}
+  .top-bar-section {
+    background-color: #4caf50;}
 .top-bar .name {
+  background-color: #4caf50;
   font-size: rem-calc(13);
-  line-height: 45px; }
+  line-height: 45px;
+  &:hover {
+    background-color: #156e19;
+    transition: all .25s ease-in-out;}
+}
 .top-bar .name a {
+  background-color: #4caf50;
   font-weight: normal;
   color: white;
-  padding: 0 15px; }
+  padding: 0 15px;
+  &:hover {
+    background-color: #156e19;
+    transition: all .25s ease-in-out;}
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
@@ -44,6 +58,7 @@ main {
   }
 section {
   @extend .row;
+  background-color: #4caf50;
   margin-top: 20px;
   }
 
@@ -89,4 +104,65 @@ section {
   @extend .button;
   @extend .radius;
   @extend .tiny;
+}
+
+$sidebar-width: 500px;
+$nav-color: #4caf50;
+
+.inner-wrap {
+  width: auto;
+}
+
+.move-right .inner-wrap {
+  -ms-transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  margin-left: $sidebar-width;
+}
+
+
+
+.left-off-canvas-menu {
+  -ms-transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  position: fixed;
+  width: 0;
+  height: 100%;
+}
+
+.move-right .left-off-canvas-menu {
+  width: $sidebar-width;
+}
+
+.move-right .exit-off-canvas {
+  display: none;
+}
+
+.left-off-canvas-toggle {
+  display: none;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-size: 3rem;
+  color: #4caf50;
+  transition: all .25s ease-in-out;
+
+  &:focus {
+    color: $nav-color;
+  }
+
+  &:hover {
+    color: lighten($nav-color, 35%);
+    transition: all .25s ease-in-out;
+  }
+}
+
+.ad-block {
+  margin-bottom: 2rem;
 }

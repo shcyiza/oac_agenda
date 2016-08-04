@@ -1,11 +1,37 @@
 <!--Attach the Table CSS and Javascript-->
 
-<h1>Agenda des evenement en court d'organisation</h1>
-<br>
-<br>
+<h1 class="text-center">Agenda des evenement en court d'organisation</h1>
+
+
+<aside class="left" >
+</div>
+<div class="icon-bar vertical five-up">
+      <a class="item">
+        <i class="fi-home"></i>
+        <label>Home</label>
+      </a>
+      <a class="item">
+       <i class="fi-home"></i>
+        <label>Bookmark</label>
+      </a>
+      <a class="item">
+        <i class="fi-home"></i>
+        <label>Info</label>
+      </a>
+      <a class="item">
+        <i class="fi-home"></i>
+        <label>Mail</label>
+      </a>
+      <a class="item">
+        <i class="fi-home"></i>
+        <label>Like</label>
+      </a>
+    </div>
+
 
 </div>
-<br>
+</aside>
+
 <div class="row calendar">
 <div class=" large-10 columns">
   <div class="text-center">
@@ -123,7 +149,13 @@
 
           <% @events.each do |event| %>
             <% event.event_dates.select{ |m| m == jour}.each do |ed| %>
-                <font size="1"><span class="event green"><%= link_to event.enom, event %></span></font>
+              <% if event.esdate <= Time.now %>
+                <font size="0.5"><span class="event grey"><%= event.enom %></span></font>
+              <% elsif event.public == true %>
+                <font size="0.5" color = "black"><span class="event green"><%= link_to event.enom, event %></span></font>
+              <% elsif event.public == false  %>
+                <font size="0.5" color = "black"><span class="event yellow"><%= link_to event.enom, event %></span></font>
+              <% end %>
             <% end %>
           <% end %>
         </td>

@@ -18,6 +18,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @events = Tag.find_by(name: params[:name]).events
+  end
+
   # GET /events/new
   def new
     if user_signed_in?
@@ -35,7 +40,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    if current_user.id == @orgn.user.id
+    if current_user.id == @event.orgn.user.id
     else
       redirect_to :back, :alert => "Vous n'êtes pas l'organisateur de cette evenement"
     end
@@ -59,7 +64,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    if current_user.id == @orgn.user.id
+    if current_user.id == @event.orgn.user.id
       respond_to do |format|
         if @event.update(event_params)
           format.html { redirect_to @event, notice: 'Event was successfully updated.' }

@@ -39,7 +39,7 @@
   }
   .event {
     float:left;
-    border-radius:3px;
+    border-radius:0px;
     display:block;
     padding: 2px;
     font-size: 0.9em;
@@ -48,8 +48,8 @@
     margin-top: 18px;
     margin-bottom: -12px;
 
-    &.blue {
-      background: #3a87ad;
+    &.grey {
+      background: #ececec;
 
     }
     &.yellow {
