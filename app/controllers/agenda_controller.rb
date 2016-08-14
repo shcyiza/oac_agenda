@@ -3,8 +3,7 @@ before_action :authenticate_user!
 respond_to :html, :js
   def index
     if current_user.pro == true
-      @events = Event.all.order("esdate DESC")
-
+      @events = Event.all.order("esdate")
     else
       redirect_to :back, :alert => "demande invalide"
     end
@@ -22,7 +21,7 @@ respond_to :html, :js
   end
 
   def event_params
-    params.require(:event).permit(:orgn_id, :enom, :edesc, :esdate, :eedate, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue)
+    params.require(:event).permit(:orgn_id, :enom, :edesc, :esdate, :esdate_date, :esdate_time, :eedate, :eedate_date, :eedate_time, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue, :flyer)
   end
 
 end

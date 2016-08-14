@@ -24,6 +24,11 @@
     transition: all .25s ease-in-out;}
 }
 
+.sticky {
+  position: relative;
+  top: 0;
+}
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
 @mixin twelve-columns {

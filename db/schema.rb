@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804125504) do
+ActiveRecord::Schema.define(version: 20160804210414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,11 @@ ActiveRecord::Schema.define(version: 20160804125504) do
     t.string   "nrrue"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",     default: false
+    t.boolean  "public",             default: false
+    t.string   "flyer_file_name"
+    t.string   "flyer_content_type"
+    t.integer  "flyer_file_size"
+    t.datetime "flyer_updated_at"
   end
 
   create_table "events_tags", id: false, force: :cascade do |t|

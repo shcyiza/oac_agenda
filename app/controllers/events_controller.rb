@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.where('esdate > ?', Time.now).order(:esdate)
+    @folevent = Folevent.new
   end
 
   # GET /events/1
@@ -97,7 +98,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:orgn_id, :enom, :edesc, :esdate, :eedate, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue)
+      params.require(:event).permit(:orgn_id, :enom, :edesc, :esdate, :esdate_date, :esdate_time, :eedate, :eedate_date, :eedate_time, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue, :flyer)
     end
 
     def folevent_params

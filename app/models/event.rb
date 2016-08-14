@@ -3,15 +3,21 @@ class Event < ActiveRecord::Base
   has_many :folevents
   has_many :resas
   has_many :users, through: :folevents
-  has_many :users, through: :resas
+  has_many :users, through: :orgn
   has_and_belongs_to_many :tags
+  extend TimeSplitter::Accessors
+    split_accessor :esdate, :eedate
 
-  validates :esdate, presence: true, date: { after: Date.today, message: "Doit etre après aujourd'hui" }
+  validates :esdate, date: { after: Time.now, message: "Doit etre après aujourd'hui" }
   validates :eedate, date: { after: :esdate, allow_blank: true, message: "Doit etre après le debut de l'événement" }
 
-  def event_dates
-    r = (self.esdate.to_date..self.eedate.to_date).to_a
-  end
+
+  has_attached_file :flyer, styles: { medium: "300x270>", thumb: "100x90>" }, default_url: "/app/assets/images/missing_flyer.png"
+  validates_attachment_content_type :flyer, content_type: /\Aimage\/.*\Z/
+
+    def event_dates
+      r = (self.esdate.to_date..self.eedate.to_date).to_a
+    end
 
   after_create do
     hashtags = self.edesc.scan(/#\w+/)
