@@ -49,7 +49,7 @@
         <% semain.each do 	|jour| %>
         <td class="active">
           <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
-          <% @addevent = Event.new(esdate_date: jour.to_date + 1.day, esdate_time: "", orgn_id: current_user.orgn.first.id, eedate_date: jour.to_date + 1.day, esdate_time: "" ) %>
+          <% @addevent = Event.new(esdate_date: jour.to_date, esdate_time: "", orgn_id: current_user.orgn.first.id, eedate_date: jour.to_date , esdate_time: "" ) %>
           <% @user_date = current_user.foldates.where(:datefolwd => jour) %>
           <% @del_date = current_user.foldates.where(:datefolwd => jour).first %>
           <% @followed_date = Foldate.where(:datefolwd => jour) %>

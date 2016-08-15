@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   validates :eedate, date: { after: :esdate, allow_blank: true, message: "Doit etre après le debut de l'événement" }
 
 
-  has_attached_file :flyer, styles: { medium: "300x270>", thumb: "100x90>" }, default_url: "/app/assets/images/missing_flyer.png"
+  has_attached_file :flyer, styles: { medium: "300x270#", thumb: "100x90#" }, default_url: "/images/normal/missing_flyer.png"
   validates_attachment_content_type :flyer, content_type: /\Aimage\/.*\Z/
 
     def event_dates

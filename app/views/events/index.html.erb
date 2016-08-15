@@ -6,7 +6,8 @@
 
 
 <% @events.each do |event| %>
-  <div class="small-3 columns panel">
+<div>
+  <div class="small-3 columns">
     <div class="item-wrapper">
       <div class="img-wrapper">
       <% if user_signed_in? %>
@@ -14,13 +15,13 @@
         <a class="button expand add-to-cart" href="#" d1ata-reveal-id="event_<%= event.id%>"><i class="fi-heart"></i> Suivre cette évenment</a>
         <a href="#"><img src="http://i.imgur.com/Mcw06Yt.png"></a>
       <% else %>
-        <a class="button expand add-to-cart" href="#" d1ata-reveal-id="event_<%= event.id%>">details de l'event</a>
+        <a class="button expand add-to-cart" href="#" d1ata-reveal-id="event_<%= event.id%>">details de l'event...</a>
         <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
       <% end %>
       <% end %>
       </div>
       <h4><b><%= link_to event.enom, event %></h4></b>
-      <h6><i class="fi-calendar"></i><%= event.esdate %></h6>
+      <h7><i class="fi-calendar"></i> du <%= event.esdate.to_date %> à <%= event.esdate.strftime("%H:%M") %> fini le <%= event.eedate.to_date %> à <%= event.eedate.strftime("%H:%M") %></h7>
       <p><%= render_hashtags(event.edesc) %></p>
     </div>
   </div>

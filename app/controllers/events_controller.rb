@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where('esdate > ?', Time.now).order(:esdate)
+    @events = Event.where('eedate > ?', Time.now).order(esdate: :desc)
     @folevent = Folevent.new
   end
 

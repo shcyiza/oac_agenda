@@ -11,7 +11,7 @@ $primary-color: #008cba;
 
   &:hover {
     .img-wrapper {
-      img { -webkit-filter: grayscale(0); }
+      img { -webkit-filter: none; }
 
       .add-to-cart { bottom: 0; }
     }
@@ -40,9 +40,7 @@ $primary-color: #008cba;
   }
 
   img {
-    -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    -webkit-filter: grayscale(1);
     width: 100%;
   }
 }
