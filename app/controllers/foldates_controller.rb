@@ -28,6 +28,7 @@ class FoldatesController < ApplicationController
 
     respond_to do |format|
       if @foldate.save
+        track_activity @foldate
         format.html { redirect_to :back, notice: 'Vous suivez desormais la date du #{current_user.foldates.last.datefolwd}' }
         format.json { render :show, status: :created, location: @foldate }
       else
@@ -42,6 +43,7 @@ class FoldatesController < ApplicationController
   def update
     respond_to do |format|
       if @foldate.update(foldate_params)
+        track_activity @foldate
         format.html { redirect_to @foldate, notice: 'Foldate was successfully updated.' }
         format.json { render :show, status: :ok, location: @foldate }
       else
@@ -55,6 +57,7 @@ class FoldatesController < ApplicationController
   # DELETE /foldates/1.json
   def destroy
     @foldate.destroy
+    track_activity @foldate
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Foldate was successfully destroyed.' }
       format.json { head :no_content }

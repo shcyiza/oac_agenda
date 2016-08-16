@@ -53,6 +53,7 @@ class EventsController < ApplicationController
       @event = Event.new(event_params)
       respond_to do |format|
         if @event.save
+          track_activity @event
           format.html { redirect_to @event, notice: 'Event was successfully created.' }
           format.json { render :show, status: :created, location: @event }
         else
@@ -68,6 +69,7 @@ class EventsController < ApplicationController
     if current_user.id == @event.orgn.user.id
       respond_to do |format|
         if @event.update(event_params)
+          track_activity @event
           format.html { redirect_to @event, notice: 'Event was successfully updated.' }
           format.json { render :show, status: :ok, location: @event }
         else
@@ -84,6 +86,7 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event.destroy
+    track_activity @event
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }

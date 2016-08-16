@@ -1,0 +1,7 @@
+<h2>Activities</h2>
+
+<% @activities.each do |activity| %>
+  <%= div_for activity do %>
+    <%= render "activities/#{activity.trackable_type.underscore}/#{activity.action}", activity: activity %>
+  <% end %>
+<% end %>

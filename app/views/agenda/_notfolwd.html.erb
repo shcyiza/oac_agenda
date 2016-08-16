@@ -1,0 +1,9 @@
+<a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><% if @followed_date.count > 0 %><%= @followed_date.count %><% end %> </font><font color="#006600"></a>
+<div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <b>suivre la date du <%= jour %>?</b><br><br>
+  <%if @followed_date.count > 0 %>
+   <font color="#ff6600"><sup><%= @followed_date.count %></sup></font> une organisation(s) suis cette date.<br>
+  <% else %>
+  <% end %>
+    <%= render "foldate" %>
+</div>

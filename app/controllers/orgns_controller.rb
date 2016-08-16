@@ -38,6 +38,7 @@ class OrgnsController < ApplicationController
 
     respond_to do |format|
       if @orgn.save
+        track_activity @orgn
         format.html { redirect_to @orgn, notice: 'Orgn was successfully created.' }
         format.json { render :show, status: :created, location: @orgn }
       else
@@ -52,6 +53,7 @@ class OrgnsController < ApplicationController
   def update
     respond_to do |format|
       if @orgn.update(orgn_params)
+        track_activity @orgn
         format.html { redirect_to @orgn, notice: 'Orgn was successfully updated.' }
         format.json { render :show, status: :ok, location: @orgn }
       else
@@ -65,6 +67,7 @@ class OrgnsController < ApplicationController
   # DELETE /orgns/1.json
   def destroy
     @orgn.destroy
+    track_activity @orgn
     respond_to do |format|
       format.html { redirect_to orgns_url, notice: 'Orgn was successfully destroyed.' }
       format.json { head :no_content }

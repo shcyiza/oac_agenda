@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :events, through: :resas
   has_many :events, through: :orgn
   has_many :foldates
+  has_many :activities
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

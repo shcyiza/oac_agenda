@@ -1,8 +1,7 @@
 <!--Attach the Table CSS and Javascript-->
-
 <h1 class="text-center">Agenda des evenement en court d'organisation</h1>
 
-
+<!-- place pour la sidebar -->
 <aside class="left large-2 columns" >
  <article id="sidebar" class="events-press-cta panel sticky">
         <p class="lead">What are you going to do with it?</p>
@@ -47,13 +46,13 @@
       <% date_range.each_slice(7) do 	|semain| %>
       <tr>
         <% semain.each do 	|jour| %>
+
         <td class="active">
           <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
-          <% @addevent = Event.new(esdate_date: jour.to_date, esdate_time: "", orgn_id: current_user.orgn.first.id, eedate_date: jour.to_date , esdate_time: "" ) %>
+          <% @addevent = Event.new(esdate_date: jour, esdate_time: "", orgn_id: current_user.orgn.first.id, eedate_date: jour , esdate_time: "" ) %>
           <% @user_date = current_user.foldates.where(:datefolwd => jour) %>
           <% @del_date = current_user.foldates.where(:datefolwd => jour).first %>
           <% @followed_date = Foldate.where(:datefolwd => jour) %>
-          <% count_event = Event.where('? BETWEEN esdate AND eedate', jour) %>
           <!--les dates anterieur au mois actuelle en gris-->
           <% if jour.month < Date.today.month %>
             <span class="day"><font color="grey"><del><%=l(jour, format: :justd)%></del></font><hr></hr></span>
@@ -61,35 +60,8 @@
           <!--les dates posterieur au mois actuelle en verts avec l'option de suivre la dates-->
           <% elsif jour.month > Date.today.month %>
             <span class="day" >
-              <font color="green"><%= l(jour, format: :justd) %></font>
-              <% if @user_date.count < 1 %>
-              <!-- popups avec les formulaire pour suivre un date et faire un nouvelle evenement -->
-                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><% if @followed_date.count > 0 %><sup><%= @followed_date.count %></sup><% end %> </font><font color="#006600"><i class="fi-calendar"></i><sup><%= count_event.count %></sup></font></a>
-                <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                  <b>suivre la date du <%= jour %>?</b><br><br>
-                  <%if @followed_date.count > 0 %>
-                   <font color="#ff6600"><%= @followed_date.count %></font> une organisation(s) suis cette date.<br>
-                  <% else %>
-                  <% end %>
-                    <%= render "foldate" %>
-                </div>
-              <% else %>
-                <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="#ff6600"><i class="fi-heart"></i><sup><%= @followed_date.count %> </font></sup><font color="#006600"><i class="fi-calendar"></i><sup><%= count_event.count %></sup></font></a>
-                <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                  <b>Vous suivez déjà la date du <%= jour %></b><br>
-                    <%if (@followed_date.count - @user_date.count) > 0 %>
-                    avec  <font color="#ff6600"><%= @followed_date.count - @user_date.count %></font> autres organisations.<br>
-                    <% end %>
-
-                    <%= link_to destroy_fd_path(@del_date.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
-                </div>
-              <% end %>
-              <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99"><b><i class="fi-plus"></i> </font></b></a>
-              <div id="addevent_<%= jour.day%>_<%= jour.month %>" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                <h3><b>Ajoutez un événement  le <%= jour %>?</b><br></h3>
-                  <%= render "addevent" %>
-              </div>
-            <!-- /popups -->
+              <font color="grey"><%= l(jour, format: :justd) %></font>
+                <%= render partial: 'datefonctions', :locals => {:jour => jour} %>
             <hr></hr>
             </span>
 
@@ -100,76 +72,18 @@
           <!--today en bien visible avec l'option de suivre la dates-->
           <% elsif jour == Date.today %>
             <span class="day">
-                <font color="orange"><b><%= l(jour, format: :justd) %>.<b></font>
-                  <% if @user_date.count < 1 %>
-                  <!-- popups avec les formulaire pour suivre un date et faire un nouvelle evenement -->
-                    <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><% if @followed_date.count > 0 %><%= @followed_date.count %><% end %> </font><font color="#006600"><i class="fi-calendar"></i><sup><%= count_event.count %></sup></font></a>
-                    <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                      <b>suivre la date du <%= jour %>?</b><br><br>
-                      <%if @followed_date.count > 0 %>
-                       <font color="#ff6600"><sup><%= @followed_date.count %></sup></font> une organisation(s) suis cette date.<br>
-                      <% else %>
-                      <% end %>
-                        <%= render "foldate" %>
-                    </div>
-                  <% else %>
-                    <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="#ff6600"><i class="fi-heart"></i><sup><%= @followed_date.count %></sup> </font> <font color="#006600"><i class="fi-calendar"></i><sup><%= count_event.count %></sup></font></a>
-                    <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                      <b>Vous suivez déjà la date du <%= jour %></b><br>
-                        <%if (@followed_date.count - @user_date.count) > 0 %>
-                        avec  <font color="#ff6600"><%= @followed_date.count - @user_date.count %></font> autres organisations.<br>
-                        <% else %>
-                        <% end %>
-
-                        <%= link_to destroy_fd_path(@del_date.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
-                    </div>
-                  <% end %>
-                  <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99"><b><i class="fi-plus"></i></font></b></a>
-                  <div id="addevent_<%= jour.day%>_<%= jour.month %>" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                    <h3><b>Ajoutez un événement  le <%= jour %>?</b><br></h3>
-                      <%= render "addevent" %>
-                  </div>
-                <!-- /popups -->
-              <hr></hr>
-              </span>
-
+              <font color="orange"><b><%= l(jour, format: :justd) %>.</b></font>
+                <%= render partial: 'datefonctions', :locals => {:jour => jour} %>
+            <hr></hr>
+            </span>
 
           <!--les dates du mois actuelle apres today verts gras avec l'option de suivre la dates-->
           <% else %>
             <span class="day">
                 <b><font color="green"><%= l(jour, format: :justd) %>.</font></b>
-                <% if @user_date.count < 1 %>
-                <!-- popups avec les formulaire pour suivre un date et faire un nouvelle evenement -->
-                  <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart"></i><% if @followed_date.count > 0 %><sup><%= @followed_date.count %></sup><% end %> </font><font color="#006600"><i class="fi-calendar"></i><sup><%= count_event.count %></sup></font></a>
-                  <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                    <b>suivre la date du <%= jour %>?</b><br><br>
-                    <%if @followed_date.count > 0 %>
-                     <font color="#ff6600"><%= @followed_date.count %></font> une organisation(s) suis cette date.<br>
-                    <% else %>
-                    <% end %>
-                      <%= render "foldate" %>
-                  </div>
-                <% else %>
-                  <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="#ff6600"><i class="fi-heart"></i><sup><%= @followed_date.count %></sup></font></a>
-                  <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                    <b>Vous suivez déjà la date du <%= jour %></b><br>
-                      <%if (@followed_date.count - @user_date.count) > 0 %>
-                      avec  <font color="#ff6600"><%= @followed_date.count - @user_date.count %></font> autres organisations.<br>
-                      <% else %>
-                      <% end %>
-
-                      <%= link_to destroy_fd_path(@del_date.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
-                  </div>
-                <% end %>
-                <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99"><b><i class="fi-plus"></i></font></b></a>
-                <div id="addevent_<%= jour.day%>_<%= jour.month %>" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                  <h3><b>Ajoutez un événement  le <%= jour %>?</b><br></h3>
-                    <%= render "addevent" %>
-                </div>
-              <!-- /popups -->
+                <%= render partial: 'datefonctions', :locals => {:jour => jour} %>
             <hr></hr>
             </span>
-
           <% end %>
 
           <% @events.each do |event| %>

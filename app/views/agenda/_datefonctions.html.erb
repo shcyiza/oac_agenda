@@ -1,0 +1,12 @@
+<% if @user_date.count < 1 %>
+<!-- popups avec les formulaire pour suivre un date et faire un nouvelle evenement -->
+  <%= render partial: 'notfolwd', locals: {jour: jour} %>
+<% else %>
+  <%= render partial: 'folwd', locals: {jour: jour} %>
+<% end %>
+  <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99"><b><i class="fi-plus"></i></font></b></a>
+  <div id="addevent_<%= jour.day%>_<%= jour.month %>" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h3><b>Ajoutez un événement  le <%= jour %>?</b><br></h3>
+      <%= render partial: 'addevent', locals: {jour: jour} %>
+  </div>
+<!-- /popups -->

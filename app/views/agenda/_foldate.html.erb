@@ -2,7 +2,6 @@
 
 <%= simple_form_for(@foldate) do |f| %>
   <%= f.error_notification %>
-
   <div class="form-inputs">
     <%= f.input :user_id,:as => :hidden, :readonly => true %>
     <%= f.input :datefolwd,:as => :hidden, :readonly => true %>
