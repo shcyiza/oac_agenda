@@ -1,0 +1,8 @@
+<font color="green"><%= event.enom %></font> <a href="#" data-reveal-id="folevent_<%= event.id %>"><font color="grey"><i class="fi-heart"></i><% if Folevent.where(event_id: event.id).count > 0 %><sup><%= Folevent.where(event_id: event.id).count %></sup><% end %></font>
+<div id="folevent_<%= event.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <b>suivre l'événement <%= event.enom %>?</b><br><br>
+  <%if Folevent.where(event_id: event.id).count > 0 %>
+   <font color="red"><%= Folevent.where(event_id: event.id).count %></font> personnne(s) suis(suivent) cette événement.<br>
+  <% end %>
+    <%= render partial: "folevent" %>
+</div>

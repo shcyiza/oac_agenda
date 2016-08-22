@@ -1,1 +1,4 @@
-<i class="fi-plus"></i><%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a crée l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
+<% if @events.exists?(id: activity.trackable_id) %>
+<%= activity.created_at %> <i class="fi-plus"></i> <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a crée l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
+<br>
+<% end %>

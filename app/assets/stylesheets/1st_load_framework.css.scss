@@ -63,7 +63,7 @@ a {
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #eee;
+  background-color: #fff;
   }
 section {
   @extend .row;
@@ -116,7 +116,7 @@ section {
 }
 
 $sidebar-width: 500px;
-$nav-color: #4caf50;
+$nav-color: #990000;
 
 .inner-wrap {
   width: auto;

@@ -28,10 +28,10 @@ class FoleventsController < ApplicationController
 
     respond_to do |format|
       if @folevent.save
-        format.html { redirect_to @folevent, notice: 'Folevent was successfully created.' }
+        format.html { redirect_to :back, notice: 'Vous suivez desormais cette événement' }
         format.json { render :show, status: :created, location: @folevent }
       else
-        format.html { render :new }
+        format.html { render :back }
         format.json { render json: @folevent.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class FoleventsController < ApplicationController
   def destroy
     @folevent.destroy
     respond_to do |format|
-      format.html { redirect_to folevents_url, notice: 'Folevent was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Vous ne suivez plus cette événement' }
       format.json { head :no_content }
     end
   end

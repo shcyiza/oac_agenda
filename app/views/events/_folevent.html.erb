@@ -8,6 +8,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Suivre l'Evenement" %>
+    <%= button_tag(type: 'submit', class: "left button secondary round") do %>
+      <i class="icon fi-heart"></i> suivre cette evenement
+    <% end %>
   </div>
 <% end %>

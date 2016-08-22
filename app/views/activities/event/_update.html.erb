@@ -1,1 +1,8 @@
-<i class="fi-page-edit"></i><%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
+<% if @events.exists?(id: activity.trackable_id) %>
+  <% activities = Activity.order("created_at desc") %>
+  <% tracked_event = Event.find(activity.trackable_id) %>
+    <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
+      <%= activity.created_at %> <i class="fi-page-edit"> </i><%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
+      <br>
+  <% end %>
+<% end %>

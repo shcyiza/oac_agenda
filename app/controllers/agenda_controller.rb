@@ -21,7 +21,7 @@ respond_to :html, :js
   end
 
   def event_params
-    params.require(:event).permit(:orgn_id, :enom, :edesc, :esdate, :esdate_date, :esdate_time, :eedate, :eedate_date, :eedate_time, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue, :flyer)
+    params.require(:event).permit(:orgn_id, :enom, :edesc, :esdate, :esdate_date, :esdate_hour, :esdate_min, :eedate, :eedate_date, :eedate_hour, :eedate_min, :pafpre, :pafplace, :pays, :ville, :codepostal, :rue, :nrrue, :flyer)
   end
 
 end

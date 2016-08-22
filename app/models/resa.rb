@@ -5,6 +5,6 @@ class Resa < ActiveRecord::Base
   #Pour faire un voucher par combinaison
   validates :resanr, uniqueness: true, if: :new_record?
   #pour avoir un voucher par personne
-  validates :user_id, uniqueness: { scope: :envent_id, if: :new_record? message: "Vous suivez déjà reservé votre place."}
+  validates :user_id, uniqueness: { scope: :event_id, if: :new_record? message: "Vous suivez déjà reservé votre place."}
 
 end

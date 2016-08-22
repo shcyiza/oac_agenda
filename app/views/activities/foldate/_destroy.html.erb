@@ -1,0 +1,4 @@
+<% if @foldates.exists?(id: activity.trackable_id) %>
+<%= activity.created_at %> <i class="fi-heart"></i> <%= link_to activity.user.username, activity.user %> de <%= link_to activity.user.orgn.first.oname, activity.user.orgn.first %> ne suit une date que vous suiviez
+<br>
+<% end %>

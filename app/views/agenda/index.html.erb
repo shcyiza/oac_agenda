@@ -1,28 +1,9 @@
 <!--Attach the Table CSS and Javascript-->
 <h1 class="text-center">Agenda des evenement en court d'organisation</h1>
-
-<!-- place pour la sidebar -->
-<aside class="left large-2 columns" >
- <article id="sidebar" class="events-press-cta panel sticky">
-        <p class="lead">What are you going to do with it?</p>
-        <p class="lead">Can't we just let it go? It's not harming anyone.</p>
-        <p>How we can help:
-          <ul>
-            <li>Feature it here!</li>
-            <li>Help promote it.</li>
-            <li>Review material for accuracy.</li>
-            <li>Stickers!</li>
-          </ul>
-
-        </p>
-        <a class="tiny button" href="#">Contact us</a>
-  </article>
-</div>
-</aside>
-<!-- /sidebar -->
+             <a class="left-off-canvas-toggle" href="#" >Menu</a>
 
 <div class="row calendar">
-<div class=" large-10 columns">
+<div class="small-11 columns">
   <div class="text-center">
     <% start_date = params.fetch(:start_date, Date.today).to_date %>
     <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
@@ -33,13 +14,13 @@
   <table class="calendar" style="border-spacing: 0">
     <thead>
       <tr>
-        <th width="300">Lun</th>
-        <th width="300">Mar</th>
-        <th width="300">Mer</th>
-        <th width="300">Jeu</th>
-        <th width="300">Ven</th>
-        <th width="300">Sam</th>
-        <th width="300">Dim</th>
+        <th width="200">Lun</th>
+        <th width="200">Mar</th>
+        <th width="200">Mer</th>
+        <th width="200">Jeu</th>
+        <th width="200">Ven</th>
+        <th width="200">Sam</th>
+        <th width="200">Dim</th>
       </tr>
     </thead>
     <tbody>
@@ -87,16 +68,39 @@
           <% end %>
 
           <% @events.each do |event| %>
+          <% if event.eedate != nil %>
             <% event.event_dates.select{ |m| m == jour}.each do |ed| %>
               <% if event.esdate <= Time.now %>
-                <font size="0.5"><span class="event grey"><%= event.enom %></span></font>
+                <font size="0.5"><span class="event grey">
+                  <del><%= event.enom %></del>
+                </span></font>
               <% elsif event.public == true %>
-                <font size="0.5" color = "black"><span class="event green"><%= link_to event.enom, event %></span></font>
+                <font size="0.5" color = "black"><span class="event green">
+                  <b><%= link_to event.enom, event %></b><sub>à <%= event.esdate.strftime("%H:%M") %></sub>
+                </span></font>
               <% elsif event.public == false  %>
-                <font size="0.5" color = "black"><span class="event yellow"><%= link_to event.enom, event %></span></font>
+                <font size="0.5" color = "black"><span class="event yellow">
+                  <b><%= link_to event.enom, event %></b><sub>à <%= event.esdate.strftime("%H:%M") %></sub>
+                </span></font>
               <% end %>
             <% end %>
-          <% end %>
+        <% else %>
+        <% if event.esdate <= Time.now %>
+          <font size="0.5"><span class="event grey">
+            <del><%= event.enom %></del>
+          </span></font>
+        <% elsif event.public == true %>
+          <font size="0.5" color = "black"><span class="event green">
+            <%= link_to event.enom, event %>
+            <%= event.esdate.time %>
+          </span></font>
+        <% elsif event.public == false  %>
+          <font size="0.5" color = "black"><span class="event yellow">
+            <%= link_to event.enom, event %> <%= event.esdate %>
+          </span></font>
+        <% end %>
+        <% end %>
+        <% end %>
         </td>
         <%end%>
       </tr>

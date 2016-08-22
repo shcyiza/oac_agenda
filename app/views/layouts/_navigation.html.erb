@@ -1,14 +1,24 @@
-<%# navigation styled for Zurb Foundation 5 %>
-<nav    >
+<nav class="top-bar" data-topbar role="navigation">
   <div class="top-bar-section">
-    <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+<ul class="title-area">
+  <li class="name">
+    <a href="/"><font color="white">Ka'agenda</font></a>
+  </li>
+</ul>
+<ul class="right">
+  <% if user_signed_in? %>
+    <li class="has-dropdown not-click">
+    <a href="/users">
+      Menu utilisateur <i class="fi-torso"></i>
+    </a>
+        <ul class="dropdown">
+          <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+        </ul>
+      </li>
       <% else %>
-        <li><%= link_to 'Sign in', new_user_session_path %></li>
-        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <li><%= link_to 'Sign in', new_user_session_path %></li>
+      <li><%= link_to 'Sign up', new_user_registration_path %></li>
       <% end %>
     </ul>
   </div>
