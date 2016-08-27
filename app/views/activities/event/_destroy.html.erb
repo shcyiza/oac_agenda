@@ -1,3 +1,12 @@
-
-<%= activity.created_at %> <i class="fi-trash"></i> <%= link_to activity.user.orgn.first.oname, activity.user.orgn.first %> a supprimé l'évenement ... prevue le ...
-<br>
+<div class="alert-box warning row">
+    <div class="large-1 columns left">
+<font size="6"><i class="fi-trash"></i></font>
+</div>
+    <div class="large-6 columns left">
+<%= activity.created_at %><br>
+ <%= link_to activity.user.orgn.first.oname, activity.user.orgn.first %> a supprimé l'évenement ... prevue le ...
+</div>
+    <div class="small-5 columns left">
+    folowed object
+    </div>
+</div>

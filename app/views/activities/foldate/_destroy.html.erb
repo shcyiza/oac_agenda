@@ -1,4 +1,14 @@
 <% if @foldates.exists?(id: activity.trackable_id) %>
-<%= activity.created_at %> <i class="fi-heart"></i> <%= link_to activity.user.username, activity.user %> de <%= link_to activity.user.orgn.first.oname, activity.user.orgn.first %> ne suit une date que vous suiviez
-<br>
+<div class="alert-box warning row">
+  <div class="large-1 columns">
+<font size="6"><i class="fi-trash"></i></font>
+  </div>
+  <div class="large-6 columns left">
+<%= activity.created_at %><br>
+<%= link_to activity.user.username, activity.user %> de <%= link_to activity.user.orgn.first.oname, activity.user.orgn.first %> ne suit une date que vous suiviez
+</div>
+<div class="small-5 columns left">
+folowed object
+</div>
+</div>
 <% end %>

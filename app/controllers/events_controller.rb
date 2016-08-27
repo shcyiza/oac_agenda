@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.where('eedate > ?', Time.now).order(esdate: :asc)
+    @event_months = @events.group_by{ |e| e.esdate.beginning_of_month }
   end
 
   # GET /events/1

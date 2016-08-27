@@ -38,7 +38,6 @@ class OrgnsController < ApplicationController
 
     respond_to do |format|
       if @orgn.save
-        track_activity @orgn
         format.html { redirect_to @orgn, notice: 'Orgn was successfully created.' }
         format.json { render :show, status: :created, location: @orgn }
       else

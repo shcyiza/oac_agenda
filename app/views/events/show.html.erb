@@ -1,5 +1,81 @@
+<div class="row" data-equalizer>
+<%=link_to events_path do %><button class="button secondary"><i class="fi-arrow-left"></i> Tous les événements</button><%end%>
+  <div class="small-10 columns">
 <p id="notice"><%= notice %></p>
+  <div class="large-12 columns text-center left">
+    <div class="item-wrapper-event">
+      <font color="grey"><i class="fi-torsos-all"></i> l'organisation <%= link_to @event.orgn.oname, @event.orgn %> organise:</font>
+      <font color="green"><strong><h1>
+      <% @del_event = current_user.folevents.where(event_id: @event.id).first %>
+      <% @folevent = Folevent.new(event_id: @event.id, user_id: current_user.id) %>
+      <% if current_user.folevents.where(:event_id => @event.id).count > 0 %>
+        <%= render partial: 'folwd', locals: {:event => @event} %>
+      <% else %>
+        <%= render partial: 'notfolwd', locals: {:event => @event} %>
+      <% end %></h1></strong></font><br>
+    </div>
+  </div>
+  <div class="large-5 small-7 columns left">
+    <%= image_tag @event.flyer.url%>
+  </div>
+  <div class="large-7 small-5 columns left" data-equalizer-watch>
+    <div class="item-wrapper">
+      <h3><i class="fi-calendar"></i> Quand?</h3><hr>
+    <div class="row">
+      <div class="large-2 columns left">
+         Du:
+      </div>
 
+      <div class="large-4 columns left">
+        <font color="red"><%= @event.esdate.to_date %></font>
+        <br>
+        à <i><%= @event.esdate.strftime("%H:%M")%></i>
+      </div>
+      <% if @event.eedate != nil %>
+        <div class="large-2 columns left">
+          Au:
+        </div>
+
+        <div class="large-4 columns left">
+          <font color="red"><%= @event.eedate.to_date %></font>
+          <br>à <i><%= @event.eedate.strftime("%H:%M") %></i>
+        </div>
+      <% end %>
+    </div>
+    </div>
+  </div>
+<div class="large-7 columns left" data-equalizer-watch>
+<div class="item-wrapper">
+  <div class="row">
+    <div class="large-3 columns left verticalLine">
+      <h3><i class="fi-marker"></i>Où?</h3>
+    </div>
+    <div class="large-9 columns left">
+      <strong>
+      <%= @event.rue %> <%= @event.nrrue %><br>
+      <%= @event.codepostal %> <%= @event.ville %><br>
+      <%= @event.pays %><br>
+      </strong>
+    </div>
+</div>
+</div>
+</div>
+<div class="large-5 columns left" data-equalizer-watch>
+<div class="item-wrapper">
+  <h3><u>Description:</u></h3>
+<font color="black"><%= simple_format(@event.edesc, :style =>"color:black;") %></font>
+</div>
+</div>
+<div class="large-2 columns left" data-equalizer-watch>
+<div class="item-wrapper text-center">
+<h4>#Thèmes</h4>
+  <% @event.event_tags.each do |word| %>
+    <%= link_to word, "/event/hashtag/#{word.downcase.delete('#')}" %><br>
+  <% end %>
+</div>
+</div>
+</div>
+<!--
 <p>
   <strong>Orgn:</strong>
   <%= @event.orgn.oname %>
@@ -55,12 +131,4 @@
   <strong>Nrrue:</strong>
   <%= @event.nrrue %>
 </p>
-
-<%= link_to 'Back', events_path %> |
-<% if user_signed_in? %>
-  <% unless current_user.id == @event.orgn.user.id %>
-    <%= link_to "modifier l'evenement", edit_event_path(@event) %>
-    <%= render 'folevents/form' %>
-  <% end %>
-<% else %>
-<% end %>
+-->

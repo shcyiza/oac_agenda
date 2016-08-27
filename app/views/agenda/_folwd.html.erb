@@ -1,4 +1,4 @@
-<a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="#ff6600"><i class="fi-heart"></i><sup><%= @followed_date.count %></sup> </font> <font color="#006600"></a>
+<a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="red"><i class="fi-heart"></i><sup><%= @followed_date.count %></sup> </font> <font color="#006600"></a>
 <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <b>Vous suivez déjà la date du <%= jour %></b><br>
     <%if (@followed_date.count - @user_date.count) > 0 %>

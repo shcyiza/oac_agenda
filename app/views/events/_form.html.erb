@@ -15,7 +15,7 @@
     <%= collection_select(:event, :orgn_id, current_user.orgn, :id, :oname) %></div>
     <br>
     <div class="large-12 columns">
-    <%= f.input :edesc, :label => "Déscription l'événement" %>
+    <%= f.input :edesc, :label => "Déscription l'événement", input_html: {:style =>"color:#473f3f; min-height: 110px;"} %>
     <br><hr></hr>
     <div class="large-6 columns">
     Commence quand?</div>

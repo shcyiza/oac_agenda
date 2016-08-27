@@ -26,6 +26,8 @@ fr:
       short: "%e %b"
       long: "%e %B %Y"
       mname: "%B %Y"
+      lmois: "%B"
+      annee: "%Y"
       justd: "%e"
     day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
     abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
