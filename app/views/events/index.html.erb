@@ -7,10 +7,10 @@
 <%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
 <% end %>
 </p>
+<div class="row left" data-equalizer>
 <% @event_months.each do |month, events| %>
-<div class="row" data-equalizer>
 <div class="large-3 columns left"  >
-<div class="service" >
+<div class="service">
       <div class="service-icon-box">
         <div class="event-date">
           <p class="event-month"><font color="black"><%= l(month.to_date, format: :annee) %></</p>
@@ -73,10 +73,10 @@
     <i class="fi-torsos-all"></i> <%= link_to event.orgn.oname, event.orgn %>
   </font></h8>
     <hr>
-    Thèmes:
+    Thèmes:<br>
     <% event.event_tags.each do |word| %>
       <%= link_to word, "/event/hashtag/#{word.downcase.delete('#')}" %>
-    <% end %>
+    <% end %>...
   </div>
 </div>
 <%end%>

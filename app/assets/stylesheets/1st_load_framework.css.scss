@@ -2,6 +2,39 @@
 @import "foundation";
 
 // override for the 'Home' navigation link
+.custom-side-nav {
+  $include-html-nav-classes: $include-html-classes;
+
+// We use this to control padding.
+$side-nav-padding: rem-calc(14 0);
+
+// We use these to control list styles.
+$side-nav-list-type: none;
+$side-nav-list-position: relative;
+$side-nav-list-margin: rem-calc(0 0 7 0);
+
+  @include side-nav(
+   // Font size of nav items
+   $font-size:1.2em,
+   // Color of navigation links
+   $link-color: green,
+   // Color of navigation links on active
+   $link-color-active: #ff0000,
+   // Color of navigation links on hover
+   $link-color-hover: #ff0000,
+   $divider-color: scale-color(black, $lightness: 10%)
+ );
+}
+
+[data-magellan] a {
+  color: #333;
+
+  &.active,
+  &.active:focus {
+    background: #333;
+    color: #fff;
+  }
+}
 .top-bar {
   background-color: #4caf50;}
   .top-bar-section {
@@ -32,7 +65,11 @@
 a {
   color: #009933;
 }
-
+.sidebar {
+  width: 100%;
+  background-color: #156e19;
+  width: 100%;
+}
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
 @mixin twelve-columns {

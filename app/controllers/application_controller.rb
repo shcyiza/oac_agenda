@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def track_activity(trackable, action = params[:action])
-    current_user.activities.create! action: action, trackable: trackable
+    if trackable == @event
+    current_user.activities.create! action: action, trackable: trackable, esdate: trackable.esdate, eedate: trackable.eedate
+  elsif trackable == @foldate
+    current_user.activities.create! action: action, trackable: trackable, datefolwd: trackable.datefolwd
+    end
   end
 
   def configure_permitted_parameters

@@ -5,13 +5,17 @@ class OrgnsController < ApplicationController
   # GET /orgns.json
   def index
     @orgns = Orgn.all
+    @folorg = Folorg.all
   end
 
   # GET /orgns/1
   # GET /orgns/1.json
   def show
+    @events = Event.where(orgn_id: params[:id]).order(esdate: :asc)
+    @folorg = Folorg.where(orgn_id: params[:id]).all
     if user_signed_in? && current_user.id != @orgn.user.id
-      @folorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
+      @newfolorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
+
     else
     end
   end
@@ -29,6 +33,14 @@ class OrgnsController < ApplicationController
 
   # GET /orgns/1/edit
   def edit
+    if user_signed_in?
+      if current_user.id == @orgn.user.id
+      else
+        redirect_to orgns_path , alert: 'Chemain non autorisé'
+      end
+    else
+      redirect_to new_user_session_path, notice: 'Chemain non autorisé'
+    end
   end
 
   # POST /orgns
@@ -81,10 +93,14 @@ class OrgnsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def orgn_params
-      params.require(:orgn).permit(:user_id, :oname, :odesc, :oemail, :onum)
+      params.require(:orgn).permit(:user_id, :oname, :odesc, :oemail, :onum, :avatar)
     end
 
     def folorg_params
       params.require(:folorg).permit(:user_id, :orgn_id)
+    end
+
+    def folevent_params
+      params.require(:folevent).permit(:user_id, :event_id)
     end
 end

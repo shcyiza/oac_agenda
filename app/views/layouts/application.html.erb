@@ -16,13 +16,29 @@
     </header>
     <main role="main">
        <%= render 'layouts/messages' %>
-       
-
-           <div class="small-10 columns" >
+       <div class="small-2 columns">
+      <ul class="custom-side-nav">
+         <font size="6px"><strong>Ka<font color="red">'</font></strong>agenda</font><font color="#33cc33"> pro</font>
+           <li><a href="/proagenda"><i class="fi-calendar"></i> Agenda</a></li>
+           <li>
+            <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Has Dropdown</a>
+            <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+              <li><a href="#">This is a link</a></li>
+              <li><a href="#">This is another</a></li>
+              <li><a href="#">Yet another</a></li>
+            </ul>
+        <li>
+           <li class="divider">
+           <li><a href="#">Link 3</a></li>
+           <li><a href="#">Link 4</a></li>
+         </ul>
+       </article>
+         </div>
+           <div class="small-10 columns">
                     <%= yield %>
            </div>
-         </div>
-       </div>
+              </div>
+
     </main>
   </body>
 </html>

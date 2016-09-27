@@ -1,9 +1,9 @@
 <!--Attach the Table CSS and Javascript-->
-<h1 class="text-center">Agenda des evenement en court d'organisation</h1>
+<h4 class="text-center"> Evénement en court d'organisation</h4>
              <a class="left-off-canvas-toggle" href="#" >Menu</a>
 
 <div class="row calendar">
-<div class="small-11 columns">
+<div class="large-11 columns">
   <div class="text-center">
     <% start_date = params.fetch(:start_date, Date.today).to_date %>
     <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>

@@ -1,6 +1,21 @@
+<h1>Listing Orgns</h1>
+<br>
+<div class="row">
+<% @orgns.each do |orgn| %>
+   <div class="large-3 columns left">
+     <div class="service">
+          <div class="service-icon-box">
+            <%= image_tag orgn.avatar.url(:medium)%>
+          </div>
+          <h4 class="service-heading"><%= orgn.oname %> br </h4>
+          <p class="service-description"><%= orgn.odesc %></p>
+        </div>
+   </div>
+<% end %>
+</div>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Orgns</h1>
+
 
 <table>
   <thead>

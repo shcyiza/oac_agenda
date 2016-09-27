@@ -19,10 +19,6 @@ class Event < ActiveRecord::Base
       r = (self.esdate.to_date..self.eedate.to_date).to_a
     end
 
-    def folwdevent
-
-    end
-
     def event_tags
       self.edesc.scan(/#\w+/)
     end

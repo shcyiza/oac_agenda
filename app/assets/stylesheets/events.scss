@@ -3,23 +3,50 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $primary-color: #008cba;
 
+.hero {
+  position: relative;
+  width: 100%;
+  padding: 2em 0;
+  overflow: hidden; // Hide overflow to contain the background
+}
+  .hero__background {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 200%;
+    // Where the magic happens
+    -webkit-filter: blur(100px);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  .hero__title {
+    position: relative;
+    text-align: center;
+    font-size: 5em;
+    color: white;
+  }
+
 .verticalLine {
     border-right: solid #cccccc;
 }
 
 .item-wrapper-event {
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid #efefef;
   border-radius: 0px;
   padding: 20px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   &:hover {
-    border-color: black;
+    background: rgba(255, 255, 255, 1);
   }
 }
 
 .item-wrapper {
+  background: rgba(255, 255, 255, 0.7);
   padding: 20px;
   border: 1px solid #efefef;
   border-radius: 0px;
+  height:auto !important;
   margin-top: 20px;
   margin-bottom: 20px;
   &:hover {

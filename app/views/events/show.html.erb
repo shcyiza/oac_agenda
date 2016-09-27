@@ -1,5 +1,7 @@
+<div class="hero">
+  <img class="hero__background" src="<%= @event.flyer.url%>">
 <div class="row" data-equalizer>
-<%=link_to events_path do %><button class="button secondary"><i class="fi-arrow-left"></i> Tous les événements</button><%end%>
+<%=link_to events_path do %><button class="button secondary small"><i class="fi-arrow-left"></i> Tous les événements</button><%end%>
   <div class="small-10 columns">
 <p id="notice"><%= notice %></p>
   <div class="large-12 columns text-center left">
@@ -19,7 +21,7 @@
     <%= image_tag @event.flyer.url%>
   </div>
   <div class="large-7 small-5 columns left" data-equalizer-watch>
-    <div class="item-wrapper">
+    <div class="item-wrapper-event">
       <h3><i class="fi-calendar"></i> Quand?</h3><hr>
     <div class="row">
       <div class="large-2 columns left">
@@ -45,7 +47,7 @@
     </div>
   </div>
 <div class="large-7 columns left" data-equalizer-watch>
-<div class="item-wrapper">
+<div class="item-wrapper-event">
   <div class="row">
     <div class="large-3 columns left verticalLine">
       <h3><i class="fi-marker"></i>Où?</h3>
@@ -61,13 +63,13 @@
 </div>
 </div>
 <div class="large-5 columns left" data-equalizer-watch>
-<div class="item-wrapper">
+<div class="item-wrapper-event">
   <h3><u>Description:</u></h3>
 <font color="black"><%= simple_format(@event.edesc, :style =>"color:black;") %></font>
 </div>
 </div>
 <div class="large-2 columns left" data-equalizer-watch>
-<div class="item-wrapper text-center">
+<div class="item-wrapper-event text-center">
 <h4>#Thèmes</h4>
   <% @event.event_tags.each do |word| %>
     <%= link_to word, "/event/hashtag/#{word.downcase.delete('#')}" %><br>
@@ -75,6 +77,8 @@
 </div>
 </div>
 </div>
+</div>
+
 <!--
 <p>
   <strong>Orgn:</strong>

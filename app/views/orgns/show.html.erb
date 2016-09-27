@@ -1,3 +1,80 @@
+<div class="row" data-equalizer>
+
+
+<div class="item-wrapper-event">
+</div>
+<div class="item-wrapper-event large-6 columns">
+</div>
+<div class="item-wrapper-event large-6 columns">
+</div>
+<br>
+<br>
+<% if @events.count > 1 %>
+<hr>
+  <h3><strong>Evenement organisé par cette organisation</strong></h3>
+
+  <% @events.each do | event| %>
+   <div class="large-3 columns left" >
+      <div class="item-wrapper" data-equalizer-watch>
+        <% if user_signed_in? %>
+        <% @del_event = current_user.folevents.where(event_id: event.id).first %>
+        <% @folevent = Folevent.new(event_id: event.id, user_id: current_user.id) %>
+          <% unless current_user.id == event.orgn.user.id %>
+            <div class="img-wrapper">
+            <a class="button expand add-to-cart" href="/events/<%= event.id %>">details de l'event...</a>
+            <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
+            </div>
+          <% else %>
+            <div class="img-wrapper">
+            <a class="button expand add-to-cart" href="/events/<%= event.id %>/edit" d1ata-reveal-id="event_<%= event.id%>">modifier l'evenement...</a>
+            <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
+            </div>
+          <% end %>
+          <%= render partial: "events/titelheart", locals: {event: event} %>
+        <% else %>
+        <% @folevent = Folevent.new %>
+          <div class="img-wrapper">
+          <a class="button expand add-to-cart" href="/events/<%= event.id %>">details de l'event...</a>
+          <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
+          </div>
+          <%= render partial: "events/notsignedin", locals: {event: event} %>
+        <% end %>
+
+    <h8><font color="grey">
+      <div class="row">
+        <div class="large-2 columns left">
+          <i class="fi-calendar"></i> Du:
+        </div>
+
+        <div class="large-4 columns left">
+          <font color="red"><%= event.esdate.to_date %></font>
+          <br>
+          à <i><%= event.esdate.strftime("%H:%M")%></i>
+        </div>
+        <% if event.eedate != nil %>
+          <div class="large-1 columns left">
+            fini le:
+          </div>
+
+          <div class="large-4 columns left">
+            <font color="red"><%= event.eedate.to_date %></font>
+            <br>à <i><%= event.eedate.strftime("%H:%M") %></i>
+          </div>
+        <% end %>
+      </div>
+      <i class="fi-torsos-all"></i> <%= link_to event.orgn.oname, event.orgn %>
+    </font></h8>
+      <hr>
+      Thèmes:<br>
+      <% event.event_tags.each do |word| %>
+        <%= link_to word, "/event/hashtag/#{word.downcase.delete('#')}" %>
+      <% end %>
+    </div>
+  </div>
+  <%end%>
+
+<% end %>
+</div>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -30,7 +107,7 @@
 <% if user_signed_in? %>
   <% unless current_user.id == @orgn.user.id %>
     <%= link_to "modifier l'organisation", edit_orgn_path(@orgn) %>
-    <%= render partial: 'folorgs/form'%>
+    <%= render partial: 'folorg'%>
   <% end %>
 <% else %>
 <% end %>

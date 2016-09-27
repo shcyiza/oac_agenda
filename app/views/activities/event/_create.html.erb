@@ -1,14 +1,33 @@
 <% if @events.exists?(id: activity.trackable_id) %>
-<div class="alert-box success row">
-    <div class="large-1 columns">
-<font size="6"><i class="fi-plus"></i></font>
-</div>
-<div class="large-6 columns left">
-<%= activity.created_at %><br>
-<%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a crée l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
-</div>
-<div class="small-5 columns left">
-folowed object
-</div>
-</div>
+<% if current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).count > 0 && activity.user_id != current_user.id %>
+  <div class="alert-box success row">
+      <div class="large-1 columns">
+        <font size="6"><i class="fi-plus"></i></font>
+      </div>
+      <div class="large-6 columns left">
+        <%= activity.created_at %><br>
+        <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a crée l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
+      </div>
+      <div class="small-5 columns left">
+        Suivez la date du <%= link_to :controller => :agenda, :action => :index, start_date: current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd do %>
+        <%= current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd %>
+        <% end %>
+      </div>
+    </div>
+<% elsif current_user.folorgs.where(orgn_id: activity.trackable.orgn_id).count > 0 && activity.user_id != current_user.id %>
+  <div class="alert-box success row">
+      <div class="large-1 columns">
+        <font size="6"><i class="fi-plus"></i></font>
+      </div>
+      <div class="large-6 columns left">
+        <%= activity.created_at %><br>
+        <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a crée l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
+      </div>
+      <div class="small-5 columns left">
+        Suivez l'organisation <%= link_to activity.trackable.orgn do %>
+        <%= @orgns.find(activity.trackable.orgn_id).oname %>
+        <% end %>
+      </div>
+    </div>
+<% end %>
 <% end %>
