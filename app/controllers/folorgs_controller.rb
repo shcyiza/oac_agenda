@@ -28,7 +28,7 @@ class FolorgsController < ApplicationController
 
     respond_to do |format|
       if @folorg.save
-        format.html { redirect_to @folorg, notice: 'Folorg was successfully created.' }
+        format.html { redirect_to :back, notice: 'Vous suivez desormais cette organisation' }
         format.json { render :show, status: :created, location: @folorg }
       else
         format.html { render :new }

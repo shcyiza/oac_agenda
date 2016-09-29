@@ -1,10 +1,6 @@
-<font color="green"><%= event.enom %></font> <a href="#" data-reveal-id="folevent_<%= event.id %>"><font color="red" title="Cliquez pour ne plus suivre l'événement"><i class="fi-heart"></i><sup><%= Folevent.where(event_id: event.id).count %></sup></font>
-<div id="folevent_<%= event.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <b>Vous suivez déjà <%= event.enom %></b><br>
-    <% if (Folevent.where(event_id: event.id).count - 1) > 0 %>
-    avec  <font color="#ff6600"><%= Folevent.where(event_id: event.id).count - 1 %></font> autres personnes.<br>
-    <% else %>
-    <% end %>
-
-    <%= link_to destroy_fe_path(@del_event.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
+<% @folorg = Folorg.where(user_id: current_user, orgn_id: @orgn).first %>
+<a href="#" data-reveal-id="delfol_<%= @orgn.id %>" class="button alert round"title="Cliquez pour ne plus suivre l'événement"><i class="fi-check"></i> vous suivez <%= @orgn.oname %>...</a>
+<div id="delfol_<%= @orgn.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <b>Vous suivez déjà <%= @orgn.oname %></b><br>
+    <%= link_to destroy_fo_path(@folorg.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre <%= @orgn.oname %> ?</t><%end%>
 </div>

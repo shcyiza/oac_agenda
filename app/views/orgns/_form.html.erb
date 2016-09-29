@@ -1,6 +1,8 @@
 <%= simple_form_for(@orgn) do |f| %>
   <%= f.error_notification %>
-
+  <ladel>Flyer de l'événement<i class="fi-photo"></i>
+  <%= f.file_field :avatar, class: 'form-control'%>
+  </label>
   <div class="form-inputs">
     <%= f.input :user_id %>
     <%= f.input :oname %>
