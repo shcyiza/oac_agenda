@@ -1,9 +1,41 @@
-<div class="">
+<div>
 <br>
-<h3 class="text-center">
-<b>Les info sur <%= l(jour, format: :long) %></b>
-</h3><br><br>
+  <h3 class="text-center">
+    <b>Les info sur <%= l(jour, format: :long) %></b>
+  </h3>
+<br>
+  <% events_that_day = 0 %>
+  <% @events.each do |event| %>
+    <% if event.day.include?(jour) == true %>
+      <% events_that_day  += 1 %>
+    <% end %>
+  <% end %>
 
-il y'a <%= @event.event_dates.select{ |m| m == jour}.count %> événement planifés a cette date <br>
-eventement  date heure lieux
+  <font color="red" ><%= events_that_day %></font> événement(s) planifé(s) a cette date: <br>
+  <% @events.each do |event| %>
+  <% if event.eedate != nil %>
+    <% event.days.select{ |m| m == jour}.each do |ed| %>
+      <% if event.esdate <= Time.now %>
+        <font size="2">
+          <del><%= link_to event.enom, event %></del>
+        </font>
+      <% else %>
+        <font size="2" color = "black"><span class="event green">
+          <b><%= link_to event.enom, event %></b> à <%= event.esdate.strftime("%H:%M") %><% if event.ville? %> sur <%= event.ville %> <% end %>
+        </span></font>
+      <% end %>
+    <% end %>
+  <% else %>
+  <% if event.esdate <= Time.now %>
+    <font size="2">
+      <del><%= link_to event.enom, event %></del>
+    </font>
+  <% else %>
+    <font size="2" color = "black"><span class="event green">
+      <b><%= link_to event.enom, event %></b> à <%= event.esdate.strftime("%H:%M") %><% if event.ville? %> sur <%= event.ville %> <% end %>
+    </span></font>
+  <% end %>
+  <% end %>
+  <% end %>
+
 </div>

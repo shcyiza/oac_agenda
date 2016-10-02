@@ -72,7 +72,7 @@
 
           <% @events.each do |event| %>
           <% if event.eedate != nil %>
-            <% event.event_dates.select{ |m| m == jour}.each do |ed| %>
+            <% event.days.select{ |m| m == jour}.each do |ed| %>
               <% if event.esdate <= Time.now %>
                 <font size="0.5"><span class="event grey">
                   <del><%= event.enom %></del>
@@ -98,10 +98,10 @@
             <%= event.esdate.time %>
           </span></font>
         <% elsif event.public == false  %>
-          <font size="0.5" color = "black"><span class="event yellow">
-            <%= link_to event.enom, event %> <%= event.esdate %>
-          </span></font>
-        <% end %>
+            <font size="0.5" color = "black"><span class="event yellow">
+              <%= link_to event.enom, event %> <%= event.esdate %>
+            </span></font>
+          <% end %>
         <% end %>
         <% end %>
         </td>

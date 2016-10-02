@@ -16,12 +16,8 @@ class Event < ActiveRecord::Base
   has_attached_file :flyer, styles: { medium: "300x270#", thumb: "100x90#" }, default_url: "/images/normal/missing_flyer.png"
   validates_attachment_content_type :flyer, content_type: /\Aimage\/.*\Z/
 
-    def event_dates
+    def days
       r = (self.esdate.to_date..self.eedate.to_date).to_a
-    end
-
-    def dates
-      (self.esdate.to_date..self.eedate.to_date).cover?(Date.today)
     end
 
     def event_tags
@@ -30,6 +26,15 @@ class Event < ActiveRecord::Base
 
     def previous_activity(activity)
       Activity.where(:trackable_type => 'Event', :trackable_id => self.id).where("created_at < ?", activity.created_at).last
+    end
+
+    def day
+      days.each do |day|
+      end
+    end
+
+    def that_day
+      self.day.include?(Date.today - 1)
     end
 
 

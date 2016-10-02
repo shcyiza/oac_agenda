@@ -3,9 +3,9 @@
 <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <%= render :partial => 'dateview', locals: {jour: jour} %>
   <br>
+  <b>Vous etes <font color="#ff6600"><%= @followed_date.count %></font> organisation(s) a suivre cette date.<br> </b>
   <br>
-  <b>Vous suivez déjà la date du <%= jour %></b>
-    avec  <font color="#ff6600"><%= @followed_date.count - @user_date.count %></font> autres organisations.<br>
-    <br>
-    <%= link_to destroy_fd_path(@del_date.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t><% end %>
+  <%= link_to destroy_fd_path(@del_date.id) do %>
+    <t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t>
+  <% end %>
 </div>

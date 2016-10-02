@@ -3,8 +3,8 @@
 <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" >
   <%= render :partial => 'dateview', locals: {jour: jour} %>
   <br>
-  <br>
   <b>Suivre cette date?</b>
+  <br>
    <font color="#ff6600"><%= @followed_date.count %></font> organisation(s) sui(vent)s.<br>
   <br>
     <%= render "foldate" %>

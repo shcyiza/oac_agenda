@@ -7,4 +7,10 @@ ssh://git@github.com:shcyiza/tozakitoko.git
 
 Event.find(:all, :conditions => { :dates => true })
 
-Date.today.between?(esdate.to_date, Date.tomorrow)
+Event.where(:that_day => { :fulfilled => true })
+
+<% zero = 0 %>
+<% @events.each do |event| %>
+<% if event.that_day == true %>
+<% event_that_days zero += 1 %>
+<% end %>
