@@ -33,9 +33,9 @@ $primary-color: #008cba;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid #efefef;
   border-radius: 0px;
-  padding: 20px;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   &:hover {
     background: rgba(255, 255, 255, 1);
   }
@@ -43,12 +43,12 @@ $primary-color: #008cba;
 
 .item-wrapper {
   background: rgba(255, 255, 255, 0.7);
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #efefef;
   border-radius: 0px;
   height:auto !important;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   &:hover {
     border-color: black;
     .img-wrapper {

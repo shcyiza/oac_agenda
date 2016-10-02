@@ -1,13 +1,16 @@
 <h1>Listing Orgns</h1>
 <br>
 <div class="row">
+   <div class="large-12 columns left">
+  <%= link_to new_orgn_path do %> <button class="button success"><i class="fi-plus"></i> ajouter organisation</button><% end %>
+</div>
 <% @orgns.each do |orgn| %>
    <div class="large-3 columns left">
      <div class="service">
           <div class="service-icon-box">
             <%= image_tag orgn.avatar.url(:medium)%>
           </div>
-          <h4 class="service-heading"><%= orgn.oname %> br </h4>
+          <h4 class="service-heading"><%= orgn.oname %> </h4>
           <p class="service-description"><%= orgn.odesc %></p>
         </div>
    </div>

@@ -1,5 +1,7 @@
 <!--Attach the Table CSS and Javascript-->
-<h4 class="text-center"> Evénement en court d'organisation</h4>
+<br>
+<br>
+<h4 class="text-center"> Evénement en cours d'organisation</h4>
              <a class="left-off-canvas-toggle" href="#" >Menu</a>
 
 <div class="row calendar">
@@ -10,6 +12,8 @@
     <%= link_to start_date: date_range.first - 1.day do %><t class="button success round"><b><</b></t><% end %>
     <font style="text-transform: uppercase;"><%= l(start_date, format: :mname) %> </font>
     <%= link_to start_date: date_range.last + 1.day do %><t class="button success round"><b>></b></t><% end %>
+
+
   </div>
   <table class="calendar" style="border-spacing: 0">
     <thead>
@@ -24,13 +28,12 @@
       </tr>
     </thead>
     <tbody>
-      <% date_range.each_slice(7) do 	|semain| %>
+      <% date_range.each_slice(7) do 	|semaine| %>
       <tr>
-        <% semain.each do 	|jour| %>
+        <% semaine.each do 	|jour| %>
 
         <td class="active">
           <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
-          <% @addevent = Event.new(esdate_date: jour, esdate_time: "", orgn_id: current_user.orgn.first.id, eedate_date: jour , esdate_time: "" ) %>
           <% @user_date = current_user.foldates.where(:datefolwd => jour) %>
           <% @del_date = current_user.foldates.where(:datefolwd => jour).first %>
           <% @followed_date = Foldate.where(:datefolwd => jour) %>
@@ -74,11 +77,11 @@
                 <font size="0.5"><span class="event grey">
                   <del><%= event.enom %></del>
                 </span></font>
-              <% elsif event.public == true %>
+              <% elsif event.public = true %>
                 <font size="0.5" color = "black"><span class="event green">
                   <b><%= link_to event.enom, event %></b><sub>à <%= event.esdate.strftime("%H:%M") %></sub>
                 </span></font>
-              <% elsif event.public == false  %>
+              <% elsif event.public = false  %>
                 <font size="0.5" color = "black"><span class="event yellow">
                   <b><%= link_to event.enom, event %></b><sub>à <%= event.esdate.strftime("%H:%M") %></sub>
                 </span></font>

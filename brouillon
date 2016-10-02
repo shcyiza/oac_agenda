@@ -1,35 +1,10 @@
-rails g scaffold event orgn_id:integer enom:string edesc:text edate:datetime pafpre:decimal pafplace:decimal pays:string ville:string codepostal:string rue:string nrrue:string
-rails g scaffold orgn user_id:integer onom:string odesc:text oemail:string onum:string
-rails g scaffold foldate user_id:integer datefolwd:date
-rails g scaffold folorg user_id:integer orgn_id:integer
-rails g scaffold folevent user_id:integer event_id:integer
-rails g migration add_pro_to_user pro:boolean
-rails g migration add_public_to_event public:boolean
-rails g scaffold france ville:string codepostal:string
+foldate :datefolwd
+event: esdate, eedate
 
-rails g scaffold resa user_id:integer event_id:integer resanr:string resa_claimed:boolean
-git remote set-url website shcyiza@github.com:path/to/repo
+rails generate migration add_datefolwd_to_activity datefolwd:date
 
-Date.today.beginning_of_month.beginning_of_week..Date.today.end_of_month.end_of_week
+ssh://git@github.com:shcyiza/tozakitoko.git
 
-Day.where(Event.find(1).esdate.to_date..Event.find(1).eedate.to_date).to_a
+Event.find(:all, :conditions => { :dates => true })
 
-<div id="calendar">
-  <h2 id="month">
-    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
-    <%=h @date.strftime("%B %Y") %>
-    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
-  </h2>
-  <% calendar_for date_range.each_slice(7) do 	|calendar| %>
-    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
-    <% calendar.each do 	|jour| %>
-    <% calendar.day(:day_method => jour) do |date| %>
-      <%= date.day %>
-      <ul>
-        <% for article in articles %>
-          <li><%= link_to h(article.name), article %></li>
-      </ul>
-    <% end %>
-    <% end %>
-  <% end %>
-</div>
+Date.today.between?(esdate.to_date, Date.tomorrow)

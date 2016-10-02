@@ -10,11 +10,19 @@
       <font color="green"><strong><h1>
       <% @del_event = current_user.folevents.where(event_id: @event.id).first %>
       <% @folevent = Folevent.new(event_id: @event.id, user_id: current_user.id) %>
+      <% if user_signed_in? %>
+        <% unless current_user.id == @event.orgn.user.id %>
       <% if current_user.folevents.where(:event_id => @event.id).count > 0 %>
         <%= render partial: 'folwd', locals: {:event => @event} %>
       <% else %>
         <%= render partial: 'notfolwd', locals: {:event => @event} %>
-      <% end %></h1></strong></font><br>
+      <% end %>
+    <% else %>
+    <font color="green"><%= @event.enom %></font> <h5><i class="fi-page-edit"></i><%= link_to "modifier l'évevenement...", edit_event_path(@event) %></h5>
+  <% end %>
+<% else %>
+<% end %>
+    </h1></strong></font><br>
     </div>
   </div>
   <div class="large-5 small-7 columns left">

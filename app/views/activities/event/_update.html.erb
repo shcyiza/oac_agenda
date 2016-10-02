@@ -1,54 +1,51 @@
 <% if @events.exists?(id: activity.trackable_id) %>
+
   <% activities = Activity.order("created_at desc") %>
   <% tracked_event = Event.find(activity.trackable_id) %>
-  <% if current_user.folevents.where(event_id: activity.trackable.id).count > 0 && activity.user_id != current_user.id %>
-  <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
-  <div class="alert-box success row">
-    <div class="large-1 columns left">
-      <font size="6"><i class="fi-page-edit"></i></font>
-    </div>
-    <div class="large-6 columns left">
-      <%= activity.created_at %><br>
-      <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
-  </div>
-      <div class="small-5 columns left">
-        Suivez l'evenement <%= link_to activity.trackable do %>
-        <%= activity.trackable.enom %>
+
+    <% if current_user.folevents.where(event_id: activity.trackable.id).count > 0 && activity.user_id != current_user.id %>
+
+      <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
+
+        <div class="alert-box success row">
+            <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
+          <div class="small-5 columns left">
+            Suivez l'evenement <%= link_to activity.trackable do %>
+              <%= activity.trackable.enom %>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+    <% elsif current_user.folorgs.where(orgn_id: activity.trackable.orgn_id).count > 0 && activity.user_id != current_user.id %>
+        <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
+
+        <div class="alert-box success row">
+              <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
+            <div class="small-5 columns left">
+
+              Suivez la date du <%= link_to activity.trackable.orgn do %>
+                <%= @orgns.find(activity.trackable.orgn_id).oname %>
+              <% end %>
+
+            </div>
+          </div>
         <% end %>
+    <% elsif current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).count > 0 && activity.user_id != current_user.id %>
+        <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
+
+      <div class="alert-box success row">
+          <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
+        <div class="small-5 columns left">
+
+          Suivez la date du <%= link_to :controller => :agenda, :action => :index, start_date: current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd do %>
+            <%= current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd %>
+          <% end %>
+
+        </div>
       </div>
-</div>
+
+    <% end %>
+
   <% end %>
-<% elsif current_user.folorgs.where(orgn_id: activity.trackable.orgn_id).count > 0 && activity.user_id != current_user.id %>
-<% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
-  <div class="alert-box success row">
-    <div class="large-1 columns left">
-      <font size="6"><i class="fi-page-edit"></i></font>
-    </div>
-  <div class="large-6 columns left">
-    <%= activity.created_at %><br>
-    <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
-  </div>
-    <div class="small-5 columns left">
-      Suivez la date du <%= link_to activity.trackable.orgn do %>
-      <%= @orgns.find(activity.trackable.orgn_id).oname %>
-      <% end %>
-</div>
-<% end %>
-<% elsif current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).count > 0 && activity.user_id != current_user.id %>
-<% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
-<div class="alert-box success row">
-<div class="large-1 columns left">
-<font size="6"><i class="fi-page-edit"></i></font>
-</div>
-  <div class="large-6 columns left">
-    <%= activity.created_at %><br>
-    <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
-</div>
-    <div class="small-5 columns left">
-      Suivez la date du <%= link_to :controller => :agenda, :action => :index, start_date: current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd do %>
-      <%= current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd %>
-      <% end %>
-</div>
-<% end %>
-<% end %>
 <% end %>

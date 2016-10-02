@@ -1,3 +1,4 @@
+<% @addevent = Event.new(esdate_date: jour, esdate_time: "", orgn_id: current_user.orgn.first.id, eedate_date: jour , esdate_time: "" ) %>
 <%= simple_form_for(@addevent) do |f| %>
   <%= f.error_notification %>
 

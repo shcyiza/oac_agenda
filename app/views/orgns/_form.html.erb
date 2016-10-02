@@ -1,17 +1,33 @@
 <%= simple_form_for(@orgn) do |f| %>
   <%= f.error_notification %>
-  <ladel>Flyer de l'événement<i class="fi-photo"></i>
-  <%= f.file_field :avatar, class: 'form-control'%>
-  </label>
-  <div class="form-inputs">
-    <%= f.input :user_id %>
-    <%= f.input :oname %>
-    <%= f.input :odesc %>
-    <%= f.input :oemail %>
-    <%= f.input :onum %>
+
+  <div class="form-inputs row">
+    <%= f.input :user_id,:as => :hidden, :readonly => true %>
+    <div class="large-8 columns">
+    <%= f.input :oname, :label => "Nom de l'événement" %>
+    </div>
+    <div class="large-4 columns">
+      <ladel>Flyer de l'événement<i class="fi-photo"></i>
+      <%= f.file_field :avatar, class: 'form-control'%>
+      </label>
+    </div>
+
+    <div class="large-12 columns">
+    <%= f.input :odesc, :label => "Déscription de l'organisation", input_html: {:style =>"color:#473f3f; min-height: 110px;"} %>
+    </div>
+
+    <div class="large-6 columns">
+      <%= f.input :oemail %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :onum %>
+    </div>
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-inputs row">
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
   </div>
-<% end %>

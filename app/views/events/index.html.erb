@@ -7,22 +7,23 @@
 <%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
 <% end %>
 </p>
-<div class="row left" data-equalizer>
+<div >
 <% @event_months.each do |month, events| %>
-<div class="large-3 columns left"  >
-<div class="service">
-      <div class="service-icon-box">
+<div class="row">
+ <div class="large-4 columns left" >.</div>
+<div class="large-4 columns left">
         <div class="event-date">
           <p class="event-month"><font color="black"><%= l(month.to_date, format: :annee) %></</p>
           <p class="event-day"><%= l(month.to_date, format: :lmois) %></p></font>
         </div>
-      </div>
-      <h6 class="service-heading"><font color="red"><%= events.size %></font> événements planifié</h6>
-      <p class="service-description">It has been a very busy few months for the Project Voyager team. But the fruits of labor are finally starting to pay off. We have officially succeed at creating orbital insertions within an accuracy of 1km.</p>
+      <h6 ><font color="red"><%= events.size %></font> événements planifié</h6>
 </div>
 </div>
-<% for event in events %>
- <div class="large-3 columns left" >
+<hr>
+<div class="row left" data-equalizer>
+<% @events.each_slice(4) do |slice| %>
+  <% slice.each do |event| %>
+  <div class="large-3 columns left" >
     <div class="item-wrapper" data-equalizer-watch>
       <% if user_signed_in? %>
       <% @del_event = current_user.folevents.where(event_id: event.id).first %>
@@ -80,6 +81,9 @@
   </div>
 </div>
 <%end%>
+<hr style="border-color:white;">
+<%end%>
+</div>
 <%end%>
 </div>
 <div class="large-4 columns left" data-equalizer-watch>

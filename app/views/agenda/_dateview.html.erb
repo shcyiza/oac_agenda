@@ -1,0 +1,9 @@
+<div class="">
+<br>
+<h3 class="text-center">
+<b>Les info sur <%= l(jour, format: :long) %></b>
+</h3><br><br>
+
+il y'a <%= @event.event_dates.select{ |m| m == jour}.count %> événement planifés a cette date <br>
+eventement  date heure lieux
+</div>

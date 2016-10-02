@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :orgn
   has_many :folevents
+  has_many :activities, as: :trackable
   has_many :resas
   has_many :users, through: :folevents
   has_many :users, through: :orgn
@@ -19,9 +20,18 @@ class Event < ActiveRecord::Base
       r = (self.esdate.to_date..self.eedate.to_date).to_a
     end
 
+    def dates
+      (self.esdate.to_date..self.eedate.to_date).cover?(Date.today)
+    end
+
     def event_tags
       self.edesc.scan(/#\w+/)
     end
+
+    def previous_activity(activity)
+      Activity.where(:trackable_type => 'Event', :trackable_id => self.id).where("created_at < ?", activity.created_at).last
+    end
+
 
   after_create do
     hashtags = self.edesc.scan(/#\w+/)

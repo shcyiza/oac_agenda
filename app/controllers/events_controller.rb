@@ -68,7 +68,8 @@ class EventsController < ApplicationController
   def update
     if current_user.id == @event.orgn.user.id
       respond_to do |format|
-        if @event.update(event_params)
+
+      if @event.update(event_params)
           track_activity @event
           format.html { redirect_to @event, notice: 'Event was successfully updated.' }
           format.json { render :show, status: :ok, location: @event }
