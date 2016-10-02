@@ -33,10 +33,6 @@ class Event < ActiveRecord::Base
       end
     end
 
-    def that_day
-      self.day.include?(Date.today - 1)
-    end
-
 
   after_create do
     hashtags = self.edesc.scan(/#\w+/)
