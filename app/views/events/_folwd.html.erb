@@ -1,5 +1,5 @@
 
-<font color="green"><%= event.enom %></font> <a href="#" data-reveal-id="folevent_<%= event.id %>"><font color="red" title="Cliquez pour ne plus suivre l'événement"><i class="fi-heart"></i><sup><%= Folevent.where(event_id: event.id).count %></sup></font>
+<font color="green"><%= truncate_html(event.enom, :length => 30) %></font> <a href="#" data-reveal-id="folevent_<%= event.id %>"><font color="red" title="Cliquez pour ne plus suivre l'événement"><i class="fi-heart"></i><sup><%= Folevent.where(event_id: event.id).count %></sup></font>
 <div id="folevent_<%= event.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <b>Vous suivez déjà <%= event.enom %></b><br>
     <% if (Folevent.where(event_id: event.id).count - 1) > 0 %>

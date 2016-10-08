@@ -98,7 +98,7 @@ p {
 	margin: 20px 0;
   min-height: 170px 0;
 	text-align: center;
-	border: 1px solid #ddd;
+	border: 1px solid #ffffff;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 
@@ -136,7 +136,7 @@ p {
   }
 
   &:hover {
-	  border-color: red;
+	  border-color: white;
   }
 
   &:hover .service-icon-box {

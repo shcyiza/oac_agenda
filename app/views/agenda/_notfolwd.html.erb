@@ -1,5 +1,5 @@
 
-<a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-heart" title="Cliquez sur le coeur pour suivre cette date"></i><% if @followed_date.count > 0 %><sup><%= @followed_date.count %></sup><% end %> </font></a>
+<a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="grey"><i class="fi-like" title="Cliquez sur le coeur pour suivre cette date"></i><% if @followed_date.count > 0 %><sup><%= @followed_date.count %></sup><% end %> </font></a>
 <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" >
   <%= render :partial => 'dateview', locals: {jour: jour} %>
   <br>

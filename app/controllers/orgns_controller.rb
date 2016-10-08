@@ -5,17 +5,17 @@ class OrgnsController < ApplicationController
   # GET /orgns.json
   def index
     @orgns = Orgn.all
-    @folorg = Folorg.all
+    @folorgs = Folorg.all
   end
 
   # GET /orgns/1
   # GET /orgns/1.json
   def show
     @events = Event.where(orgn_id: params[:id]).order(esdate: :asc)
-    @folorg = Folorg.where(orgn_id: params[:id]).all
+    @folorgs = Folorg.where(orgn_id: params[:id]).all
     if user_signed_in? && current_user.id != @orgn.user.id
       @newfolorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
-
+      @folorg = @folorgs.where(user_id: current_user).first
     else
     end
   end

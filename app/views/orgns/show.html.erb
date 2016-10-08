@@ -17,7 +17,6 @@
     <% else %>
       <i class="fi-page-edit"></i><%= link_to "modifier l'organisation...", edit_orgn_path(@orgn) %>
     <% end %>
-  <% else %>
   <% end %>
 </div>
 </div>
@@ -27,20 +26,19 @@
   <%= image_tag @orgn.avatar.url%>
 </div>
 <div class="left large-6 columns">
-  <%= @orgn.odesc %>
-</div>
-</div>
-<div class="item-wrapper-event large-6 columns">
-  <font color="green"><h3 class="text-center">contact</h1></font>
+  <font color="green"><h3>contact</h3></font>
   <p>
     <strong>Email</strong><br>
     <%= @orgn.oemail %>
   </p>
-
   <p>
     <strong>Numéro</strong><br>
     <%= @orgn.onum %>
   </p>
+</div>
+</div>
+<div class="item-wrapper-event large-6 columns">
+    <%= simple_format(@orgn.odesc, :style =>"color:black;") %>
 </div>
 <br>
 <br>

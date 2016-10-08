@@ -56,8 +56,8 @@ class FolorgsController < ApplicationController
   def destroy
     @folorg.destroy
     respond_to do |format|
-      format.html { redirect_to folorgs_url, notice: 'Folorg was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to :back, notice: 'Folorg was successfully updated.' }
+      format.json { render :back}
     end
   end
 
