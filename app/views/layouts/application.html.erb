@@ -11,32 +11,22 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <div class="small-2 columns">
-      <ul class="custom-side-nav sticky">
-         <font size="6px"><strong>Ka<font color="red">'</font></strong>agenda</font><font color="#33cc33"> pro</font>
-           <li><a href="/proagenda"><i class="fi-calendar"></i> Agenda</a></li>
-           <li>
-            <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Has Dropdown</a>
-            <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-              <li><a href="#">This is a link</a></li>
-              <li><a href="#">This is another</a></li>
-              <li><a href="#">Yet another</a></li>
-           <li class="divider">
-           <li><a href="#">Link 3</a></li>
-           <li><a href="#">Link 4</a></li>
-         </ul>
-         </div>
-           <div class="small-10 columns">
 
-                    <%= yield %>
-           </div>
-              </div>
-
-    </main>
+   <div class="off-canvas-wrap docs-wrap" data-offcanvas>
+     <div class="inner-wrap">
+           <header>
+            <!--toggle button-->
+            <%= render 'layouts/navigation' %>
+          </header>
+<!-- Off Canvas Menu -->
+            <%= render 'layouts/aside' %>
+<!-- whatever you want goes here -->
+          <div class="large-10 small-12 small-centered columns  ">
+            <%= render 'layouts/messages' %>
+                   <%= yield %>
+          </div>
+<!-- close the off-canvas menu -->
+    </div>
+  </div>
   </body>
 </html>

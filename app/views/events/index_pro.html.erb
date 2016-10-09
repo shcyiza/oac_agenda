@@ -1,24 +1,12 @@
-
 <p>
-<h2 class="text-center"><strong>Listing des événement à venir</strong></h2>
+<h2 class="text-center"><strong>Vos événements en court</strong></h2>
 <% if user_signed_in? && current_user.pro == true %>
-<%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
+<%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %> <%= link_to '/proagenda' do %> <button class="button secondary"><i class="fi-calendar"></i> voir l'agenda</button><% end %>
+
 <% end %>
 </p>
-<div>
-  <% @page_by_mouths.each do |month, events| %>
-    <div class="row">
-      <div class="large-2 large-centered columns">
-        <div class="event-date">
-          <p class="event-month"><font color="black"><%= l(month.to_date, format: :annee) %></p>
-          <p class="event-day"><%= l(month.to_date, format: :lmois) %></p>
-          <h6 class="text-center"><font color="red"><%= events.size %></font> événements planifié</h6></font>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class="row" data-equalizer>
-      <% @events.each_slice(4) do |slice| %>
+<div><hr>
+      <% @events_paged.each_slice(4) do |slice| %>
           <% slice.each do |event| %>
           <div class="large-3 large-centered columns left" >
             <div class="item-wrapper" data-equalizer-watch>
@@ -81,11 +69,9 @@
         <hr style="border-color:white;">
       <%end%>
     </div>
-  <%end%>
-</div>
 <div>
      <div class="apple_pagination">
-      <%= will_paginate @page_by_mouths, :previous_label => '<i class="icon fi-arrow-left"></i> Pré.' , :next_label => 'Suiv. <i class="icon fi-arrow-right"></i>', :container => false %>
+      <%= will_paginate @events_paged, :previous_label => '<i class="icon fi-arrow-left"></i> Pré.' , :next_label => 'Suiv. <i class="icon fi-arrow-right"></i>', :container => false %>
      </div>
 </div>
 <!--

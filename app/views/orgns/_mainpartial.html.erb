@@ -5,7 +5,7 @@
       <!-- what happens when the oragisation is not followed_by current_user -->
       <a href="#" data-reveal-id="folorgn_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
 
-        <font color="grey" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
+        <font color="grey" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
           <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
           <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
           <% end %>
@@ -26,7 +26,7 @@
           <%= f.input :orgn_id,:as => :hidden, :readonly => true %>
           <div class="form-actions">
             <%= button_tag(type: 'submit', class: "left button secondary round") do %>
-              <i class="icon fi-heart"></i> suivre <%= orgn.oname %>
+              <i class="icon fi-link"></i> suivre <%= orgn.oname %>
           <% end %>
           </div>
         <% end %>
@@ -38,7 +38,7 @@
     <!-- when a organisation is already followed_by current_user -->
     <% @folorg = Folorg.where(user_id: current_user, orgn_id: orgn).first %>
     <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
-      <font color="red" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
+      <font color="red" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
         <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
         <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
         <% end %>

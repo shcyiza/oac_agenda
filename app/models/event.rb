@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   has_many :activities, as: :trackable
   has_many :resas
   has_many :users, through: :folevents
-  has_many :users, through: :orgn
+  has_many :users, through: :orgns
   has_and_belongs_to_many :tags
   extend TimeSplitter::Accessors
     split_accessor :esdate, :eedate
@@ -31,6 +31,14 @@ class Event < ActiveRecord::Base
     def day
       days.each do |day|
       end
+    end
+
+    def month
+      self.esdate.strftime('%m')
+    end
+
+    def user_id
+      self.orgn.user.id
     end
 
 

@@ -29,7 +29,7 @@ class FoldatesController < ApplicationController
     respond_to do |format|
       if @foldate.save
         track_activity @foldate
-        format.html { redirect_to :back, notice: 'Vous suivez desormais la date du <%= current_user.foldates.last.datefolwd %>' }
+        format.html { redirect_to :back, notice: 'Vous suivez desormais la date du #{current_user.foldates.last.datefolwd}' }
         format.json { render :show, status: :created, location: @foldate }
       else
         format.html { redirect_to :back }

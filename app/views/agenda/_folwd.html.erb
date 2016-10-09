@@ -1,5 +1,7 @@
 
-<a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>"><font color="red"><i class="fi-like"></i><sup><%= @followed_date.count %></sup> </font> <font color="#006600"></a>
+<a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>">
+  <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez pour ne plus suivre cette date"><i class="fi-link"></i><sup><%= @followed_date.count %></sup> </font>
+</a>
 <div id="jour_<%= jour.day%>_<%= jour.month %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <%= render :partial => 'dateview', locals: {jour: jour} %>
   <br>

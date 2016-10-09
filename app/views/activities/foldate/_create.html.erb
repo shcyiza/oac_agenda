@@ -2,7 +2,7 @@
 <% if @foldates.where(user_id: current_user.id, datefolwd: activity.trackable.datefolwd ).count > 0 && activity.trackable.user_id != current_user.id %>
   <div class="alert-box success row">
     <div class="large-1 columns">
-      <font size="6"><i class="fi-heart"></i></font>
+      <font size="6"><i class="fi-link"></i></font>
     </div>
     <div class="large-6 columns left">
       <%= activity.created_at %><br>

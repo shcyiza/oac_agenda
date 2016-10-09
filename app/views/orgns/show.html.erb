@@ -64,7 +64,7 @@
             <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
             </div>
           <% end %>
-          <!--<= render partial: "events/titelheart", locals: {event: event} %>-->
+          <!--<= render partial: "events/titellink", locals: {event: event} %>-->
         <% else %>
         <% @folevent = Folevent.new %>
           <div class="img-wrapper">

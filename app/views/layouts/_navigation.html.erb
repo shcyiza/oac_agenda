@@ -1,7 +1,10 @@
+
 <nav class="top-bar" data-topbar role="navigation">
-  <div class="top-bar-section">
+
+<div class="top-bar-section">
+<li class="left-off-canvas-toggle menu-icon "><span></span></a></li><font color="white" size="3">&lsaquo; Pro</font>
 <ul class="title-area">
-  <li >
+  <li>
     <a href="/"><font color="white">Ka'agenda</font></a>
   </li>
 </ul>
@@ -9,7 +12,7 @@
   <% if user_signed_in? %>
     </font>
   </a>
-        <li><a href="/activities"><font size="3"><i class="fi-heart"></i></font> notification</a></li>
+        <li><a href="/activities"><font size="3"><i class="fi-link"></i></font> notification</a></li>
         <li class="has-dropdown">
         <a href="#"> <%= current_user.username%> <i class="fi-torso"></i></a>
         <ul class="dropdown">

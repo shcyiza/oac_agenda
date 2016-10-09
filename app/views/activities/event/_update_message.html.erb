@@ -1,18 +1,23 @@
-<div class="large-1 columns left">
-  <font size="6"><i class="fi-page-edit"></i></font>
-</div>
-
 <% if tracked_event.activities.any? %>
-
-<br>
 <% unless activity.event_start_end_dates == activity.trackable.previous_activity(activity).event_start_end_dates %>
+<div class="large-1 columns left">
+  <font size="6"><i class="fi-calendar"></i></font>
+</div>
   <div class="large-6 columns left">
     <%= activity.created_at %><br>
-    <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> la date de l'evenement <%= link_to activity.trackable.enom, activity.trackable %>
+    <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié la date de l'evenement <%= link_to activity.trackable.enom, activity.trackable %>
+    <br>
+    du <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.previous_activity(activity).event_start_end_dates do %>
+          <%= activity.trackable.previous_activity(activity).event_start_end_dates %><% end %>
+    au <%= link_to :controller => :agenda, :action => :index, start_date: activity.event_start_end_dates do %>
+          <%= activity.event_start_end_dates %><% end %>
+
   </div>
 
 <% else %>
-
+<div class="large-1 columns left">
+  <font size="6"><i class="fi-page-edit"></i></font>
+</div>
   <div class="large-6 columns left">
     <%= activity.created_at %><br>
     <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié l'évenement <%= link_to activity.trackable.enom, activity.trackable %>

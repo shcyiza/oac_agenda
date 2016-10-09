@@ -4,7 +4,7 @@ class OrgnsController < ApplicationController
   # GET /orgns
   # GET /orgns.json
   def index
-    @orgns = Orgn.all
+    @orgns = Orgn.paginate(:page => params[:page], :per_page => 12)
     @folorgs = Folorg.all
   end
 

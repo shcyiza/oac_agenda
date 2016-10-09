@@ -1,4 +1,4 @@
 <hr>
 <p><h4><b>
-<%= link_to  new_user_session_path do %><%= event.enom %> <font color="grey"><i class="fi-heart"></i><% if Folevent.where(event_id: event.id).count > 0 %><sup><%= Folevent.where(event_id: event.id).count %></sup><% end %></font><% end %>
+<%= link_to  new_user_session_path do %><%= event.enom %> <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';"><i class="fi-link"></i><% if Folevent.where(event_id: event.id).count > 0 %><sup><%= Folevent.where(event_id: event.id).count %></sup><% end %></font><% end %>
 </p></h4></b>

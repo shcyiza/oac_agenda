@@ -2,15 +2,15 @@
   <img class="hero__background" src="<%= @event.flyer.url%>">
 <div class="row" data-equalizer>
 <%=link_to events_path do %><button class="button secondary small"><i class="fi-arrow-left"></i> Tous les événements</button><%end%>
-  <div class="small-10 columns">
-<p id="notice"><%= notice %></p>
+  <div class="small-10 small-right columns">
+
   <div class="large-12 columns text-center left">
     <div class="item-wrapper-event">
       <font color="grey"><i class="fi-torsos-all"></i> l'organisation <%= link_to @event.orgn.oname, @event.orgn %> organise:</font>
       <font color="green"><strong><h1>
+      <% if user_signed_in? %>
       <% @del_event = current_user.folevents.where(event_id: @event.id).first %>
       <% @folevent = Folevent.new(event_id: @event.id, user_id: current_user.id) %>
-      <% if user_signed_in? %>
         <% unless current_user.id == @event.orgn.user.id %>
       <% if current_user.folevents.where(:event_id => @event.id).count > 0 %>
         <%= render partial: 'folwd', locals: {:event => @event} %>
@@ -25,10 +25,10 @@
     </h1></strong></font><br>
     </div>
   </div>
-  <div class="large-5 small-7 columns left">
+  <div class="large-5 columns left">
     <%= image_tag @event.flyer.url%>
   </div>
-  <div class="large-7 small-5 columns left" data-equalizer-watch>
+  <div class="large-7 columns left" data-equalizer-watch>
     <div class="item-wrapper-event">
       <h3><i class="fi-calendar"></i> Quand?</h3><hr>
     <div class="row">

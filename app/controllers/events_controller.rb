@@ -1,13 +1,31 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index_pro]
+  require 'will_paginate/array'
 
   # GET /events
   # GET /events.json
   def index
     @events = Event.where('eedate > ?', Time.now).order(esdate: :asc)
-    @event_months = @events.group_by{ |e| e.esdate.beginning_of_month }
+    @event_months = @events.group_by(&:month)
+    @page_by_mouths = @event_months.to_a.paginate(:page => params[:page], :per_page => 3)
   end
 
+  def index_pro
+      if current_user.orgns.count > 0
+        if current_user.events.count > 0
+          @events = current_user.events.order(esdate: :asc)
+          @events_paged = @events.to_a.paginate(:page => params[:page], :per_page => 20)
+        else
+          redirect_to new_event_path, :alert => "Vous avez pas encore d'événement"
+        end
+    elsif current_user.pro == true
+      redirect_to new_orgn_path, :alert => "Vous avez pas encore d'organisation"
+    else
+      #configuré les mails pour le rediriger vers les contact
+      redirect_to :back, :alert => "demande invalide"
+    end
+  end
   # GET /events/1
   # GET /events/1.json
   def show
@@ -23,6 +41,7 @@ class EventsController < ApplicationController
     tag = Tag.find_by(name: params[:name])
     @events = Tag.find_by(name: params[:name]).events
   end
+
 
   # GET /events/new
   def new
@@ -54,7 +73,7 @@ class EventsController < ApplicationController
       respond_to do |format|
         if @event.save
           track_activity @event
-          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.html { redirect_to :index_pro, notice: 'Event was successfully created.' }
           format.json { render :show, status: :created, location: @event }
         else
           format.html { render :new }

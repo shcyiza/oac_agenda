@@ -30,6 +30,7 @@ gem 'truncate_html'
 gem 'squeel'
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug'
