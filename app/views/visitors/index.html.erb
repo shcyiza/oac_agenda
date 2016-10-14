@@ -1,200 +1,132 @@
 
 <!doctype html>
-<html class="no-js" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
-<style type="text/css">
-hr { height: 4; border-style: solid; border-width: 10px 0 0 0; border-color:
-#4caf50; }
-</style>
-</head>
-<body>
-  <header class="header">
-    <h1 class="headline">Ka'<small>agenda</small></h1>
-    <ul class="header-subnav">
-      <li><a href="/orgns">Mes organisations</a></li>
-      <li><a href="/events">voir les evenements</a></li>
-      <li><a target="_blank" href="/proagenda">Voir l'agenda</a></li>
-    </ul>
-  </header>
-<br>
-<div class="row">
-<div class="medium-8 columns">
-<p><img src="http://placehold.it/900x450&text=Promoted Article" alt="main article image"></p>
-</div>
-<div class="medium-4 columns">
-<p><img src="http://placehold.it/400x200&text=Other cool article" alt="article promo image" alt="advertisement for deep fried Twinkies"></p>
-<p><img src="http://placehold.it/400x200&text=Other cool article" alt="article promo image"></p>
-</div>
-</div>
-<hr>
-<br><br>
-<div class="row column">
-<h2 style="margin: 0;" class="text-center">Evenement de la semaines</h4>
-</div>
-<br><br>
-
-<link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6035/icomoon-uikit-feb.css" rel="stylesheet">
-
-<div class="row">
-    <div class="weather">
-
-      <header class="header">
-        <div class="event-date">
-          <p class="event-month">Jul.</p>
-          <p class="event-day">15</p>
-        </div>
-        <div class="event-desc">
-          <h3 class="event-desc-header">    Vendredi</h3>
-        </div>
-      </header>
+  <div class="hero1">
+    <img class="hero__background1 show-for-small-only" "<%= image_tag("gradientpsm_small.jpg") %>">
+    <img class="hero__background1 show-for-medium-only" "<%= image_tag("gradientpsm_small.jpg") %>">
+    <img class="hero__background1 show-for-large-up" "<%= image_tag("gradientpsm.jpg") %>">
+  <div class="hero__title1">
+    <div class="row left">
+      <div class="large-2 small-4 column">
+        <%= image_tag("logo.png") %>
+      </div>
+    <div class="small-5 left column">
+      <h1 class="headline text-left"><b>Ka<font color="red">'</font></b><font color="#b6b6b6">agenda</font></h1>
     </div>
-    <div class="row">
-      <div class="medium-4 columns">
-         <ul class="pricing-table">
-           <li class="title">Starter</li>
-          <img src="http://placehold.it/400x200&text=Other cool article" alt="article promo image">
-           </li>
-           <li class="bullet-item">3<span> websites</span></li>
-           <li class="bullet-item">10 <span> bdd access</span></li>
-           <li class="bullet-item">2 <span> users</span></li>
-           <li class="cta-button"><button class="button" href="#">Choose Plan</button></li>
-         </ul>
-       </div>
-      <div class="medium-4 columns">
-         <ul class="pricing-table recommended">
-           <li class="best"><span></span></li>
-           <li class="title">Team</li>
-           <li class="price">$129.<sup>90<sup>
-             <br><span>per month</span>
-             <hr>
-           </li>
-           <li class="bullet-item">10<span> websites</span></li>
-           <li class="bullet-item">25 <span> bdd access</span></li>
-           <li class="bullet-item">5 <span> users</span></li>
-           <li class="cta-button"><button class="button" href="#">Choose Plan</button></li>
-         </ul>
-       </div>
-      <div class="medium-4 columns">
-         <ul class="pricing-table">
-           <li class="title">Premium</li>
-           <li class="price">$259.<sup>90<sup>
-             <br><span>per month</span>
-             <hr>
-           </li>
-           <li class="bullet-item">50<span> websites</span></li>
-           <li class="bullet-item">80 <span> bdd access</span></li>
-           <li class="bullet-item">25 <span> users</span></li>
-           <li class="cta-button"><button class="button" href="#">Choose Plan</button></li>
-         </ul>
-       </div>
-       <div class="medium-4 columns">
-          <ul class="pricing-table">
-            <li class="title">Premium</li>
-            <li class="price">$259.<sup>90<sup>
-              <br><span>per month</span>
-              <hr>
-            </li>
-            <li class="bullet-item">50<span> websites</span></li>
-            <li class="bullet-item">80 <span> bdd access</span></li>
-            <li class="bullet-item">25 <span> users</span></li>
-            <li class="cta-button"><button class="button" href="#">Choose Plan</button></li>
+    <div class="large-5 right column">
+      <h1 class="text-center"><b>Du mal a</h1>
+      <h1 class="text-right">synchroniser nos</h1>
+      <h1 class="text-left">événements dans la <font class="impress">communauté</font>?!</b>
+      <h3 class="show-for-large-up"></h3>
+    </div>
+    <div class="small-12 right column">
+          <ul class="header-subnav1">
+            <li><%= link_to new_user_registration_path do %> S'Organiser en 3 etape!<% end %></li>
           </ul>
-        </div>
-        <div class="medium-4 columns">
-           <ul class="pricing-table">
-             <li class="title">Premium</li>
-             <li class="price">$259.<sup>90<sup>
-               <br><span>per month</span>
-               <hr>
-             </li>
-             <li class="bullet-item">50<span> websites</span></li>
-             <li class="bullet-item">80 <span> bdd access</span></li>
-             <li class="bullet-item">25 <span> users</span></li>
-             <li class="cta-button"><button class="button" href="#">Choose Plan</button></li>
-           </ul>
-         </div>
     </div>
+  </div>
 </div>
+<h3 class="show-for-large-up">
+<br>
+<br>
+</h3>
+<!-- Three-up Content Blocks -->
+</div>
+<div>
+</div>
+<div class="hero1" style="background: #ffffff;">
+  <img class="hero__background1" "<%= image_tag("gradient.jpg") %>">
+  <div class="row">
+    <div class="large-2 columns right show-for-medium-up">
+      <%= image_tag("oaca.png") %>
+    </div>
+    <div class="large-10 columns left">
+      <h1 class="left show-for-medium-up"> <font size="3" color="white">Pouquoi le</font> <b><font color="white">Ka</font><font color="red">'</font></b><font color="#d5d4d4">agenda <font size="3" color="white">?</font></font></h1>
+      <h1 class="left show-for-small-only"> <font size="3" color="black">Pouquoi le</font> <b><font color="black">Ka</font><font color="red">'</font></b><font color="#8e8a8a">agenda <font size="3" color="black"<?</font></font></h1>
+      <font color="black">
+      <br><hr>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsa obcaecati iusto consequatur laudantium voluptas odio! Iure at aliquid pariatur sapiente sint, et facilis ipsa, maiores deleniti, minima perspiciatis sed. Lorem
+      ipsum dolor sit amet, consectetur adipisicing elit. Culpa voluptatem ipsam quae nostrum. Dicta hic, cum similique quas perferendis excepturi, autem earum iste, sint vero quae rem dolorum illo quaerat.
+    </font>
+    </div>
+    <div class="large-12 columns">
+      <font color="black">
+      <h1 class="text-center">"<b>N'agonisez pas,</h1>
+      <h1 class="text-center"><font class=""><u>Or</u>g<u>aniez</u></font>!</b>" <br><font size="4">-<i>Walter Rodney</i>-</font></h1>
+      <h3 class="show-for-large-up"><br></h3></font><hr>
+    </div>
+  </div>
 
+  <div class="row">
+  <div class="large-12 columns">
+    <h1 class="text-left"> <font size="3" color="black">C'est quoi le</font> <b><font color="black">Ka</font><font color="red">'</font></b><font color="#5e5d5d">agenda <font size="3" color="black"></font></font><font size="3" color="black">?</font></h1>
+  </div><hr>
+  <div class="large-4 columns panels">
+    <p><i class="fi-calendar center style3"></i></p>
+    <b><font size='5' color='grey'>This is a content section.</font></b>
+    <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+  </div>
+
+  <div class="large-4 columns panels">
+    <p><i class="fi-link style2"></i></p>
+    <b><font size='5' color='grey'>This is a content section.</font></b>
+    <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+  </div>
+
+  <div class="large-4 columns panels">
+    <p><i class="fi-torsos-all style1"></i></p>
+    <b><font size='5' color='grey'>This is a content section.</font></b>
+    <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+  </div>
+</div>
+<br>
+<hr><br>
 <div class="row">
-    <div class="weather">
-      <header class="header">
-        <div class="event-date">
-          <p class="event-month">Jul.</p>
-          <p class="event-day">16</p>
+  <div class="large-2 left small-4 column">
+    <%= image_tag("logo.png") %>
+  </div>
+  <div class="large-6 columns">
+    <h1 class="text-center"> <font size="3" color="black">Que </font> <b><font color="black">3</font></font><font size="3" color="black"> étapes pour </font><font color="red"></b> S'organiser...</font></h1>
+    <br>
+    <ul class="square">
+      <font size='3' color='grey'>
+        <li>Connaisons nous!</li>
+        <li>créeons des organisations!</li>
+        <li>Communiquons!</li>
+      </font>
+    </ul>
+  </div>
+  <div class="large-4 columns panels">
+    <div class="signup-panel">
+      <p class="welcome"> Welcome to this awesome app!</p>
+      <form>
+        <div class="row collapse">
+          <div class="small-2  columns">
+            <span class="prefix"><i class="fi-torso-female"></i></span>
+          </div>
+          <div class="small-10  columns">
+            <input type="text" placeholder="username">
+          </div>
         </div>
-        <div class="event-desc">
-          <h3 class="event-desc-header">    Samedi</h3>
+        <div class="row collapse">
+          <div class="small-2 columns">
+            <span class="prefix"><i class="fi-mail"></i></span>
+          </div>
+          <div class="small-10  columns">
+            <input type="text" placeholder="email">
+          </div>
         </div>
-      </header>
-
-
+        <div class="row collapse">
+          <div class="small-2 columns ">
+            <span class="prefix"><i class="fi-lock"></i></span>
+          </div>
+          <div class="small-10 columns ">
+            <input type="text" placeholder="password">
+          </div>
+        </div>
+      </form>
+      <a href="#" class="button ">Sign Up! </a>
+       <p>Already have an account? <a href="#">Login here &raquo</a></p>
     </div>
-</div>
-
-<ul class="pagination" role="navigation" aria-label="Pagination">
-<li class="disabled">Previous <span class="show-for-sr">page</span></li>
-<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-<li><a href="#" aria-label="Page 2">2</a></li>
-<li><a href="#" aria-label="Page 3">3</a></li>
-<li><a href="#" aria-label="Page 4">4</a></li>
-<li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
-</ul>
-</article>
-<footer>
-<div class="row expanded callout secondary">
-<div class="large-4 columns">
-<h5>FLICKR IMAGES</h5>
-<div class="row small-up-4">
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-<div class="column"><img class="thumbnail" src="http://placehold.it/75" alt="image of space dog"></div>
-</div>
-</div>
-<div class="large-4 columns">
-<h5>FLICKR IMAGES</h5>
-<span class="secondary label">Space</span>
-<span class="secondary label">Galaxies</span>
-<span class="secondary label">Milky Way</span>
-<span class="secondary label">Black Holes</span>
-<span class="secondary label">Rebels</span>
-<span class="secondary label">Death Star</span>
-<span class="secondary label">Republic</span>
-<span class="secondary label">R2D2</span>
-</div>
-<div class="large-4 columns">
-<h5>RANDOM MAG</h5>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti quam voluptatum vel repellat ab similique molestias molestiae ea omnis eos, id asperiores est praesentium, voluptate officia nulla aspernatur sequi aliquam.</p>
-</div>
-</div>
-<div class="row expanded">
-<div class="medium-6 columns">
-<ul class="menu">
-<li><a href="#">Legal</a></li>
-<li><a href="#">Partner</a></li>
-<li><a href="#">Explore</a></li>
-</ul>
-</div>
-<div class="medium-6 columns">
-<ul class="menu align-right">
-<li class="menu-text">Copyright © 2099 Random Mag</li>
-</ul>
-</div>
-</div>
-</footer>
+  </div>
+ </div>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-<script>
-      $(document).foundation();
-    </script>
-<script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
-</body>
-</html>

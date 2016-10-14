@@ -15,7 +15,7 @@ $primary-color: #008cba;
     left: 0;
     width: 200%;
     // Where the magic happens
-    -webkit-filter: blur(100px);
+    filter: blur(100px);
     -webkit-transform: translate3d(0, 0, 0);
   }
   .hero__title {

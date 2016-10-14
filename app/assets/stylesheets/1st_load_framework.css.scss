@@ -293,3 +293,132 @@ $accordion-separator: #41444a;
     }
   }
 }
+.footer {
+  background-color: #0a3b0e;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+
+  .social a {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    line-height: 2rem;
+    margin: 0 3px 0 0;
+  }
+
+  .copywrite {
+    color: #8f9296;
+    font-size: 0.875rem;
+    margin: 1rem 0 1rem 0;
+  }
+
+  .footer-form {
+    textarea, input {
+      border-radius: 3px;
+      background-color: #1f2022;
+      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      border: none;
+      resize: none;
+      font: inherit;
+      font-size: 0.875rem;
+      font-weight: normal;
+      color: #d1d2d2;
+      padding: 1.3rem;
+    }
+
+    label {
+      color: #fff;
+      font-size: 1.2rem;
+      margin: 0 0 1rem 0;
+      font-weight: bold;
+    }
+
+    .submit {
+      border-radius: 3px;
+      background-color: #33383b;
+      color: #ffffff;
+      border: 0;
+      padding: 1rem 3.5rem;
+      font-weight: bold;
+      float: right;
+      margin: 0 1rem 2rem 0;
+    }
+  }
+
+  .footer-links a {
+    list-style: none;
+    font-weight: normal;
+    color: #fff;
+    padding: 3rem 0 2rem;
+    margin: 0;
+    font-size: 0.875rem;
+
+    &::after {
+      content: "•";
+      padding: 0 0.2rem 0 0.4rem;
+    }
+
+    &:last-child::after {
+      content: "";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+  }
+
+  @media only screen and (min-width: 40.063em) {
+    padding: 4rem;
+
+    p {
+      text-align: left;
+    }
+
+    .social {
+      text-align: left;
+      margin: 0;
+    }
+
+    .footer-form {
+      .contact {
+        position: absolute;
+        left: -45%;
+        top: 10%;
+      }
+    }
+
+  }
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+.style3 {
+    text-align: center;
+    font-size: 120px;
+    color: #E33100;
+    text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #E33100,0 0 30px #E33100,0 0 40px #E33100,0 0 50px #E33100,0 0 75px #E33100;
+}
+
+.style2 {
+    text-align: center;
+    font-size: 120px;
+    color: #525252;
+    text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #525252,0 0 30px #525252,0 0 40px #525252,0 0 50px #525252,0 0 75px #525252;
+}
+
+.style1 {
+    text-align: center;
+    font-size: 120px;
+    color: #306f20;
+    text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #3bb61c,0 0 30px #3bb61c,0 0 40px #3bb61c,0 0 50px #3bb61c,0 0 75px #3bb61c;
+}
