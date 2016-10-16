@@ -1,13 +1,14 @@
 
-<nav class="top-bar" data-topbar role="navigation">
+<div class="contain-to-grid sticky">
+<nav class="top-bar" data-topbar="" role="navigation" data-options="sticky_on: large">
 
 <div class="top-bar-section">
-<li class="left-off-canvas-toggle menu-icon "><span></span></a></li><font color="white" size="3">&lsaquo; Pro</font>
-<ul class="title-area">
-  <li>
-    <a href="/"><font color="white"><%= image_tag("logo.png", size: "30x30") %> Ka'agenda</font></a>
-  </li>
-</ul>
+  <ul class="title-area">
+    <li>
+      <a href="/"><font color="white"><%= image_tag("logo.png", size: "30x30") %> Ka'agenda</font></a>
+    </li>
+    <li><a href="#" class="left-off-canvas-toggle"><font color="white" size="3"><i class="fi-indent-more"></i>Pro</font></a></li>
+  </ul>
 <ul class="right">
   <% if user_signed_in? %>
     </font>
@@ -27,3 +28,4 @@
     </ul>
   </div>
 </nav>
+</div>

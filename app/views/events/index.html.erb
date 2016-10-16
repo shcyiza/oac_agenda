@@ -1,6 +1,6 @@
 
 <p>
-<h2 class="text-center"><strong>Listing des événement à venir</strong></h2>
+<h2 class="impress text-center"><strong>Listing des événement à venir</strong></h2>
 <% if user_signed_in? && current_user.pro == true %>
 <%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
 <% end %>

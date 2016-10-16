@@ -15,12 +15,12 @@
     <div class="large-5 right column">
       <h1 class="text-center"><b>Du mal a</h1>
       <h1 class="text-right">synchroniser nos</h1>
-      <h1 class="text-left">événements dans la <font class="impress">communauté</font>?!</b>
+      <h1 class="text-left">événements dans la <font class="impress">communauté</font>?</b>
       <h3 class="show-for-large-up"></h3>
     </div>
     <div class="small-12 right column">
           <ul class="header-subnav1">
-            <li><%= link_to new_user_registration_path do %> S'Organiser en 3 etape!<% end %></li>
+            <li><%= link_to new_user_registration_path do %> Organisons 3 etape!<% end %></li>
           </ul>
     </div>
   </div>
@@ -64,18 +64,21 @@
     <p><i class="fi-calendar center style3"></i></p>
     <b><font size='5' color='grey'>This is a content section.</font></b>
     <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+    <%=link_to events_path do %><button class="button alert small"><i class="fi-calendar"></i> Tous les événements</button><%end%>
   </div>
 
   <div class="large-4 columns panels">
     <p><i class="fi-link style2"></i></p>
     <b><font size='5' color='grey'>This is a content section.</font></b>
     <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+    <%=link_to activities_path do %><button class="button secondary small"><i class="fi-link"></i> Les activités suivie</button><%end%>
   </div>
 
   <div class="large-4 columns panels">
     <p><i class="fi-torsos-all style1"></i></p>
     <b><font size='5' color='grey'>This is a content section.</font></b>
     <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+    <%=link_to orgns_path do %><button class="button success small"><i class="fi-torsos"></i> Tous les organisations</button><%end%>
   </div>
 </div>
 <br>
@@ -98,34 +101,7 @@
   <div class="large-4 columns panels">
     <div class="signup-panel">
       <p class="welcome"> Welcome to this awesome app!</p>
-      <form>
-        <div class="row collapse">
-          <div class="small-2  columns">
-            <span class="prefix"><i class="fi-torso-female"></i></span>
-          </div>
-          <div class="small-10  columns">
-            <input type="text" placeholder="username">
-          </div>
-        </div>
-        <div class="row collapse">
-          <div class="small-2 columns">
-            <span class="prefix"><i class="fi-mail"></i></span>
-          </div>
-          <div class="small-10  columns">
-            <input type="text" placeholder="email">
-          </div>
-        </div>
-        <div class="row collapse">
-          <div class="small-2 columns ">
-            <span class="prefix"><i class="fi-lock"></i></span>
-          </div>
-          <div class="small-10 columns ">
-            <input type="text" placeholder="password">
-          </div>
-        </div>
-      </form>
-      <a href="#" class="button ">Sign Up! </a>
-       <p>Already have an account? <a href="#">Login here &raquo</a></p>
+      <%= render partial: 'newreg' %>
     </div>
   </div>
  </div>
