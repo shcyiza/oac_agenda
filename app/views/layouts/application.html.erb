@@ -3,8 +3,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Ka'agenda" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Oac Agenda" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "OKa'agenda" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= favicon_link_tag 'logo.png' %>
     <%# Modernizr is required for Zurb Foundation %>
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
