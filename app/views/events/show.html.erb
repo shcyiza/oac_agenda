@@ -7,7 +7,7 @@
   <div class="large-12 columns text-center left">
     <div class="item-wrapper-event">
       <font color="grey"><i class="fi-torsos-all"></i> l'organisation <%= link_to @event.orgn.oname, @event.orgn %> organise:</font>
-      <font color="green"><strong><h1 class="impress">
+      <font color="green"><strong><h1>
       <% if user_signed_in? %>
       <% @del_event = current_user.folevents.where(event_id: @event.id).first %>
       <% @folevent = Folevent.new(event_id: @event.id, user_id: current_user.id) %>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="large-5 columns left">
-    <%= image_tag @event.flyer.url%>
+    <%= image_tag @event.flyer.url() %>
   </div>
   <div class="large-7 columns left" data-equalizer-watch>
     <div class="item-wrapper-event">
@@ -54,7 +54,7 @@
     </div>
     </div>
   </div>
-<div class="large-7 columns left" data-equalizer-watch>
+<div class="large-5 columns left" data-equalizer-watch>
 <div class="item-wrapper-event">
   <div class="row">
     <div class="large-3 columns left verticalLine">
@@ -70,18 +70,18 @@
 </div>
 </div>
 </div>
-<div class="large-5 columns left" data-equalizer-watch>
-<div class="item-wrapper-event">
-  <h3><u>Description:</u></h3>
-<font color="black"><%= simple_format(@event.edesc, :style =>"color:black;") %></font>
-</div>
-</div>
 <div class="large-2 columns left" data-equalizer-watch>
 <div class="item-wrapper-event text-center">
 <h4>#Thèmes</h4>
   <% @event.event_tags.each do |word| %>
     <%= link_to word, "/event/hashtag/#{word.downcase.delete('#')}" %><br>
   <% end %>
+</div>
+</div>
+<div class="large-7 columns left" data-equalizer-watch>
+<div class="item-wrapper-event">
+  <h3><u>Description:</u></h3>
+<font color="black"><%= simple_format(@event.edesc, :style =>"color:black;") %></font>
 </div>
 </div>
 </div>

@@ -6,7 +6,7 @@
   <%= render partial: 'folwd', locals: {jour: jour} %>
 <% end %>
 <% if current_user.orgn.count > 0 %>
-  <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99"><b><i class="fi-plus"></i></font></b></a>
+  <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99" onmouseover="this.style.color='#ffb000';" onmouseout="this.style.color='#00cc99';"><b><i class="fi-plus"></i></font></b></a>
   <div id="addevent_<%= jour.day%>_<%= jour.month %>" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h3><b>Ajoutez un événement  le <%= jour %>?</b><br></h3>
       <%= render partial: 'addevent', locals: {jour: jour} %>

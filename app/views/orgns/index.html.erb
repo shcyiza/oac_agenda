@@ -21,14 +21,14 @@
           </div>
           <h3 class="service-heading"><b>
             <%= link_to orgn.oname, orgn %>
-            <!-- view of the syteme to follow organisation fyi the partials don't work for some reason i don't knows -->
+            <!-- view of the syteme to follow organisation fyi the partials don't work for some reason i don't know -->
             <% if user_signed_in? %>
               <% unless current_user.id == orgn.user.id %>
                 <% if current_user.folorgs.where( orgn_id: orgn.id).count < 1 %>
                   <!-- what happens when the oragisation is not followed_by current_user -->
                   <a href="#" data-reveal-id="folorgn_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
 
-                    <font color="grey" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+                    <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';"  title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
                       <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
                       <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
                       <% end %>
@@ -61,7 +61,7 @@
                 <!-- when a organisation is already followed_by current_user -->
                   <% @folorg = Folorg.where(user_id: current_user, orgn_id: orgn).first %>
                   <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
-                    <font color="red" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+                    <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
                       <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
                         <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
                       <% end %>
@@ -99,4 +99,3 @@
    <%= will_paginate @orgns, :previous_label => '<i class="icon fi-arrow-left"></i> Pré.' , :next_label => 'Suiv. <i class="icon fi-arrow-right"></i>', :container => false %>
   </div>
 </div>
-
