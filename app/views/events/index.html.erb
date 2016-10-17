@@ -1,13 +1,15 @@
 
 <p>
-<h2 class="impress text-center"><strong>Listing des événement à venir</strong></h2>
-<% if user_signed_in? && current_user.pro == true %>
-<%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
-<% end %>
+<h2 class="impress text-center"><strong>Les événement à venir</strong></h2>
 </p>
 <div>
   <% @page_by_mouths.each do |month, events| %>
     <div class="row">
+    <div class="large-4 large-left columns">
+      <% if user_signed_in? && current_user.pro == true %>
+      <%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
+      <% end %>
+    </div>
       <div class="large-2 large-centered columns">
         <div class="event-date">
           <p class="event-month"><font color="black"><%= l(month.to_date, format: :annee) %></p>
