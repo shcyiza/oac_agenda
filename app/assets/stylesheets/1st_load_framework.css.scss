@@ -104,7 +104,7 @@ section {
     background: #339966;
 }
 
-.top-bar-section ul li {
+.top-bar-section li:not(.has-form) a:not(.button) {
   background: #339966;
 }
 
