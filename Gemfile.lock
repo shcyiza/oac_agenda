@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/svenfuchs/i18n.git
-  revision: ea63d740b61fa55abb6799a5decbf9ee8fdbec35
-  specs:
-    i18n (0.7.0)
-
-GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 915c904d9a1382f53f4dcc822878ebb7c2024bb6
   specs:
@@ -128,6 +122,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     hub (1.12.4)
+    i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -265,7 +260,7 @@ DEPENDENCIES
   foundation-rails (~> 5.5)
   high_voltage
   hub
-  i18n!
+  i18n
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails

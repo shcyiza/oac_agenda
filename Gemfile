@@ -18,7 +18,7 @@ gem 'hub', :require=>nil
 gem 'quiet_assets'
 gem 'rails_layout'
 gem 'date_validator'
-gem 'i18n', github: 'svenfuchs/i18n'
+gem 'i18n'
 gem "time_splitter"
 gem "watu_table_builder", :require => "table_builder", :git => "git://github.com/watu/table_builder.git"
 gem 'sass-rails', '~> 5.0'
@@ -38,5 +38,4 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'aws-sdk', '~> 2.3'
-  gem 'i18n', '~> 0.7'
 end
