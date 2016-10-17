@@ -10,7 +10,6 @@
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag 'foundation' %>
   </head>
   <body>
 <% unless current_page?(root_path) %>
@@ -41,5 +40,6 @@
      </footer>
 <% end %>
   </body>
-    <script>$(document).foundation();</script>
+  <%= javascript_include_tag "application" %>
+  <script type="text/javascript">$(function(){ $(document).foundation(); });</script>
 </html>
