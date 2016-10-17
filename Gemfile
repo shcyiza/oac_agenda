@@ -38,4 +38,5 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'aws-sdk', '~> 2.3'
+  gem 'i18n', '~> 0.7'
 end
