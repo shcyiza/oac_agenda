@@ -17,11 +17,13 @@
    <div class="off-canvas-wrap docs-wrap" data-offcanvas>
      <div class="inner-wrap">
            <header>
-            <!--toggle button-->
+<!-- top menu bar + toggle buttons-->
             <%= render 'layouts/navigation' %>
           </header>
-<!-- Off Canvas Menu -->
+<!-- Off Canvas Menu left-->
             <%= render 'layouts/aside' %>
+<!-- Off Canvas Menu left-->
+            <%= render 'layouts/attop' %>
 <!-- whatever you want goes here -->
           <div class="large-10 small-12 small-centered columns  ">
             <%= render 'layouts/messages' %>
@@ -40,6 +42,5 @@
      </footer>
 <% end %>
   </body>
-  <%= javascript_include_tag "application" %>
   <script type="text/javascript">$(function(){ $(document).foundation(); });</script>
 </html>

@@ -1,0 +1,22 @@
+<div class="top-off-canvas-menu" data-options="force-top: true">
+  <ul class="off-canvas-list">
+    <li><label id="top"><font size="4px"><strong>Ka<font color="red">'</font></strong>agenda</font><font size="1px" color="#ffffff"> Navigateur</font>
+        <span class="right"><b>
+          <font color="red"><h5 color="red" class="fi-x"></h5><button class="exit-off-canvas"></button></font>
+        </b></span>
+      </label></li>
+  </ul>
+  <div class="large-3 columns">
+    <p><i class="fi-calendar center"></i></p>
+    <%=link_to events_path do %><button class="button alert small"><i class="fi-calendar"></i> Tous les événements</button><%end%>
+  </div>
+
+  <div class="large-3 columns">
+    <p><i class="fi-link"></i></p>
+    <%=link_to activities_path do %><button class="button secondary small"><i class="fi-link"></i> Les activités suivie</button><%end%>
+  </div>
+  <div class="large-3 columns ">
+    <p><i class="fi-torsos-all"></i></p>
+    <%=link_to orgns_path do %><button class="button success small"><i class="fi-torsos"></i> Tous les organisations</button><%end%>
+  </div>
+</div>

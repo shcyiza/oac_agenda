@@ -117,33 +117,6 @@ section {
     background: rgba(#339966, 0.72);
 }
 
-$sidebar-width: 200px;
-$nav-color: #990000;
-
-.inner-wrap {
-  width: auto;
-}
-
-.move-right .inner-wrap {
-  transform: none;
-  margin-left: $sidebar-width;
-  height: 100%;
-}
-
-
-
-.left-off-canvas-menu {
-  transform: none;
-  position: fixed;
-  width: 0;
-  height: 100%;
-}
-
-.move-right .left-off-canvas-menu {
-  width: $sidebar-width;
-}
-
-
 .ad-block {
   margin-bottom: 2rem;
 }
@@ -293,4 +266,11 @@ body {
     font-size: 120px;
     color: #306f20;
     text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #3bb61c,0 0 30px #3bb61c,0 0 40px #3bb61c,0 0 50px #3bb61c,0 0 75px #3bb61c;
+}
+.top-bar-section ul li > a.button.alert, .top-bar-section ul li > a.alert.submit, .top-bar-section ul .authform li > a.submit#error_explanation:not(:empty), .authform .top-bar-section ul li > a.submit#error_explanation:not(:empty), .top-bar-section ul .authform li > a.button#error_explanation:not(:empty), .authform .top-bar-section ul li > a.button#error_explanation:not(:empty), .top-bar-section ul .authform li > a#error_explanation.button-xs:not(:empty), .authform .top-bar-section ul li > a#error_explanation.button-xs:not(:empty), .top-bar-section ul li > a.alert.button-xs {
+    background-color: #bc0707;
+    color: #FFFFFF;
+    &:hover {
+      background-color: #000;
+    }
 }
