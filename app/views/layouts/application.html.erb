@@ -5,42 +5,41 @@
     <title><%= content_for?(:title) ? yield(:title) : "Ka'agenda" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ka'agenda" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= favicon_link_tag 'logo.png' %>
+    <%= favicon_link_tag 'logo_small.png' %>
     <%# Modernizr is required for Zurb Foundation %>
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-<% unless current_page?(root_path) %>
 
    <div class="off-canvas-wrap docs-wrap" data-offcanvas>
      <div class="inner-wrap">
-           <header>
-<!-- top menu bar + toggle buttons-->
-            <%= render 'layouts/navigation' %>
-          </header>
+       <header>
+   <!-- top menu bar + toggle buttons-->
+        <%= render 'layouts/navigation' %>
+      </header>
 <!-- Off Canvas Menu left-->
             <%= render 'layouts/aside' %>
 <!-- Off Canvas Menu left-->
+        <div class="top-off-canvas-menu" data-options="force-top: true">
             <%= render 'layouts/attop' %>
+        </div>
 <!-- whatever you want goes here -->
+    <% unless current_page?(root_path) %>
           <div class="large-10 small-12 small-centered columns  ">
             <%= render 'layouts/messages' %>
                    <%= yield %>
           </div>
+      <% else %>
+             <%= yield %>
+      <% end %>
 <!-- close the off-canvas menu -->
       <footer class="footer">
         <%= render 'layouts/footer' %>
       </footer>
     </div>
   </div>
-<% else %>
-       <%= yield %>
-     <footer class="footer">
-       <%= render 'layouts/footer' %>
-     </footer>
-<% end %>
+
   </body>
-  <script type="text/javascript">$(function(){ $(document).foundation(); });</script>
 </html>

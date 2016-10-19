@@ -311,7 +311,7 @@ html{font-size:100%;box-sizing:border-box}*,:after,:before{box-sizing:inherit}bo
 .show-for-print{display:block!important}
 .hide-for-print{display:none!important}table.show-for-print{display:table!important}thead.show-for-print{display:table-header-group!important}tbody.show-for-print{display:table-row-group!important}tr.show-for-print{display:table-row!important}td.show-for-print,th.show-for-print{display:table-cell!important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}
 .ir a:after,a[href^='javascript:']:after,a[href^='#']:after{content:''}abbr[title]:after{content:" (" attr(title) ")"}blockquote,pre{border:1px solid #999}thead{display:table-header-group}img{max-width:100%!important}@page{margin:.5cm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}}
-.button.secondary{background:#f2f2f2;color:#bfbfbf}
+.button.secondary{background:#dedede;color:#626262; border-color: #e6cbb2}
 .button.secondary:focus,.button.secondary:hover{background: #ff6600 ;color:#fff}
 
 .has-tip,.title-bar-title,caption{font-weight:700}input+.switch-paddle{margin:0}

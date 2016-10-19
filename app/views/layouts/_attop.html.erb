@@ -1,22 +1,44 @@
-<div class="top-off-canvas-menu" data-options="force-top: true">
+<div class="contenentblack">
   <ul class="off-canvas-list">
-    <li><label id="top"><font size="4px"><strong>Ka<font color="red">'</font></strong>agenda</font><font size="1px" color="#ffffff"> Navigateur</font>
-        <span class="right"><b>
-          <font color="red"><h5 color="red" class="fi-x"></h5><button class="exit-off-canvas"></button></font>
+    <li><label id="top"><font size="4"><strong>Ka<font color="red">'</font></strong>agenda</font><font size="1px" color="#ffffff"> Navigateur</font>
+        <span class="right show-for-small-only"><b>
+          <font color="red"><h5 color="red" class="fi-x"></font>
         </b></span>
       </label></li>
   </ul>
-  <div class="large-3 columns">
-    <p><i class="fi-calendar center"></i></p>
-    <%=link_to events_path do %><button class="button alert small"><i class="fi-calendar"></i> Tous les événements</button><%end%>
-  </div>
 
+  <div class="large-6 columns panel">
+        <h3>Quois de neuf?</h3>
+    <ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h4>Headline 1</h4>
+      <h5>Subheadline</h5>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h4>Headline 2</h4>
+      <h5>Subheadline</h5>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h4>Headline 3</h4>
+      <h5>Subheadline</h5>
+    </div>
+  </li>
+</ul>
+  </div>
+  <div class="row">
   <div class="large-3 columns">
-    <p><i class="fi-link"></i></p>
-    <%=link_to activities_path do %><button class="button secondary small"><i class="fi-link"></i> Les activités suivie</button><%end%>
+    <i class="fi-calendar"></i><br>
+    <%=link_to events_path do %><button class="button alert small">Les événements</button><%end%>
   </div>
   <div class="large-3 columns ">
-    <p><i class="fi-torsos-all"></i></p>
-    <%=link_to orgns_path do %><button class="button success small"><i class="fi-torsos"></i> Tous les organisations</button><%end%>
+    <i class="fi-torsos-all"></i><br>
+    <%=link_to orgns_path do %><button class="button success small">Les organisations</button><%end%>
   </div>
+    </div>
+  <br><br>
 </div>

@@ -4,7 +4,7 @@
   <font color="grey"><i class="fi-torso"></i> Responsable: <%= link_to @orgn.user.username, @orgn.user %></font>
 </div>
 <div class="left small-4  columns">
-  <font color="green"><strong><h1 class="text-center"><%= @orgn.oname %></h1></strong></font>
+  <font color="green"><strong><h1 class="text-center"><b><%= @orgn.oname %></b></h1></strong></font>
 </div>
 <div class="left small-4 columns text-center">
   <% if user_signed_in? %>
@@ -44,9 +44,9 @@
 <br>
 </div>
 <div>
-<% if @events.count > 1 %>
+<% if @events.count > 0 %>
 <hr>
-  <h3><strong>Evenement organisé par cette organisation</strong></h3>
+  <h3 class="impress"><strong>Evenement organisé par cette organisation</strong></h3>
 
   <% @events.each do | event| %>
    <div class="large-3 columns left" >
@@ -110,3 +110,5 @@
 
 <% end %>
 </div>
+<br>
+<hr>

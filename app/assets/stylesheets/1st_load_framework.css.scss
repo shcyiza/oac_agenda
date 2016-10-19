@@ -117,12 +117,38 @@ section {
     background: rgba(#339966, 0.72);
 }
 
+$sidebar-width: 200px;
+$nav-color: #990000;
+
+
+.move-right .inner-wrap {
+  transform: none;
+  margin-left: $sidebar-width;
+  height: 100%;
+}
+
+.left-off-canvas-menu {
+  transform: none;
+  position: fixed;
+  width: 0;
+  height: 100%;
+}
+
+.move-right .left-off-canvas-menu {
+  width: $sidebar-width;
+}
+
+
 .ad-block {
   margin-bottom: 2rem;
 }
 body {
   margin-top: 2rem;
 }
+
+.contenentblack{
+        background: #333333;
+  }
 
 .f-dropdown li a {
   display: block;
@@ -131,6 +157,7 @@ body {
   background-color: #333333;
   &:hover {
     color: red;
+    background-color: #1b1b1b;
     transition: all .25s ease-in-out;
   }
 }
