@@ -1,23 +1,56 @@
-<div class="authform">
+<div class="panel">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
-    <h3>Sign up</h3>
+    <h3 class="text-center"><b><font color="green">Etape 1</font></b></h3>
+    <h5 class="text-center">Inscrivez-vous pour pouvoir interagir avec la communauté....</h5>
     <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :pseudo %>
-      <%= f.text_field :username, :autofocus => false, class: 'form-control' %>
+    <div class="row">
+      <div class="form-group large-6 columns">
+      <%= f.label 'Votre nom' %>
+      <%= f.text_field :username, placeholder: "Kwamé", label:'Votre nom', :autofocus => false, class: 'form-control' %>
     </div>
-    <div>
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => false, class: 'form-control' %>
+    <div class="form-group large-6 columns">
+      <%= f.label 'Votre e-mail' %>
+      <%= f.email_field :email, label:'Votre @', placeholder: "kwame@exemple.com", :autofocus => false, class: 'form-control' %>
     </div>
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+    <div class="form-group large-10 columns">
+      <%= f.label 'Mot de passe' %>
+      <%= f.password_field :password, label:'Mot de passe', class: 'form-control' %>
     </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <div class="form-group large-10 left columns">
+      <%= f.label 'Confirmation du passe' %>
+      <%= f.password_field :password_confirmation, label:'Confirmation du passe', class: 'form-control' %>
     </div>
-     <%= f.submit 'Sign up', :class => 'button right' %>
-  <% end %>
+    <% end %>
+    <div id="whatispro" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      <b>Organisateur?</b> Activez votre compte proféssionel!
+      <hr>
+      Le Ka'agenda est crée pour les organisateurs d'événements de la communauté afro-déscendante qui cherche a surmonter les problèmes de sychronisations que l'ont connait.
+      <br>
+      <b>Vous en êtes un?</b> En activant votre proféssionel(le) vous allez pouvoir profitez de toutes les fonctionalités faites pour vous!
+      <hr>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
+        <div class="hide-for-medium-up hide-for-small-only">  <%= f.text_field :username, :as => :hidden %>
+          <%= f.email_field :email, :as => :hidden %>
+          <%= f.password_field :password, :as => :hidden %>
+          <%= f.password_field :password_confirmation, :as => :hidden %></div>
+
+      <div class="row">
+          <div class="small-6 left columns">
+            <%= f.label 'Activation pro?' %>
+            <div class="switch">
+                <%= f.check_box :pro, as: :boolean, inline_label: false, :id => "exampleCheckboxSwitch", :type => "checkbox", class: "radius" %>
+                <label for="exampleCheckboxSwitch"></label>
+            </div>
+          </div>
+          <div class="form-group small-6 columns">
+            <br>
+            <%= f.submit "Passer à l'étape 2 >", :class => 'button right success' %>
+          </div>
+      </div>
+        <% end %>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+  </div>
+     <a href="#" data-reveal-id="whatispro" class="button secondary"> Finir l'étape 1 > </a>
+
 </div>

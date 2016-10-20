@@ -15,10 +15,17 @@
 
    <div class="off-canvas-wrap docs-wrap" data-offcanvas>
      <div class="inner-wrap">
+<!-- top menu bar + toggle buttons-->
        <header>
-   <!-- top menu bar + toggle buttons-->
-        <%= render 'layouts/navigation' %>
+        <% unless current_page?(root_path) %>
+          <%= render 'layouts/navigation' %>
+        <% else %>
+          <div class="show-for-small-only">
+            <%= render 'layouts/navigation' %>
+          </div>
+        <% end %>
       </header>
+
 <!-- Off Canvas Menu left-->
             <%= render 'layouts/aside' %>
 <!-- Off Canvas Menu left-->
@@ -43,3 +50,4 @@
 
   </body>
 </html>
+<!-- Shoot out au gars de ZURB pour Foundation -->
