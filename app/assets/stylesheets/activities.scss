@@ -1,55 +1,73 @@
-// Place all the styles related to the activities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// flat colors
+
+$primary: #446CB3;
+$secondary: #ADB2BD;
+$info: #89c4f4;
+$alert: #F22613;
+$success: #87D37C;
+$warning: #F89406;
+
 .alert-box {
-  background: #f7f7f7;
-  color: #333;
-  border: none;
-  border-left: 6px solid #008CBA;
-  box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+  padding: 1.3rem;
+  border-width: 0 0 0 0.35rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+
+  &.radius {
+    border-radius: 0.6rem;
+  }
+
+  &.primary {
+    border-left-color: $primary;
+    background-color: scale-color($primary, $lightness: 40%);
+    strong {
+      color: $primary;
+    }
+  }
+  &.secondary {
+    border-left-color: $secondary;
+    background-color: scale-color($secondary, $lightness: 40%);
+    strong {
+      color: $secondary;
+    }
+  }
+  &.info {
+    border-left-color: $info;
+    background-color: scale-color($info, $lightness: 40%);
+    strong {
+      color: $info;
+    }
+  }
+  &.alert {
+    border-left-color: $alert;
+    background-color: scale-color($alert, $lightness: 40%);
+    strong {
+      color: $alert;
+    }
+  }
+
+  &.lists {
+    border-left-color: grey;
+    background-color: scale-color(#99ada3, $lightness: 80%);
+    color: black;
+    strong {
+      color: #248718;
+    }
+  }
 
   &.success {
-    background: #f7f7f7;
-    color: #333;
+    border-left-color: $success;
+    background-color: scale-color(#bbffb1, $lightness: 40%);
+    color: black;
+    strong {
+      color: $success;
+    }
   }
-
-  &.alert {
-    background: #f7f7f7;
-    color: #333;
-  }
-
   &.warning {
-    background: #f7f7f7;
-    color: #333;
-  }
-
-  &.info {
-    background: #f7f7f7;
-    color: #333;
-  }
-
-  &.small {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    font-size: 0.75rem;
-
-    .close {
-      font-size: 1.5rem;
+    border-left-color: $warning;
+    background-color: scale-color($warning, $lightness: 40%);
+    strong {
+      color: $warning;
     }
-  }
-
-  &.large {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    font-size: 2rem;
-
-    .close {
-      font-size: 3rem;
-    }
-  }
-
-  .close {
-    font-size: 2rem;
-    line-height: 1.25rem;
   }
 }

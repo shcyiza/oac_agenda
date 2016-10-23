@@ -10,6 +10,14 @@ module ApplicationHelper
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
-end
+  end
+
+  def start_date
+    params.fetch(:start_date, Date.today).to_date
+  end
+
+  def date_range
+    (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a
+  end
 
 end

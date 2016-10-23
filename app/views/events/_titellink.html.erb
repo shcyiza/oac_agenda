@@ -1,4 +1,4 @@
-<hr>
+
 <p><h4><b>
 <% if current_user.folevents.where(:event_id => event.id).count > 0 %>
   <%= render partial: 'folwd', locals: {event: event} %>

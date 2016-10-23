@@ -1,0 +1,56 @@
+
+<div class="contain-to-grid sticky">
+<nav class="top-bar" data-topbar="" role="navigation" data-options="sticky_on: large">
+
+<div class="top-bar-section">
+  <ul class="title-area">
+    <li>
+      <a href="/"><font size='4'color="white"><%= image_tag("logo_small.png", size: "31x31") %> <strong>Ka<font color="red">'</font></strong>agenda</font></a>
+    </li>
+
+    <li class="toggle-topbar">
+      <button class="success"><font size='5'><i class="fi-list"></i></font></button>
+    </li>
+  </ul>
+
+  <ul class="left">
+    <% if user_signed_in? && current_user.pro == true %>
+    <li>
+      <a href="#" class="left-off-canvas-toggle button alert"><font color="white" size="3"><i class="fi-indent-more"></i>organisation</font></a>
+    </li>
+    <% end %>
+
+  </ul>
+
+  <ul class="right">
+  <% if user_signed_in? %>
+        <li class="show-for-small-only"><a class="top-off-canvas-toggle" href="#"> navigation <font size='5'><i class="fi-thumbnails"></i></font></a></li>
+        <li class="show-for-medium-up"><a data-dropdown="dropmenu1" aria-controls="dropmenu1" aria-expanded="false"> navigation <font size='5'><i class="fi-thumbnails"></i></font></a></li>
+        <li><a href="/activities"> notifications <font size="5"><i class="fi-link"></i></font></a></li>
+        <li class="has-dropdown show-for-medium-up">
+          <a data-dropdown="dropuser1" aria-controls="dropuser1" aria-expanded="false"> <%= current_user.username%> <font size="4"><i class="fi-torso"></i></font></a>
+        </li>
+        <li class="has-dropdown show-for-small-only">
+          <a href="#"> <%= current_user.username%> <i class="fi-torso"></i></a>
+          <ul class="dropdown">
+            <li><%= link_to 'Changer mon compte', edit_user_registration_path %></li>
+            <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method=>'delete' %></li>
+          </ul>
+        </li>
+      <% else %>
+      <li><%= link_to 'Se connecter', new_user_session_path %></li>
+      <li><%= link_to "S'incrire", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% if user_signed_in? %>
+  <ul id="dropuser1" class="f-dropdown show-for-medium-up" data-dropdown-content aria-hidden="true" tabindex="-1" style="transform: 0.5s;">
+    <li><%= link_to 'Changer mon compte', edit_user_registration_path %></li>
+    <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method=>'delete' %></li>
+  </ul>
+  <div id="dropmenu1" data-dropdown-content class="mega f-dropdown content show-for-medium-up" aria-hidden="true" tabindex="-1">
+    <%= render 'layouts/attop' %>
+  </div>
+  <% end %>
+</nav>
+</div>

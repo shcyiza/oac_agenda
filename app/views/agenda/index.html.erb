@@ -23,8 +23,6 @@
   <h2 class="text-center impress"> L'agenda</h2>
   <br>
     <div class="text-center">
-      <% start_date = params.fetch(:start_date, Date.today).to_date %>
-      <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
       <%= link_to start_date: date_range.first - 1.day do %><t class="button success round"><b><</b></t><% end %>
       <font style="text-transform: uppercase;"><%= l(start_date, format: :mname) %> </font>
       <%= link_to start_date: date_range.last + 1.day do %><t class="button success round"><b>></b></t><% end %>

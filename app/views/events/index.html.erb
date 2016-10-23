@@ -32,11 +32,13 @@
                   <a class="button expand add-to-cart" href="/events/<%= event.id %>">details de l'event...</a>
                   <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
                   </div>
+                  <hr>
                 <% else %>
                   <div class="img-wrapper">
                   <a class="button expand add-to-cart" href="/events/<%= event.id %>/edit" d1ata-reveal-id="event_<%= event.id%>"><i class="fi-page-edit"></i> modifier l'evenement...</a>
                   <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
                   </div>
+                  <hr>
                 <% end %>
                 <%= render partial: "titellink", locals: {event: event} %>
               <% else %>

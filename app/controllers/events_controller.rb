@@ -38,8 +38,8 @@ class EventsController < ApplicationController
   end
 
   def hashtags
-    tag = Tag.find_by(name: params[:name])
-    @events = Tag.find_by(name: params[:name]).events
+    @tag = Tag.find_by(name: params[:name])
+    @events = Tag.find_by(name: params[:name]).events.where('eedate > ?', Time.now).order(esdate: :asc).paginate(:page => params[:page], :per_page => 10)
   end
 
 
