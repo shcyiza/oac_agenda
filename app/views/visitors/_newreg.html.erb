@@ -22,31 +22,8 @@
       <%= f.label 'Confirmation du passe' %>
       <%= f.password_field :password_confirmation, label:'Confirmation du passe', class: 'form-control' %>
     </div>
-    <div class="row">
-        <div class="small-6 left columns">
-          <b>Organisateur?</b> Activez votre compte proféssionel!
-          <hr>
-            <a href="#" data-reveal-id="whatispro"><u>En savoir plus?</u></a>
-          <%= f.label 'Activation pro?' %>
-          <div class="switch">
-              <%= f.check_box :pro, as: :boolean, inline_label: false, :id => "exampleCheckboxSwitch", :type => "checkbox", class: "radius" %>
-              <label for="exampleCheckboxSwitch"></label>
-          </div>
-        </div>
-        <div class="form-group small-6 columns">
-          <br>
-          <%= f.submit "Passer à l'étape 2 >", :class => 'button right success' %>
-        </div>
+    <%= f.submit "Passer à l'étape 2 >", :class => 'button right success' %>
     </div>
     <% end %>
-</div>
-<div id="whatispro" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <b>Organisateur?</b> Activez votre compte proféssionel!
-  <hr>
-  Le Ka'agenda est crée pour les organisateurs d'événements de la communauté afro-déscendante qui cherche a surmonter les problèmes de sychronisations que l'ont connait.
-  <br>
-  <b>Vous en êtes un?</b> En activant votre proféssionel(le) vous allez pouvoir profitez de toutes les fonctionalités faites pour vous!
-  <hr>
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 </div>

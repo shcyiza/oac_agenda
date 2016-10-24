@@ -1,4 +1,7 @@
 <div class="hero1">
+  <div class="show-for-medium-up">
+    <%= render 'navigation' %>
+  </div>
     <img class="hero__background1 show-for-small-only" "<%= image_tag("gradientpsm_small.jpg") %>">
     <img class="hero__background1 show-for-medium-only" "<%= image_tag("gradientpsm_small.jpg") %>">
     <img class="hero__background1 show-for-large-up" "<%= image_tag("gradientpsm.jpg") %>">
@@ -53,9 +56,6 @@
 </div>
 </div>
 <div class="hero1" style="background: #ffffff;">
-  <div class="show-for-medium-up">
-    <%= render 'navigation' %>
-  </div>
   <img class="hero__background1" "<%= image_tag("gradient.jpg") %>">
   <div class="row">
     <div class="large-2 columns right show-for-medium-up">
@@ -73,7 +73,7 @@
     <div class="large-12 columns">
       <font color="black">
       <h1 class="text-center">"<b>N'agonisez pas,</h1>
-      <h1 class="text-center"><font class=""><u>Or</u>g<u>aniez</u></font>!</b>" <br><font size="4">-<i>Walter Rodney</i>-</font></h1>
+      <h1 class="text-center"><font class=""><u>Or</u>g<u>ansiez</u></font>!</b>" <br><font size="4">-<i>Kwamé Turé</i>-</font></h1>
       <h3 class="show-for-large-up"><br></h3></font><hr>
     </div>
   </div>
@@ -84,8 +84,12 @@
   </div><hr>
   <div class="large-4 columns panels">
     <p><i class="fi-calendar center style3"></i></p>
-    <b><font size='5' color='grey'>This is a content section.</font></b>
-    <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+    <b><font size='5' color='grey'>Un Agenda</font></b>
+    <h6>
+      C’est une plateform qui permet aux différentes organisations de vérifier les dates disponible et les évènements déjà organisé avant de choisir la date de son propre événement.
+      Un outil pour éviter que les potentiels événements communautaire ne se déroulent pas en même temps.
+      Dans le but de créer une synergie dans l’organisation de la communauté et de garantir le succes de chaque événement.
+    </h6>
     <%=link_to events_path do %><button class="button alert small"><i class="fi-calendar"></i> Tous les événements</button><%end%>
   </div>
 
@@ -104,8 +108,9 @@
   </div>
 </div>
 <br>
-<hr><br>
+<br>
 <div class="row">
+  <hr>
   <div class="small-2 left columns">
     <%= image_tag("logo.png") %>
   </div>

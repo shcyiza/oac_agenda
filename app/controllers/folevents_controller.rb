@@ -4,7 +4,10 @@ class FoleventsController < ApplicationController
   # GET /folevents
   # GET /folevents.json
   def index
-    @folevents = Folevent.all
+    if user_signed_in?
+      @folevents = Folevent.where(:user => current_user.id)
+      @events = Event.where('eedate > ?', Time.now).order(esdate: :asc).joins(:folevents).merge(Folevent.where(:user => current_user.id)).paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   # GET /folevents/1

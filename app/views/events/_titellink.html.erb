@@ -1,8 +1,8 @@
 
 <p><h4><b>
 <% if current_user.folevents.where(:event_id => event.id).count > 0 %>
-  <%= render partial: 'folwd', locals: {event: event} %>
+  <%= render partial: 'events/folwd', locals: {event: event} %>
 <% else %>
-  <%= render partial: 'notfolwd', locals: {event: event} %>
+  <%= render partial: 'events/notfolwd', locals: {event: event} %>
 <% end %>
 </p></h4></b>

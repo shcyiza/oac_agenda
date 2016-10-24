@@ -10,6 +10,6 @@
   <%if Folevent.where(event_id: event.id).count > 0 %>
    <font color="red"><%= Folevent.where(event_id: event.id).count %></font> personnne(s) suis(suivent) cette événement.<br>
   <% end %>
-    <%= render partial: "folevent" %>
+    <%= render partial: "events/folevent" %>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
