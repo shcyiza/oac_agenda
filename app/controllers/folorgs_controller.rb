@@ -4,7 +4,16 @@ class FolorgsController < ApplicationController
   # GET /folorgs
   # GET /folorgs.json
   def index
-    @folorgs = Folorg.all
+    if user_signed_in?
+      if current_user.folorgs.count >= 1
+        @folorgs = Folorg.where(user: current_user)
+        @orgns = Orgn.joins(:folorgs).merge(Folorg.where(:user => current_user)).paginate(:page => params[:page], :per_page => 12)
+      else
+        redirect_to orgns_path , alert: "Vous ne suivez pas encore d'organisation"
+      end
+    else
+      redirect_to new_user_session_path , alert: 'Vous devez vous connecter'
+    end
   end
 
   # GET /folorgs/1
@@ -56,7 +65,7 @@ class FolorgsController < ApplicationController
   def destroy
     @folorg.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Folorg was successfully updated.' }
+      format.html { redirect_to :back, alert: 'vous ne suivez plus cette organisation' }
       format.json { render :back}
     end
   end

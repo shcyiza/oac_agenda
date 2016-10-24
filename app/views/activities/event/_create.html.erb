@@ -1,6 +1,7 @@
 <% if @events.exists?(id: activity.trackable_id) %>
 <% if current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).count > 0 && activity.user_id != current_user.id %>
-  <div class="alert-box success row">
+  <div class="alert-box lists row">
+    <hr>
       <div class="large-1  large-center columns">
         <%= image_tag activity.trackable.flyer.url() %>
         <font size="6"><i class="fi-plus"></i></font>
@@ -16,7 +17,8 @@
       </div>
     </div>
 <% elsif current_user.folorgs.where(orgn_id: activity.trackable.orgn_id).count > 0 && activity.user_id != current_user.id %>
-  <div class="alert-box success row">
+  <div class="alert-box lists row">
+    <hr>
       <div class="large-1 columns">
         <font size="6"><i class="fi-plus"></i></font>
       </div>

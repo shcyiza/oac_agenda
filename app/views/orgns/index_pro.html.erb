@@ -1,0 +1,39 @@
+<p>
+<h2 class="text-center impress"><strong>Vos Organisation</strong></h2>
+<%= link_to new_orgn_path do %>
+  <button class="button success"><i class="fi-plus"></i> ajouter une organisation</button><% end %> <%= link_to '/proagenda' do %> <button class="button secondary"><i class="fi-calendar"></i> voir l'agenda</button>
+<% end %>
+
+<div class="row">
+<% @orgns.each_slice(4) do |slice| %>
+  <% slice.each do |orgn| %>
+   <div class="large-3 columns left">
+     <div>
+          <div class="service-icon-box">
+            <div class="small-11 columns left">
+            <%= link_to (image_tag orgn.avatar.url(:medium)), orgn %>
+          </div>
+          </div>
+          <h3 class="service-heading"><b>
+            <%= link_to orgn.oname, orgn %>
+              <%= link_to edit_orgn_path(orgn) do %>
+                <h6>
+                  <button class="button tiny secondary"><i class="fi-page-edit"></i> Modifier l'organisation... </button>
+                </h6>
+              <% end %>
+          </b></h3>
+          <p class="service-description">
+            <%= truncate_html(orgn.odesc, :length => 100, omission: (link_to '...', orgn)) %>
+          </p>
+          <font color="grey"><font color="red"><%= orgn.events.where('esdate > ?', Time.now).count %></font> <i>événement planifié(s)</i></font>
+      </div>
+   </div>
+   <%end%>
+   <hr style="border-color:white;">
+   <%end%>
+   <br>
+</div>
+   <hr>
+    <div class="apple_pagination">
+     <%= will_paginate @orgns, :previous_label => '<i class="icon fi-arrow-left"></i> Pré.' , :next_label => 'Suiv. <i class="icon fi-arrow-right"></i>', :container => false %>
+    </div>

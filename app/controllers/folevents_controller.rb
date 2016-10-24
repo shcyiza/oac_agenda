@@ -6,7 +6,9 @@ class FoleventsController < ApplicationController
   def index
     if user_signed_in?
       @folevents = Folevent.where(:user => current_user.id)
-      @events = Event.where('eedate > ?', Time.now).order(esdate: :asc).joins(:folevents).merge(Folevent.where(:user => current_user.id)).paginate(:page => params[:page], :per_page => 10)
+      @events = Event.where('eedate > ?', Time.now).order(esdate: :asc).joins(:folevents).merge(Folevent.where(:user => current_user)).paginate(:page => params[:page], :per_page => 10)
+    else
+      redirect_to new_user_session_path , notice: 'Vous devez vous connecter'
     end
   end
 

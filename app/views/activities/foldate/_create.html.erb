@@ -1,6 +1,7 @@
 <% if @foldates.exists?(id: activity.trackable_id)%>
 <% if @foldates.where(user_id: current_user.id, datefolwd: activity.trackable.datefolwd ).count > 0 && activity.trackable.user_id != current_user.id %>
-  <div class="alert-box success row">
+  <div class="alert-box lists row">
+    <hr>
     <div class="large-1 columns">
       <font size="6"><i class="fi-link"></i></font>
     </div>

@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   def index_pro
       if current_user.orgns.count > 0
         if current_user.events.count > 0
-          @events = current_user.events.order(esdate: :asc)
+          @events = current_user.events.order(esdate: :asc).paginate(:page => params[:page], :per_page => 10)
           @events_paged = @events.to_a.paginate(:page => params[:page], :per_page => 20)
         else
           redirect_to new_event_path, :alert => "Vous avez pas encore d'événement"

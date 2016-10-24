@@ -20,6 +20,21 @@ class OrgnsController < ApplicationController
     end
   end
 
+  def index_pro
+    unless user_signed_in?
+      redirect_to new_user_session_path , notice: 'Vous devez vous connecter'
+    else
+      if current_user.orgns.count > 0
+        @orgns = Orgn.where(user: current_user).paginate(:page => params[:page], :per_page => 12)
+      elsif current_user.pro == true
+        redirect_to new_orgn_path, :alert => "Vous avez pas encore d'organisation"
+      else
+        #configuré les mails pour le rediriger vers les contact
+        redirect_to :back, :alert => "demande invalide"
+      end
+    end
+  end
+
   # GET /orgns/new
   def new
     # un user ne peut créer un magazin que si il a fait la demande de signé un contract

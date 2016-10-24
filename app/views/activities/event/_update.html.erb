@@ -7,7 +7,8 @@
 
       <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
 
-        <div class="alert-box success row">
+        <div class="alert-box lists row">
+          <hr>
             <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
           <div class="small-5 columns left">
             Suivez l'evenement <%= link_to activity.trackable do %>
@@ -20,7 +21,8 @@
     <% elsif current_user.folorgs.where(orgn_id: activity.trackable.orgn_id).count > 0 && activity.user_id != current_user.id %>
         <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
 
-        <div class="alert-box success row">
+        <div class="alert-box lists row">
+          <hr>
               <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
             <div class="small-5 columns left">
 
@@ -34,7 +36,8 @@
     <% elsif current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).count > 0 && activity.user_id != current_user.id %>
         <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
 
-      <div class="alert-box success row">
+      <div class="alert-box lists row">
+        <hr>
           <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
         <div class="small-5 columns left">
 

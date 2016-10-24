@@ -1,29 +1,55 @@
-
-
-<h1 class="impress">Listing Folorgs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Orgn</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @folorgs.each do |folorg| %>
-      <tr>
-        <td><%= folorg.user_id %></td>
-        <td><%= folorg.orgn_id %></td>
-        <td><%= link_to 'Show', folorg %></td>
-        <td><%= link_to 'Edit', edit_folorg_path(folorg) %></td>
-        <td><%= link_to 'Destroy', folorg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
-<%= link_to 'New Folorg', new_folorg_path %>
+<div class="row">
+  <div class="large-4 columns center">
+    <% if user_signed_in? && current_user.pro == true %>
+      <%= link_to new_orgn_path do %> <button class="button success"><i class="fi-plus"></i> ajouter organisation</button><% end %>
+    <% end %>
+  </div>
+  <h1 class="impress"><i class="fi-link"></i> Les Organisations suivie</h1>
+</div>
+<hr>
+<div class="row">
+<% @orgns.each_slice(4) do |slice| %>
+  <% slice.each do |orgn| %>
+   <div class="large-3 columns left">
+     <div>
+          <div class="service-icon-box">
+            <div class="small-11 columns left">
+            <%= link_to (image_tag orgn.avatar.url(:medium)), orgn %>
+          </div>
+          </div>
+          <h3 class="service-heading"><b>
+            <%= link_to orgn.oname, orgn %>
+                <!-- unfollow organisation current_user -->
+                  <% @folorg = Folorg.where(user_id: current_user, orgn_id: orgn).first %>
+                  <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
+                    <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+                      <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
+                        <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
+                      <% end %>
+                    </font>
+                  </a>
+
+                  <div id="delfol_<%= orgn.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                      <b>Vous suivez déjà <%= orgn.oname %></b><br>
+                      <%= link_to destroy_fo_path(@folorg.id) do %>
+                        <t class="button alert"><i class="fi-trash"></i> ne plus suivre <%= orgn.oname %> ?</t>
+                      <% end %>
+                  </div>
+          </b></h3>
+          <p class="service-description">
+            <%= truncate_html(orgn.odesc, :length => 150, omission: (link_to '...', orgn)) %>
+          </p>
+          <font color="grey"><font color="red"><%= orgn.events.where('esdate > ?', Time.now).count %></font> <i>événement planifié(s)</i></font>
+      </div>
+   </div>
+   <%end%>
+   <hr style="border-color:white;">
+   <%end%>
+   <br>
+   <hr>
+    <div class="apple_pagination">
+     <%= will_paginate @orgns, :previous_label => '<i class="icon fi-arrow-left"></i> Pré.' , :next_label => 'Suiv. <i class="icon fi-arrow-right"></i>', :container => false %>
+    </div>
+</div>
