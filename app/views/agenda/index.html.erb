@@ -52,11 +52,11 @@
             <% @del_date = current_user.foldates.where(:datefolwd => jour).first %>
             <% @followed_date = Foldate.where(:datefolwd => jour) %>
             <!--les dates anterieur au mois actuelle en gris-->
-            <% if jour.month < Date.today.month %>
+            <% if jour.month < Date.today.month && jour.year < Date.today.year %>
               <span class="day"><font color="grey"><del><%=l(jour, format: :justd)%></del></font><hr></hr></span>
 
-            <!--les dates posterieur au mois actuelle en verts avec l'option de suivre la dates-->
-            <% elsif jour.month > Date.today.month %>
+            <!--les dates posterieur au mois actuelle en gris avec l'option de suivre la dates-->
+            <% elsif jour.month > Date.today.month or jour.year > Date.today.year %>
               <span class="day" >
                 <font color="grey"><%= l(jour, format: :justd) %></font>
                   <%= render partial: 'datefonctions', :locals => {:jour => jour} %>

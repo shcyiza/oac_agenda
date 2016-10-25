@@ -4,9 +4,10 @@
 <%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %> <%= link_to '/proagenda' do %> <button class="button secondary"><i class="fi-calendar"></i> voir l'agenda</button><% end %>
 
 <% end %>
-</p><hr>
+</p>
 <div class="alert-box lists">
   <% @events.each do |event| %>
+  <hr>
       <font size="6" color="green"><b><%= truncate_html(event.enom, :length => 30) %></b></font> <a href="/events/<%= event.id %>/edit" class="button secondary"><i class="fi-page-edit"></i> modifier l'evenement...</a>
       <div class="row">
         <div class="large-2 columns">
@@ -37,8 +38,7 @@
           <%= truncate_html(render_hashtags(event.edesc), :length => 450, omission: (link_to '...', event)) %>
         </div>
       </div>
-      </div>
-      </div>
+      <br>
   <% end %>
 </div>
 <div class="apple_pagination">

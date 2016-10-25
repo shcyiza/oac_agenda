@@ -1,24 +1,25 @@
-<div class="contenentblack">
+
   <ul class="off-canvas-list">
-    <li><label id="top"><font size="4"><strong>Ka<font color="red">'</font></strong>agenda</font><font size="1px" color="#ffffff"> Navigateur</font>
+    <label id="top"><b><font size="4" color="#999999"><strong>Ka<font color="red">'</font></strong>agenda</font><font size="1px" color="#ffffff"></b> Navigateur</font>
         <span class="right"><b>
           <font color="red"><h5 color="red" class="fi-x"></h5><button class="exit-off-canvas"></button></font>
         </b></span>
-      </label></li>
+      </label>
   </ul>
-
+  <br>
+  <div class="row ">
   <div class="large-6 columns">
-    <%= render 'layouts/info' %>
+    <i class="fi-calendar style3bis"></i><br>
+      <ul>
+        <li><%=link_to events_path do %>tous les événements<%end%></li>
+        <li><a href="/folevents">événements que je suis <i class="fi-link"></i></a></li>
+      </ul>
   </div>
-  <div class="row">
-  <div class="large-3 columns">
-    <i class="fi-calendar"></i><br>
-    <%=link_to events_path do %><button class="button alert small">Les événements</button><%end%>
+  <div class="large-6 columns ">
+    <i class="fi-torsos-all style1bis"></i><br>
+    <ul>
+      <li><%=link_to orgns_path do %>tous les organisations <%end%></li>
+      <li ><a href="/folorgs">organisation que je suis <i class="fi-link"></i></a></li>
+    </ul>
   </div>
-  <div class="large-3 columns ">
-    <i class="fi-torsos-all"></i><br>
-    <%=link_to orgns_path do %><button class="button success small">Les organisations</button><%end%>
-  </div>
-    </div>
-  <br><br>
 </div>

@@ -32,6 +32,8 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'will_paginate'
 
 group :development, :test do
+  gem "letter_opener"
+  gem 'capybara-email'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
 end
