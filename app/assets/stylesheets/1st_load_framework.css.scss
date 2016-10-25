@@ -138,6 +138,10 @@ $nav-color: #990000;
   width: $sidebar-width;
 }
 
+ul.off-canvas-list li label {
+    padding: 0.64rem;
+}
+
 
 .ad-block {
   margin-bottom: 2rem;
@@ -299,5 +303,38 @@ body {
     color: #FFFFFF;
     &:hover {
       background-color: #000;
+    }
+}
+.accordion .accordion-navigation > a, .accordion dd > a {
+    background: #333;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    padding: 0.66667rem;
+    &:hover {
+      background-color: #242424;
+    }
+}
+
+.accordion .accordion-navigation.active > a, .accordion dd.active > a {
+    background: #242424;
+    color: #9f0000;
+}
+
+.accordion .accordion-navigation > .content.active, .accordion dd > .content.active {
+    background: #595959;
+    display: block;
+    padding: 0rem;
+    font-size: 12px;
+}
+
+
+ul.off-canvas-list li a {
+    border-bottom: 1px solid #262626;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    padding: 0.66667rem;
+    transition: background 300ms ease;
+    &:hover {
+      color: #9f0000;
     }
 }

@@ -24,8 +24,8 @@
   </div>
   <div class="large-6 columns left">
      <div class="large-6 columns"><%= f.input :esdate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
-     <div class="large-3 columns"><%= f.input :esdate_hour, collection: 0..24, placeholder: "#{Time.now.strftime("%H")}", :label => "h" %></div>
-     <div class="large-3 columns"><%= f.input :esdate_min, collection: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55], placeholder: "#{Time.now.strftime("%M")}", :label => ":    m" %></div>
+     <div class="large-3 columns"><%= f.input :esdate_hour, collection: 0..24, placeholder: "#{Time.now.strftime("%H")}", :label => "heure" %></div>
+     <div class="large-3 columns"><%= f.input :esdate_min, collection: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55], placeholder: "#{Time.now.strftime("%M")}", :label => ":    minute" %></div>
   </div>
   <div class="large-6 columns">
     <div class="large-6 columns"><%= f.input :eedate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>

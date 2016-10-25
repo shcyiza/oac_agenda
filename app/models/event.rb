@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
     end
 
     def month
-      self.esdate.strftime('%m')
+      self.esdate.strftime('%m%Y')
     end
 
     def user_id

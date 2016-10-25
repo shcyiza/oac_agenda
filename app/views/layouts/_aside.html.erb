@@ -1,3 +1,4 @@
+
 <aside class="left-off-canvas-menu">
   <ul class="off-canvas-list">
     <li><label><font size="4px"><strong>Ka<font color="red">'</font></strong>agenda</font><font size="1px" color="#33cc33"> pro</font>
@@ -7,25 +8,41 @@
       </label>
     </li>
     <li><a href="/proagenda" class="off-canvas-submenu-call"><i class="fi-calendar"></i> Agenda</a></li>
-    <li><a data-dropdown="drop1" data-dropdown="drop1" data-options="align: right" aria-expanded="false">Mes événements <span class="right"><b>&rsaquo;&rsaquo;</b></span></a></li></a></li>
-    <li><a data-dropdown="drop2" data-dropdown="drop2" data-options="align: right" aria-expanded="false">Mes Organisation <span class="right"><b>&rsaquo;&rsaquo;</b></span></a></li></a></li>
-    <li><a data-dropdown="drop3" data-dropdown="drop3" data-options="align: right" aria-expanded="false">Mes dates <span class="right"><b>&rsaquo;&rsaquo;</b></span></a></li></a></li>
-  </ul>
+    <ul class="accordion" data-accordion>
+      <li class="accordion-navigation">
+        <a href="#panel1a">Evénements <span class="right"><b><i class="fi-fast-forward"></i></b></span></a>
+        <div id="panel1a" class="content">
+          <a href="/event/index_pro"><i class="fi-clipboard-notes"></i> Mes événements</a>
+          <a href="/folevents"><i class="fi-link"></i> les événements que je suis</a>
+          <a href="/events/new"><i class="fi-plus"></i>Ajoutez un événement</a>        </div>
+      </li>
+      <li class="accordion-navigation">
+        <a href="#panel2a">Organisations <span class="right"><i class="fi-fast-forward"></i></span></a>
+        <div id="panel2a" class="content">
+          <a href="/orgn/index_pro"><i class="fi-torsos"></i>Mes organisations</a>
+          <a href="/folorgs"><i class="fi-link"></i>les organisation que je suis</a>
+          <a href="/orgns/new"><i class="fi-plus"></i>Ajoutez une organisation</a>
+        </div>
+      </li>
+      <li class="accordion-navigation">
+        <a href="#panel3a">Les dates que je suis <span class="right"><i class="fi-fast-forward"></i></span></a>
+        <div id="panel3a" class="content">
+          <ul class="accordion" data-accordion="myAccordionGroup">
+            <% dates_grouped.each do |mounth, foldates| %>
+            <li class="accordion-navigation" >
+              <a href="#panel<%= mounth %>c" style="background: #797979;"><%= l(foldates.first.datefolwd, format: :mname) %><span class="right"><i class="fi-play"></i></span></a>
+              <div id="panel<%= mounth %>c" class="content">
+                <% foldates.each do |foldate| %>
+                  <a href="/proagenda/?start_date=<%= l(foldate.datefolwd, format: :ijour) %>%2F<%= l(foldate.datefolwd, format: :imois) %>%2F<%= l(foldate.datefolwd, format: :annee) %>" >
+                    <%= foldate.datefolwd %>
+                  </a>
+                <% end %>
+              </div>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+   </ul>
+</ul>
 </aside>
-          <ul id="drop1" class="f-dropdown drop-right" data-dropdown-content="" style="position: absolute; top: 0px; background-color: #364a2f;" aria-hidden="true">
-            <li><a href="/event/index_pro"><i class="fi-clipboard-notes"></i> Mes événements</a></li>
-            <li><a href="/folevents"><i class="fi-link"></i> les événements que je suis</a></li>
-            <li><a href="/events/new"><i class="fi-plus"></i>Ajoutez un événement</a></li>
-          </ul>
-
-          <ul id="drop2" class="f-dropdown drop-right" data-dropdown-content="" style="position: absolute; top: 0px; background-color: #364a2f;" aria-hidden="true">
-            <li><a href="/orgn/index_pro"><i class="fi-torsos"></i>Mes organisations</a></li>
-            <li><a href="/folorgs"><i class="fi-link"></i>les organisation que je suis</a></li>
-            <li><a href="/orgns/new"><i class="fi-plus"></i>Ajoutez une organisation</a></li>
-          </ul>
-
-          <ul id="drop3" class="f-dropdown drop-right" data-dropdown-content="" style="position: absolute; top: 0px; background-color: #364a2f;" aria-hidden="true">
-            <li><a href="#">This is a link</a></li>
-            <li><a href="#">This is another</a></li>
-            <li><a href="#">Yet another</a></li>
-          </ul>

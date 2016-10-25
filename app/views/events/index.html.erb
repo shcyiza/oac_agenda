@@ -3,24 +3,28 @@
 <h2 class="impress text-center"><strong>Les événement à venir</strong></h2>
 </p>
 <div>
+
+  <div class="large-4 columns">
+    <% if user_signed_in? && current_user.pro == true %>
+    <%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
+    <% end %>
+  </div>
+
   <% @page_by_mouths.each do |month, events| %>
     <div class="row">
     <div class="large-4 large-left columns">
-      <% if user_signed_in? && current_user.pro == true %>
-      <%= link_to new_event_path do %> <button class="button success"><i class="fi-plus"></i> ajouter un évenement</button><% end %>
-      <% end %>
     </div>
       <div class="large-2 large-centered columns">
         <div class="event-date">
-          <p class="event-month"><font color="black"><%= l(month.to_date, format: :annee) %></p>
-          <p class="event-day"><%= l(month.to_date, format: :lmois) %></p>
+          <p class="event-month"><font color="black"><%= events.first.eedate.strftime('%Y') %></p>
+          <p class="event-day"><%= events.first.eedate.strftime('%b') %></p>
           <h6 class="text-center"><font color="red"><%= events.size %></font> événements planifié</h6></font>
         </div>
       </div>
     </div>
     <hr>
     <div class="row" data-equalizer>
-      <% @events.each_slice(4) do |slice| %>
+      <% events.each_slice(4) do |slice| %>
           <% slice.each do |event| %>
           <div class="large-3 large-centered columns left" >
             <div class="item-wrapper" data-equalizer-watch>

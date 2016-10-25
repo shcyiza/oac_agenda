@@ -27,7 +27,9 @@
       </header>
 
 <!-- Off Canvas Menu left-->
+          <% if user_signed_in? && current_user.pro == true %>
             <%= render 'layouts/aside' %>
+          <% end %>
 <!-- Off Canvas Menu left-->
         <div class="top-off-canvas-menu" data-options="force-top: true">
             <%= render 'layouts/attop' %>

@@ -73,7 +73,7 @@ class EventsController < ApplicationController
       respond_to do |format|
         if @event.save
           track_activity @event
-          format.html { redirect_to :index_pro, notice: 'Event was successfully created.' }
+          format.html { redirect_to :back, notice: 'Event was successfully created.' }
           format.json { render :show, status: :created, location: @event }
         else
           format.html { render :new }

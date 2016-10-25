@@ -7,8 +7,19 @@
   <br>
   <b>Vous etes <font color="#ff6600"><%= @followed_date.count %></font> organisation(s) a suivre cette date.<br> </b>
   <br>
-  <%= link_to destroy_fd_path(@del_date.id) do %>
-    <t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t>
-  <% end %>
+  <div class="row">
+    <div class="large-6 columns">
+      <% if current_user.orgn.count > 0 %>
+        <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>">
+          <button class="button success"><b><i class="fi-plus"></i> ajouter un événement</b></button>
+        </a>
+      <% end %>
+    </div>
+    <div class="large-6 columns">
+        <%= link_to destroy_fd_path(@del_date.id) do %>
+          <t class="button alert"><i class="fi-trash"></i> ne plus suivre cette date</t>
+        <% end %>
+    </div>
+  </div>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
