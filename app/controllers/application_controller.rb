@@ -50,4 +50,9 @@ end
      "/3etapes" # <- Path you want to redirect the user to.
    end
 
+   def prepare_exception_notifier
+      request.env["exception_notifier.exception_data"] = {
+        :current_user => current_user
+      }
+    end
 end
