@@ -38,6 +38,7 @@ module OacAgenda
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    config.action_mailer.default_url_options = { :host => 'http://kagenda.heroku.app' }
     #Mailjetgem smtp settings
     config.action_mailer.delivery_method = :mailjet
     #trackage d'evenement dans les mails

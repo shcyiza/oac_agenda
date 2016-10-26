@@ -1,5 +1,5 @@
 <div class="authform">
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  <h3 class="impress text-center">Modification de votre compte <%= resource_name.to_s.humanize %></h3>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
     <%= devise_error_messages! %>
     <div class="form-group">
@@ -13,21 +13,31 @@
       <%= f.label :pseudo %>
       <%= f.text_field :username, :autofocus => true, class: 'form-control' %>
     </div>
+  <fieldset>
+    <div class="form-group">
+    <b>Organisateur?</b> Activez votre compte proféssionel!<hr>
+    <a href="#" data-reveal-id="whatispro"><u>En savoir plus?</u></a>
+  <br><br>
+          <%= f.label 'Activation pro?' %>
+          <div class="switch">
+              <%= f.check_box :pro, as: :boolean, inline_label: false, :id => "exampleCheckboxSwitch", :type => "checkbox", class: "radius" %>
+              <label for="exampleCheckboxSwitch"></label>
+          </div>
+      </div>
+  </fieldset>
+
     <fieldset>
-      <p>Leave these fields blank if you don't want to change your password.</p>
+      <p>Laisse cette section vide si vous souhaitez pas modifier votre mot de passe.</p>
       <div class="form-group">
-        <%= f.label :password %>
+        <%= f.label 'nouveaux mot de passe' %>
         <%= f.password_field :password, :autocomplete => 'off', class: 'form-control' %>
       </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-      </div>
     </fieldset>
+
     <fieldset>
-      <p>You must enter your current password to make changes.</p>
+      <p>Mettez votre mot de passe actuelle pour confirmer les modification.</p>
       <div class="form-group">
-        <%= f.label :current_password %>
+        <%= f.label  'mot de passe actuel' %>
         <%= f.password_field :current_password, class: 'form-control' %>
       </div>
     </fieldset>
@@ -38,4 +48,13 @@
 <h3>Cancel Account</h3>
 <p>Unhappy? We'll be sad to see you go.</p>
 <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+</div>
+<div id="whatispro" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <b>Organisateur?</b> Activez votre compte proféssionel!
+    <hr>
+    Le Ka'agenda est crée pour les organisateurs d'événements de la communauté afro-déscendante qui cherche a surmonter les problèmes de sychronisations que l'ont connait.
+    <br>
+    <b>Vous en êtes un?</b> En activant votre proféssionel(le) vous allez pouvoir profitez de toutes les fonctionalités faites pour vous!
+    <hr>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>

@@ -39,6 +39,7 @@ fr:
       confirmation_instructions: "Instructions de confirmation"
       reset_password_instructions: "Instructions pour changer le mot de passe"
       unlock_instructions: "Instructions pour déverrouiller le compte"
+      fr.devise.passwords.user.send_instructions:
 
     ##########################################################################################################
     # For generated views: By "rails generate devise_views".
@@ -100,4 +101,4 @@ fr:
         back: "Retour"
     unlocks:
       new:
-        resend_unlock_instructions: "Renvoyez le mail pour déverrouiller mon compte"  
+        resend_unlock_instructions: "Renvoyez le mail pour déverrouiller mon compte"
