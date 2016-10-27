@@ -11,7 +11,7 @@ class Contact < MailForm::Base
     {
       :subject => %("#{subject}"),
       :to => "team@kagenda.net",
-      :from => %("#{name}" <#{email}>)
+      :from => "admin@kagenda.net"
     }
   end
 end
