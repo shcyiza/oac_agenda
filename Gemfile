@@ -19,6 +19,7 @@ gem 'quiet_assets'
 gem 'rails_layout'
 gem 'date_validator'
 gem 'i18n'
+gem 'devise-i18n'
 gem "time_splitter"
 gem "watu_table_builder", :require => "table_builder", :git => "git://github.com/watu/table_builder.git"
 gem 'sass-rails', '~> 5.0'

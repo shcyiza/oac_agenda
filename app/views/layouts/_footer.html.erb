@@ -1,17 +1,26 @@
-<h5 class="text-left"><font color='white'>Le <strong>Ka<font color="red">'</font></strong>agenda est un initiative de:</font></h5>
+<h5 class="text-left"><font color='white'>Le <strong>Ka<font color="red">'</font></strong>agenda est un initiative de:</font></h5><br>
+      <%= image_tag 'logo.png', class:'left', size:"120x120" %>
   <div class="row">
-    <div class="large-2 columns">
+    <div class="small-2 columns">
       <%= image_tag 'oaca.png' %>
     </div>
-    <div class="large-10 columns">
+    <div class="small-7 columns">
 
       <div>
         <p class="footer-links">
-          L'organistion des Afro-Consomm'Acteur, vise a promouvoir la consommation responsable comme moyen d'émancipation de la communauté afro-déscandante.
-          Il sont notament a l'initiative du projet du Ka'agenda
+          L'Organisation des Afro-Consomm'Acteurs, vise a promouvoir la consommation responsable comme moyen d'émancipation de la communauté afro-déscendante.
+          Ils sont notamment a l'initiative du projet du Ka'agenda
 <br>
-<br>      e-mail:
-<br>      oaca.contact@gmail.com
+<div class="row">
+          <div class="large-6 large-left columns text-left">
+          <font size="6" color="white"><i class="fi-mail"></i></font> <font color="grey">e-mail:</font>
+<br>      <a href="mailto:oaca.contact@gmail.com" target="_top"><font color="white">oaca.contact@gmail.com</font></a>
+        </div>
+        <div class="large-6 large-left columns text-left">
+          <font size="6" color="white"><i class="fi-telephone"></i></font> <font color="grey">Téléphone:</font>
+<br>      <a href="tel:+32489256263"><font color="white">+32 485 256 263</font></a>
+        </div>
+</div>
         </p>
         <ul class="inline-list social">
           <a href="https://www.facebook.com/AfroConsommActeurs/?fref=ts" target="_blank"><i class="fi-social-facebook"></i></a>
@@ -20,5 +29,31 @@
 
       </div>
       <p class="copywrite text-left"> © 2017</p>
+    </div>
+    <div class="large-3 columns show-for-medium-up">
+      <div align="left">
+        <font color="white" size="4" class="text-center">Nous envoyez un méssage maintenant?</font>
+
+        <%= simple_form_for Contact.new, :html => {:class => 'form-horizontal' } do |f| %>
+
+        <% if user_signed_in? %>
+          <%= f.input :name, :required => true, :input_html => {value: current_user.username}, :readonly => true, label: "", placeholder: "Vôtre nom" %>
+          <%= f.input :email, :required => true, :input_html => {value: current_user.email}, :readonly => true, labal: "", placeholder: "e-mail" %>
+        <% else %>
+          <%= f.input :name, :required => true, label: "", placeholder: "Vôtre nom" %>
+          <%= f.input :email, :required => true, labal: "", placeholder: "e-mail" %>
+        <% end %>
+
+          <%= f.input :subject, input_html: {value: "On nous contact//envoyé de notre footer"}, as: :hidden %>
+          <%= f.input :message, :as => :text, :required => true, input_html: {:style =>"color:#473f3f; font-size: 12px; min-height: 100px;"}, placeholder: "Dîtes nous bonjour..." %>
+          <div class= "hidden">
+            <%= f.input :nickname, :hint => 'Leave this field blank!', as: :hidden  %>
+          </div>
+          <div>
+            </br>
+            <%= f.button :submit, 'Envoyez le méssage', :class=> "button success small" %>
+          </div>
+        <% end %>
+      </div>
     </div>
     </div>

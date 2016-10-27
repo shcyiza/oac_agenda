@@ -24,20 +24,21 @@
   </div>
   <div class="large-6 columns left">
      <div class="large-6 columns"><%= f.input :esdate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
-     <div class="large-3 columns"><%= f.input :esdate_hour, collection: 0..24, placeholder: "#{Time.now.strftime("%H")}", :label => "heure" %></div>
-     <div class="large-3 columns"><%= f.input :esdate_min, collection: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55], placeholder: "#{Time.now.strftime("%M")}", :label => ":    minute" %></div>
+     <div class="large-3 columns"><%= f.input :esdate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 8}, :label => "heure" %></div>
+     <div class="large-3 columns"><%= f.input :esdate_min, placeholder: "#{Time.now.strftime("%M")}",input_html: {value: "00"}  , :label => ":    minute" %></div>
   </div>
   <div class="large-6 columns">
     <div class="large-6 columns"><%= f.input :eedate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
-    <div class="large-3 columns"><%= f.input :eedate_hour, collection: 0..24, placeholder: "#{Time.now.strftime("%H")}", :label => "h" %></div>
-    <div class="large-3 columns"><%= f.input :eedate_min, collection: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55], placeholder: "#{Time.now.strftime("%M")}", :label => ":    m" %></div>
+    <div class="large-3 columns"><%= f.input :eedate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 12}, :label => "heure" %></div>
+    <div class="large-3 columns"><%= f.input :eedate_min, placeholder: "#{Time.now.strftime("%M")}", input_html: {value: "00"}, selected: 2, :label => ": minute" %></div>
   </div>
     <hr></hr>
-    <div class="large-2 columns"><%= f.input :pays %></div>
-    <div class="large-2 columns"><%= f.input :codepostal %></div>
-    <div class="large-4 columns"><%= f.input :ville %></div>
+    <div class='large-12 columns'> Il se passe où ?</div>
     <div class="large-10 columns"><%= f.input :rue %></div>
     <div class="large-2 columns"><%= f.input :nrrue, :label => "nr°" %></div>
+    <div class="large-4 columns"><%= f.input :ville %></div>
+    <div class="large-2 columns"><%= f.input :codepostal %></div>
+    <div class="large-2 columns"><%= f.input :pays, input_html: {value: "Belgique"}  %></div>
     <hr></hr>
     <div class="form-actions">
       <%= f.button :submit %>

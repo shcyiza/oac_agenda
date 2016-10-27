@@ -9,8 +9,8 @@ class Event < ActiveRecord::Base
   extend TimeSplitter::Accessors
     split_accessor :esdate, :eedate
 
-  validates :esdate, date: { after: Time.now, message: "Doit etre après aujourd'hui" }
-  validates :eedate, date: { after: :esdate, allow_blank: true, message: "Doit etre après le debut de l'événement" }
+  validates :esdate, date: { after: Time.now, message: "Doit être après aujourd'hui" }
+  validates :eedate, date: { after: :esdate, allow_blank: true, message: "Doit être après le debut de l'événement" }
 
 
   has_attached_file :flyer, styles: { medium: "300x270#", thumb: "100x90#" }, default_url: "/images/normal/missing_flyer.png"

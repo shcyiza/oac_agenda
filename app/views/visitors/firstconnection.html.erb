@@ -6,14 +6,14 @@
     <h2 class="impress">Etape 2: Organisateur? Faites le nous savoir</h2>
     <h4><b>Activez votre compte proféssionel!</b></h4><hr>
     Le Ka'agenda est crée pour les organisateurs d'événements de la communauté afro-déscendante qui cherche a surmonter les problèmes de sychronisations que l'ont connait.
-    <b>Vous en êtes un?</b> En activant votre proféssionel(le) vous allez pouvoir profitez de toutes les fonctionalités faites pour vous synchronisez avec les autre organisateur!
+    <b>Vous en êtes un?</b> En activant votre comptes proféssionel(le) vous allez pouvoir profitez de toutes les fonctionalités faites pour vous synchronisez avec les autres organisateurs!
       <%= render partial: 'bepro' %>
   </div>
 
 <% elsif user_signed_in? && current_user.pro = true %>
   <div id="3etapes" class="reveal-modal" data-reveal>
     <h2 class="impress"> Etape 3: Ajoutez votre organisations </h2>
-    <h4>C'est la denière étape avant que vous pouviez avoir, ajoutez vos prestation pour pouvoir communiquez vos dates et événements.</h4>
+    <h4>C'est la dernière étape avant que vous pouviez avoir, ajoutez vos organisations pour pouvoir communiquer vos dates et événements.</h4>
     <%= render partial: 'firstorgn' %>
   </div>
 

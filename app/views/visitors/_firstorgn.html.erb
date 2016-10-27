@@ -1,33 +1,33 @@
 <%= simple_form_for(@orgn) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs row">
-    <%= f.input :user_id,:as => :hidden, :readonly => true %>
-    <div class="large-8 columns">
-    <%= f.input :oname, :label => "Nom de l'Organisation" %>
-    </div>
-    <div class="large-4 columns">
-      <ladel><i>Logo de l'organistion</i> <i class="fi-photo"></i>
-      <%= f.file_field :avatar, class: 'form-control'%>
-      </label>
-    </div>
+    <div class="form-inputs row">
+      <%= f.input :user_id,:as => :hidden, :readonly => true %>
+      <div class="large-8 columns">
+      <%= f.input :oname, :label => "Nom de l'organisation" %>
+      </div>
+      <div class="large-8 columns">
+        <ladel><font color="grey" size="6"><i class="fi-photo"></i></font><font color="grey"> Logo de l'organistion </font>
+        <%= f.file_field :avatar, class: 'form-control'%>
+        </label>
+      </div>
 
-    <div class="large-12 columns">
-    <%= f.input :odesc, :label => "Déscription de l'organisation", input_html: {:style =>"color:#473f3f; min-height: 110px;"} %>
-    </div>
+      <div class="large-12 columns">
+      <%= f.input :odesc, :label => "Déscription de l'organisation", input_html: {:style =>"color:#473f3f; min-height: 110px;"} %>
+      </div>
 
-    <div class="large-6 columns">
-      <%= f.input :oemail, :label => "e-mail" %>
-    </div>
-    <div class="large-6 columns">
-      <%= f.input :onum , :label => "numéro de téléphone"%>
-    </div>
+      <div class="large-6 columns">
+        <%= f.input :oemail, :label => "e-mail" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.input :onum , :label => "numéro de téléphone"%>
+      </div>
 
-  </div>
+    </div>
 
   <div class="form-inputs row">
       <div class="form-actions">
-        <%= f.submit "On a finit!", :class => 'button right success' %> 
+        <%= f.submit "On a finit!", :class => 'button right success' %>
       </div>
     <% end %>
   </div>

@@ -1,24 +1,38 @@
-<div align="center">
-  <h3>Send A message to Us</h3>
+<div class="row">
 
-  <%= simple_form_for (@contact), :html => {:class => 'form-horizontal' } do |f| %>
+  <div class="large-6 columns">
+    <div align="center" class="row">
+    <h2 class="impress">Parlez-nous!</h2>
 
-  <% if user_signed_in? %>
-    <%= f.input :name, :required => true, :input_html => {value: @user.username}, :readonly => true %>
-    <%= f.input :email, :required => true, :input_html => {value: @user.email}, :readonly => true %>
-  <% else %>
-    <%= f.input :name, :required => true %>
-    <%= f.input :email, :required => true %>
-  <% end %>
-
-    <%= f.input :subject , collection: ["Mes impressions sur votre bétas", "Vous contacter"], selected: 1 %>
-    <%= f.input :message, :as => :text, :required => true %>
-    <div class= "hidden">
-      <%= f.input :nickname, :hint => 'Leave this field blank!', as: :hidden %>
+    <%= simple_form_for (@contact), :html => {:class => 'form-horizontal' } do |f| %>
+    <% if user_signed_in? %>
+      <div class="large-7 columns">
+        <%= f.input :name, :required => true, :input_html => {value: @user.username}, :readonly => true, label: "Votre nom" %>
+      </div>
+      <div class="large-5 columns">
+        <%= f.input :email, :required => true, :input_html => {value: @user.email}, :readonly => true, labal: "E-mail" %>
+      </div>
+    <% else %>
+      <div class="large-7 columns">
+        <%= f.input :name, :required => true, label: "Votre nom" %>
+      </div>
+      <div class="large-5 columns">
+        <%= f.input :email, :required => true, labal: "E-mail" %>
+      </div>
+    <% end %>
+      <div class="large-12 columns">
+        <%= f.input :subject , collection: ["Mes impressions sur votre béta", "Vous contacter"], selected: 1 %>
+        <%= f.input :message, :as => :text, :required => true, input_html: {:style =>"color:#473f3f; font-size: 12px; min-height: 110px;"} %>
+        <div class= "hidden">
+          <%= f.input :nickname, as: :hidden %>
+        </div>
+        <div>
+          </br>
+          <%= f.button :submit, 'Envoyer le méssage >', :class=> "button secondary right" %>
+        </div>
+      </div>
+    <% end %>
     </div>
-    <div>
-      </br>
-      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
+
 </div>
