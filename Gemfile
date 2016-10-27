@@ -30,7 +30,7 @@ gem 'squeel'
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'will_paginate'
-
+gem 'mail_form'
 group :development, :test do
   gem "letter_opener"
   gem 'capybara-email'

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :foldates
   resources :events
   resources :orgns
+  resources :contacts, only: [:new, :create]
   root to: 'visitors#index'
   devise_for :users
   resources :users
