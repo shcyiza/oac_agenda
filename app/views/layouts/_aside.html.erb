@@ -14,16 +14,17 @@
         <div id="panel1a" class="content">
           <a href="/event/index_pro"><i class="fi-clipboard-notes"></i> Mes événements</a>
           <a href="/folevents"><i class="fi-link"></i> les événements que je suis</a>
-          <a href="/events/new"><i class="fi-plus"></i>Ajoutez un événement</a>        </div>
+        </div>
       </li>
+      <li><a href="/events/new"><i class="fi-plus"></i> Ajoutez un événement</a></li>
       <li class="accordion-navigation">
         <a href="#panel2a">Organisations <span class="right"><i class="fi-fast-forward"></i></span></a>
         <div id="panel2a" class="content">
           <a href="/orgn/index_pro"><i class="fi-torsos"></i>Mes organisations</a>
           <a href="/folorgs"><i class="fi-link"></i>les organisation que je suis</a>
-          <a href="/orgns/new"><i class="fi-plus"></i>Ajoutez une organisation</a>
         </div>
       </li>
+      <li><a href="/orgns/new"><i class="fi-plus"></i> Ajoutez une organisation</a></li>
       <li class="accordion-navigation">
         <a href="#panel3a">Les dates que je suis <span class="right"><i class="fi-fast-forward"></i></span></a>
         <div id="panel3a" class="content">
@@ -34,7 +35,7 @@
               <div id="panel<%= mounth %>c" class="content">
                 <% foldates.each do |foldate| %>
                   <a href="/proagenda/?start_date=<%= l(foldate.datefolwd, format: :ijour) %>%2F<%= l(foldate.datefolwd, format: :imois) %>%2F<%= l(foldate.datefolwd, format: :annee) %>" >
-                    <%= foldate.datefolwd %>
+                    <%= l(foldate.datefolwd, format: :jour_semain) %>, <%= l(foldate.datefolwd, format: :justd) %>
                   </a>
                 <% end %>
               </div>

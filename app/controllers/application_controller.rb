@@ -43,12 +43,8 @@ class ApplicationController < ActionController::Base
 end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
+      session[:previous_url] || root_path
   end
-
-  def after_sign_up_path_for(resource)
-     "/3etapes" # <- Path you want to redirect the user to.
-   end
 
    def prepare_exception_notifier
       request.env["exception_notifier.exception_data"] = {

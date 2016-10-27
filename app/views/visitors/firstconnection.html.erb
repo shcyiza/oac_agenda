@@ -1,2 +1,31 @@
+<div class="steppage">
+    <img src="http://www.usfloorsllc.com/wp-content/themes/usfloors/images/spinner.gif">
+</div>
+<% if user_signed_in? && current_user.pro != true %>
+  <div id="3etapes" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="false" role="dialog">
+    <h2 class="impress">Etape 2: Organisateur? Faites le nous savoir</h2>
+    <h4><b>Activez votre compte proféssionel!</b></h4><hr>
+    Le Ka'agenda est crée pour les organisateurs d'événements de la communauté afro-déscendante qui cherche a surmonter les problèmes de sychronisations que l'ont connait.
+    <b>Vous en êtes un?</b> En activant votre proféssionel(le) vous allez pouvoir profitez de toutes les fonctionalités faites pour vous synchronisez avec les autre organisateur!
+      <%= render partial: 'bepro' %>
+  </div>
 
-  <img src="http://www.usfloorsllc.com/wp-content/themes/usfloors/images/spinner.gif">
+<% elsif user_signed_in? && current_user.pro = true %>
+  <div id="3etapes" class="reveal-modal" data-reveal>
+    <h2 class="impress"> Etape 3: Ajoutez votre organisations </h2>
+    <h4>C'est la denière étape avant que vous pouviez avoir, ajoutez vos prestation pour pouvoir communiquez vos dates et événements.</h4>
+    <%= render partial: 'firstorgn' %>
+  </div>
+
+<% else %>
+  <div id="3etapes" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="false" role="dialog">
+    <h2 class="impress text-center">Etape 1: inscrivez-vous!</h2>
+    <h4 class="lead">Inscrivez-vous pour pouvoir interagir avec la communauté...</h4>
+    <%= render partial: 'newreg' %>
+  </div>
+
+<% end %>
+<script type="text/javascript">
+$(document).foundation();
+$(document).ready(function(){$('#3etapes').foundation('reveal', 'open')});
+</script>

@@ -4,10 +4,10 @@
   <div class="form-inputs row">
     <%= f.input :user_id,:as => :hidden, :readonly => true %>
     <div class="large-8 columns">
-    <%= f.input :oname, :label => "Nom de l'organisation" %>
+    <%= f.input :oname, :label => "Nom de l'Organisation" %>
     </div>
     <div class="large-4 columns">
-      <ladel>Logo de l'organistion <i class="fi-photo"></i>
+      <ladel><i>Logo de l'organistion</i> <i class="fi-photo"></i>
       <%= f.file_field :avatar, class: 'form-control'%>
       </label>
     </div>
@@ -27,7 +27,7 @@
 
   <div class="form-inputs row">
       <div class="form-actions">
-        <%= f.button :submit %>
+        <%= f.submit "On a finit!", :class => 'button right success' %> 
       </div>
     <% end %>
   </div>

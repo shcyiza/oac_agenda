@@ -2,8 +2,6 @@
 
 <div class="panel">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
-    <h3 class="text-center"><b><font color="green">Etape 1</font></b></h3>
-    <h5 class="text-center">Inscrivez-vous pour pouvoir interagir avec la communauté....</h5>
     <%= devise_error_messages! %>
     <div class="row">
       <div class="form-group large-6 columns">
@@ -22,7 +20,7 @@
       <%= f.label 'Confirmation du passe' %>
       <%= f.password_field :password_confirmation, label:'Confirmation du passe', class: 'form-control' %>
     </div>
-    <%= f.submit "Passer à l'étape 2 >", :class => 'button right success' %>
+    <%= f.submit "Passez à l'étape 2 >", :class => 'button right success' %>
     </div>
     <% end %>
 </div>

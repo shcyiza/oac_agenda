@@ -37,7 +37,7 @@
     <% else %>
       <div class="small-12 columns">
           <ul class="header-subnav1">
-            <li><%= link_to new_user_registration_path do %> s'Organiser en 3 etape!<% end %></li>
+            <li><%= link_to "/3etapes" do %> S'Organiser en 3 etape!<% end %></li>
           </ul>
     <% end %>
     <div class="small-9 left columns show-for-medium-up">
@@ -136,6 +136,8 @@
   </div>
   <div class="large-6 columns panels">
     <div class="signup-panel">
+      <h2 class="text-center" style="color: green;"><b>Etape 1: inscrivez-vous!</b></h2>
+      <h4 class="lead">Inscrivez-vous pour pouvoir interagir avec la communauté...</h4>
       <%= render partial: 'newreg' %>
     </div>
   </div>

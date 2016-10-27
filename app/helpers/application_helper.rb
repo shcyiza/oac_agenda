@@ -28,4 +28,8 @@ module ApplicationHelper
     every_followed_dates.group_by(&:month)
   end
 
+  def is_new
+    (Time.now - 20..Time.now)
+  end
+
 end

@@ -1,0 +1,24 @@
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
+    <%= devise_error_messages! %>
+<div class="authform">
+  <div class="form-group">
+  <fieldset>
+          <%= f.label 'Activation pro?' %>
+          <div class="switch">
+              <%= f.check_box :pro, as: :boolean, inline_label: false, :id => "exampleCheckboxSwitch", :type => "checkbox", class: "radius" %>
+              <label for="exampleCheckboxSwitch"></label>
+          </div>
+          <p></p>
+          <div class="form-group">
+            <%= f.label  'Mettez votre mot de passe pour confirmer' %>
+            <%= f.password_field :current_password, class: 'form-control' %>
+          </div>
+      </div>
+  </fieldset>
+</div>
+<div class="row">
+<div class="large-6 columns"><%= link_to events_path do %> <p class="refuse">Je ne veux pas être Pro&#215;</p> <% end %> </div>
+<div class="large-6 columns"><%= f.submit "Pssez a l'étape 3 >", :class => 'button success' %></div>
+</div>
+<% end %>

@@ -40,7 +40,7 @@ class OrgnsController < ApplicationController
     # un user ne peut créer un magazin que si il a fait la demande de signé un contract
     if user_signed_in? && current_user.pro == true
       #lier user a son new shop automatiquement
-      @orgn = Orgn.new(user_id: current_user.id)
+      @orgn = Orgn.new(user: current_user)
     else
       redirect_to :back, :alert => "Vous devez être enrgistré comme commercant pour cette fonctionalité"
     end
@@ -65,8 +65,14 @@ class OrgnsController < ApplicationController
 
     respond_to do |format|
       if @orgn.save
-        format.html { redirect_to @orgn, notice: 'Orgn was successfully created.' }
-        format.json { render :show, status: :created, location: @orgn }
+        if current_user.orgns.count <= 1 && (Time.now - 20..Time.now).cover?(@orgn.created_at)
+          format.html do
+            redirect_to '/proagenda', notice: "Bienvenue sur le Ka'agenda"
+          end
+        else
+          format.html { redirect_to @orgn, notice: 'Orgn was successfully created.' }
+          format.json { render :show, status: :created, location: @orgn }
+        end
       else
         format.html { render :new }
         format.json { render json: @orgn.errors, status: :unprocessable_entity }

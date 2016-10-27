@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     if user_signed_in?
-      if current_user.orgn.count > 0
+      if current_user.orgns.count > 0
         @event = Event.new
       elsif current_user.pro == true
         redirect_to new_orgn_path, :alert => "Vous avez pas encore d'organisation"

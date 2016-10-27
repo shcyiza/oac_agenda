@@ -9,7 +9,7 @@
   <br>
   <div class="row">
     <div class="large-6 columns">
-      <% if current_user.orgn.count > 0 %>
+      <% if current_user.orgns.count > 0 %>
         <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>">
           <button class="button success"><b><i class="fi-plus"></i> ajouter un événement</b></button>
         </a>

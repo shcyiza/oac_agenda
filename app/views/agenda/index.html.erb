@@ -23,9 +23,9 @@
   <h2 class="text-center impress"> L'agenda</h2>
   <br>
     <div class="text-center">
-      <%= link_to start_date: date_range.first - 1.day do %><t class="button success round"><b><</b></t><% end %>
+      <%= link_to start_date: date_range.first - 1.day do %><t class="button success tiny round"><b><</b></t><% end %>
       <font style="text-transform: uppercase;"><%= l(start_date, format: :mname) %> </font>
-      <%= link_to start_date: date_range.last + 1.day do %><t class="button success round"><b>></b></t><% end %>
+      <%= link_to start_date: date_range.last + 1.day do %><t class="button success tiny round"><b>></b></t><% end %>
 
 
     </div>
@@ -127,3 +127,26 @@
   </div>
 </div>
 <br>
+<% if current_user.sign_in_count <= 1 && (Time.now - 1.hours..Time.now).cover?(current_user.created_at) %>
+  <div id="3etapes" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="false" role="dialog">
+    <h2 class="impress text-center">Bienvenue sur le</h2><h1 class="headline text-center"><b>Ka<font color="red">'</font><font color="#5e5e5e">agenda</font></b></h1>
+    <br>
+    <h3><b>Petit tuto pour commencer...</b></h3><hr>
+    <li><a href="#" class="left-off-canvas-toggle button alert tiny"><font color="white" size="3"><i class="fi-indent-more"></i>organisation</font></a>  de la bar de navigation pour avoir l'ensemble de vos fonctionalité professionel(le)</li>
+    <br>
+    <li><font color="red" size='6'><i class="fi-link"></i></font> <b>pour suivre une date, une organistion ou un événements:</b></li>
+      <font size='3'>Ceci vous tiendra au courant de toutes chose si vous y suivez les activités en cliquan sur le button <strong style="color: green;">"notifications <i class="fi-link"></i>"</strong> de la bar de navigation</font>
+      <br>
+      <li><font color="#00cc99" size='6'><i class="fi-plus"></i></font> <b>Pour ajoutez un événement:</b></li>
+        <font size='3'>
+          Ceci pemettra a tout la communauté d'etre prevenue de votre événement et d'y tenir compte dans leurs organisation
+          <br>
+          (vous pouvez modifier ces données a tout moments l'hors de votre organisation)
+        </font>
+        <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <script type="text/javascript">
+  $(document).foundation();
+  $(document).ready(function(){$('#3etapes').foundation('reveal', 'open')});
+  </script>
+<% end %>

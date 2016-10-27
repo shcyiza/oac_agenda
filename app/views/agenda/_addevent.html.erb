@@ -1,4 +1,4 @@
-<% @addevent = Event.new(esdate_date: jour, esdate_time: "", orgn_id: current_user.orgn.first.id, eedate_date: jour , esdate_time: "" ) %>
+<% @addevent = Event.new(esdate_date: jour, esdate_time: "", orgn_id: current_user.orgns.first.id, eedate_date: jour , esdate_time: "" ) %>
 <%= simple_form_for(@addevent) do |f| %>
   <%= f.error_notification %>
 
@@ -12,7 +12,7 @@
     <%= f.input :enom, :label => "Nom de l'événement" %> </div>
     <div class="large-4 columns">
     <B> Qui l'organise? </B>
-    <%= collection_select(:event, :orgn_id, current_user.orgn, :id, :oname) %></div>
+    <%= collection_select(:event, :orgn_id, current_user.orgns, :id, :oname) %></div>
     <br>
     <div class="large-12 columns">
     <%= f.input :edesc, :label => "Déscription l'événement", input_html: {:style =>"color:#473f3f; min-height: 80px;"} %>
