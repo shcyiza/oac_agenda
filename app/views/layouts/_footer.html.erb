@@ -32,26 +32,26 @@
     </div>
     <div class="large-3 columns show-for-medium-up">
       <div align="left">
-        <font color="white" size="4" class="text-center">Nous envoyez un méssage maintenant?</font>
+        <font color="white" size="4" class="text-center">Nous envoyez un message maintenant?</font>
 
         <%= simple_form_for Contact.new, :html => {:class => 'form-horizontal' } do |f| %>
 
         <% if user_signed_in? %>
-          <%= f.input :name, :required => true, :input_html => {value: current_user.username}, :readonly => true, label: "", placeholder: "Vôtre nom" %>
+          <%= f.input :name, :required => true, :input_html => {value: current_user.username}, :readonly => true, label: "", placeholder: "Votre nom" %>
           <%= f.input :email, :required => true, :input_html => {value: current_user.email}, :readonly => true, labal: "", placeholder: "e-mail" %>
         <% else %>
-          <%= f.input :name, :required => true, label: "", placeholder: "Vôtre nom" %>
+          <%= f.input :name, :required => true, label: "", placeholder: "Votre nom" %>
           <%= f.input :email, :required => true, labal: "", placeholder: "e-mail" %>
         <% end %>
 
           <%= f.input :subject, input_html: {value: "On nous contact//envoyé de notre footer"}, as: :hidden %>
-          <%= f.input :message, :as => :text, :required => true, input_html: {:style =>"color:#473f3f; font-size: 12px; min-height: 100px;"}, placeholder: "Dîtes nous bonjour..." %>
+          <%= f.input :message, :as => :text, :required => true, input_html: {:style =>"color:#473f3f; font-size: 12px; min-height: 100px;"}, placeholder: "Dites nous bonjour..." %>
           <div class= "hidden">
             <%= f.input :nickname, :hint => 'Leave this field blank!', as: :hidden  %>
           </div>
           <div>
             </br>
-            <%= f.button :submit, 'Envoyez le méssage', :class=> "button success small" %>
+            <%= f.button :submit, 'Envoyez le message', :class=> "button success small" %>
           </div>
         <% end %>
       </div>

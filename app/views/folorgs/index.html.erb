@@ -6,7 +6,7 @@
       <%= link_to new_orgn_path do %> <button class="button success"><i class="fi-plus"></i> ajouter organisation</button><% end %>
     <% end %>
   </div>
-  <h1 class="impress"><i class="fi-link"></i> Les Organisations suivie</h1>
+  <h1 class="impress"><i class="fi-heart"></i> Les Organisations suivie</h1>
 </div>
 <hr>
 <div class="row">
@@ -24,7 +24,7 @@
                 <!-- unfollow organisation current_user -->
                   <% @folorg = Folorg.where(user_id: current_user, orgn_id: orgn).first %>
                   <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
-                    <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+                    <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
                       <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
                         <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
                       <% end %>

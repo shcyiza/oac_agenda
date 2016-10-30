@@ -5,7 +5,7 @@
       <!-- what happens when the oragisation is not followed_by current_user -->
       <a href="#" data-reveal-id="folorgn_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
 
-        <font color="grey" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+        <font color="grey" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
           <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
           <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
           <% end %>
@@ -38,7 +38,7 @@
     <!-- when a organisation is already followed_by current_user -->
     <% @folorg = Folorg.where(user_id: current_user, orgn_id: orgn).first %>
     <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
-      <font color="red" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+      <font color="red" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
         <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
         <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
         <% end %>

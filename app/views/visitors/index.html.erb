@@ -37,7 +37,7 @@
     <% else %>
       <div class="small-12 columns">
           <ul class="header-subnav1">
-            <li><%= link_to "/3etapes" do %> S'Organiser en 3 etape!<% end %></li>
+            <li><%= link_to "/3etapes" do %> S'organiser en 3 etape!<% end %></li>
           </ul>
     <% end %>
     <div class="small-9 left columns show-for-medium-up">
@@ -72,8 +72,8 @@
     </div>
     <div class="large-12 columns">
       <font color="black">
-      <h1 class="text-center">"<b>N'agonisez pas,</h1>
-      <h1 class="text-center"><font class=""><u>Or</u>g<u>ansiez</u></font>!</b>" <br><font size="4">-<i>Kwamé Turé</i>-</font></h1>
+      <h1 class="text-center">"<b>Don't agonize.</h1>
+      <h1 class="text-center"><font class=""><u>Or</u>g<u>anize</u></font>!</b>" <br><font size="4">-<i>Kwamé Ture</i>-</font></h1>
       <h3 class="show-for-large-up"><br></h3></font><hr>
     </div>
   </div>
@@ -86,24 +86,27 @@
     <p><i class="fi-calendar center style3"></i></p>
     <b><font size='5' color='grey'>Un Agenda</font></b>
     <h6>
-      C’est une plateform qui permet aux différentes organisations de vérifier les dates disponible et les évènements déjà organisé avant de choisir la date de son propre événement.
-      Un outil pour éviter que les potentiels événements communautaire ne se déroulent pas en même temps.
-      Dans le but de créer une synergie dans l’organisation de la communauté et de maximiser le succes de chaque événement.
+      Plateforme d'organisation communautaire, le Ka'agenda permet aux différents organisateurs d'événement de vérifier les disponibilités des dates potentielles pour leurs futurs événements.
+      Selon la date et la tranche d'heure souhaitée, l'organisateur pourra savoir quels sont les événtuels événements déjà prévus au même moment que le sien.
+      Le but est de créer une synergie d’organisation de la communauté et maximiser le succès de chaque événement.
     </h6>
-    <%=link_to events_path do %><button class="button alert small"><i class="fi-calendar"></i> Tous les événements</button><%end%>
+    <%=link_to events_path do %><button class="button alert small"><i class="fi-calendar"></i> Tous les événements</button><% end %>
   </div>
 
   <div class="large-4 columns panels">
-    <p><i class="fi-link style2"></i></p>
-    <b><font size='5' color='grey'>Un réseau </font></b>
-    <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
-    <%=link_to activities_path do %><button class="button secondary small"><i class="fi-link"></i> Les activités suivie</button><%end%>
+    <p><i class="fi-heart style2"></i></p>
+    <b><font size='5' color='grey'>Mes intêrets </font></b>
+    <h6>
+      Marquez votre intérêt pour un organisateur, une date ou un événement précis grace au bouton « <i class="fi-heart"></i> suivre ». Cela vous permettra d'obtenir toutes les informations utiles.
+      Cliquez ci-dessous, et retrouvez toutes ces informations.</h6>
+    <%=link_to activities_path do %><button class="button secondary small"><i class="fi-heart"></i> Les activités suivies</button><%end%>
   </div>
 
   <div class="large-4 columns panels">
     <p><i class="fi-torsos-all style1"></i></p>
-    <b><font size='5' color='grey'>Une communauté</font></b>
-    <h6>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</h6>
+    <b><font size='5' color='grey'> Un réseau </font></b>
+    <h6>Le Ka’agenda réunit un large réseau d’organisateurs d’événements de la communauté afro de Belgique.
+    Ici, vous trouverez toutes les informations concernant les organisateurs d'évéments présents sur la plateforme Ka'agenda.</h6>
     <%=link_to orgns_path do %><button class="button success small"><i class="fi-torsos"></i> Tous les organisations</button><%end%>
   </div>
 </div>
@@ -121,16 +124,16 @@
 <% else %>
 
   <div class="large-4 columns">
-    <h1 class="text-center"> <font size="3" color="black">Que </font> <b><font color="black">3</font></font><font size="3" color="black"> étapes pour</font><font color="red"></b> S'organiser...</font></h1>
+    <h1 class="text-center"> <font size="3" color="black">Seulement </font> <b><font color="black">3</font></font><font size="3" color="black"> étapes pour</font><font color="red"></b> S'organiser...</font></h1>
     <br>
     <ul class="square">
       <font size='4' color='grey'>
         <font color='#134b20' size='4'><li>Etape 1 :Inscrivez vous!</li></font>
         <h6>Inscrivez-vous pour pouvoir interagir avec la communauté...</h6>
         <font color='#134b20' size='4'><li>Etape 2 :Organisateur? Faites le nous savoir</li></font>
-        <h6>Ajoutez votre oragination a la communauté pour les tenir au courant de vos événement...</h6>
+        <h6>Ajoutez votre oragination à la communauté pour les tenir au courant de vos événement...</h6>
         <font color='#134b20' size='4'><li>Etape 3 :Ecoutons-nous!</li></font>
-        <h6>Restez au courant de tout ce qui se fait pour vous organisez en fonction et maximisé le succes de tout nos événements.</h6>
+        <h6>Restez au courant de tout ce qui se fait pour vous organiser en fonction et maximiser le succès de tout vos événements.</h6>
       </font>
     </ul>
   </div>

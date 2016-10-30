@@ -21,14 +21,14 @@
       </div>
     <% end %>
       <div class="large-12 columns">
-        <%= f.input :subject , collection: ["Mes impressions sur votre béta", "Vous contacter"], selected: 1 %>
+        <%= f.input :subject , collection: ["Donnez vos impressions sur la version beta", "Contactez-nous"], selected: 1 %>
         <%= f.input :message, :as => :text, :required => true, input_html: {:style =>"color:#473f3f; font-size: 12px; min-height: 110px;"} %>
         <div class= "hidden">
           <%= f.input :nickname, as: :hidden %>
         </div>
         <div>
           </br>
-          <%= f.button :submit, 'Envoyer le méssage >', :class=> "button secondary right" %>
+          <%= f.button :submit, 'Envoyer le message >', :class=> "button secondary right" %>
         </div>
       </div>
     <% end %>

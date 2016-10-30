@@ -1,6 +1,6 @@
 
 <font color="green"><%= truncate_html(event.enom, :length => 30) %></font> <a href="#" data-reveal-id="folevent_<%= event.id %>">
-<font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';" title="Cliquez sur le coeur pour suivre l'événement"><i class="fi-link" ></i>
+<font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';" title="Cliquez sur le coeur pour suivre l'événement"><i class="fi-heart" ></i>
   <% if Folevent.where(event_id: event.id).count > 0 %>
   <sup><%= Folevent.where(event_id: event.id).count %> </sup>
   <% end %>

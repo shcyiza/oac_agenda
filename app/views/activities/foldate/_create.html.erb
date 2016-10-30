@@ -3,11 +3,11 @@
   <div class="alert-box lists row">
     <hr>
     <div class="large-1 columns">
-      <font size="6"><i class="fi-link"></i></font>
+      <font size="6"><i class="fi-heart"></i></font>
     </div>
     <div class="large-6 columns left">
       <%= activity.created_at %><br>
-      <%= link_to activity.user.username, activity.user %> de <%= link_to activity.user.orgn.first.oname, activity.user.orgn.first %> suit la date du <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.datefolwd do %><%= activity.trackable.datefolwd %><% end %> comme vous.
+      <%= link_to activity.user.username, activity.user %> de <%= link_to activity.user.orgns.first.oname, activity.user.orgns.first %> suit la date du <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.datefolwd do %><%= activity.trackable.datefolwd %><% end %> comme vous.
     </div>
     <div class="small-5 columns left">
       Suivez la date du <%= link_to :controller => :agenda, :action => :index, start_date: @foldates.where(user_id: current_user.id, datefolwd: activity.trackable.datefolwd ).first.datefolwd do %>

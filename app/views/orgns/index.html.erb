@@ -28,7 +28,7 @@
                   <!-- what happens when the oragisation is not followed_by current_user -->
                   <a href="#" data-reveal-id="folorgn_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
 
-                    <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';"  title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+                    <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';"  title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart"></i>
                       <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
                       <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
                       <% end %>
@@ -61,7 +61,7 @@
                 <!-- when a organisation is already followed_by current_user -->
                   <% @folorg = Folorg.where(user_id: current_user, orgn_id: orgn).first %>
                   <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
-                    <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-link" ></i>
+                    <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
                       <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
                         <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
                       <% end %>
@@ -84,7 +84,11 @@
             <!-- end view of the syteme to follow organisation -->
             <% end %>
           </b></h3>
-          <p class="service-description">
+
+          <% if orgn.odesc.size < 80 %>
+           <br><hr style="border-color:white;">
+          <% end %>
+           <p class="service-description">
             <%= truncate_html(orgn.odesc, :length => 150, omission: (link_to '...', orgn)) %>
           </p>
           <font color="grey"><font color="red"><%= orgn.events.where('esdate > ?', Time.now).count %></font> <i>événement planifié(s)</i></font>

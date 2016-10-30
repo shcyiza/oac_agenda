@@ -1,6 +1,6 @@
 
 <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>">
-  <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';" title="Cliquez sur le coeur pour suivre cette date"><i class="fi-link" ></i>
+  <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';" title="Cliquez sur le coeur pour suivre cette date"><i class="fi-heart" ></i>
     <% if @followed_date.count > 0 %>
       <sup><%= @followed_date.count %></sup>
     <% end %>
