@@ -4,8 +4,6 @@ respond_to :html, :js
   def index
     if current_user.pro == true
       @events = Event.all.order("esdate")
-      @filter_month = params.fetch(:filter_mounth, start_date.month)
-      @filter_year = params.fetch(:filter_year, start_date.year)
     else
       redirect_to :back, :alert => "demande invalide"
     end
