@@ -2,12 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs container">
-
     <form>
-    <hr></hr>
-    <ladel>Flyer de l'événement<i class="fi-photo"></i>
-    <%= f.file_field :flyer, class: 'form-control'%>
-    </label>
     <div class="large-8 columns center">
     <%= f.input :enom, :label => "Nom de l'événement" %> </div>
     <div class="large-4 columns">
@@ -15,31 +10,41 @@
     <%= collection_select(:event, :orgn_id, current_user.orgns, :id, :oname) %></div>
     <br>
     <div class="large-12 columns">
-    <%= f.input :edesc, :label => "Déscription l'événement", input_html: {:style =>"color:#473f3f; min-height: 110px;"} %>
+    <%= f.input :edesc, :label => "Déscription l'événement", input_html: {:style =>"color:#473f3f; min-height: 80px;"} %>
+    <br>
+    <font color="#4d4d4d">Ajouter le flyer de l'événement</font>
+    <div class="small-2 columns center" style="padding: 10px;">
+      <%= image_tag("flyer.png") %>
+    </div>
+    <div class="small-10 columns center">
+      <br>
+      <ladel>
+        <%= f.file_field :flyer, class: 'form-control'%>
+      </label>
+    </div>
     <br><hr></hr>
-    <div class="large-6 columns">
+    <div class="large-6 columns" style="color: #4d4d4d">
     Commence quand?</div>
-    <div class="large-6 columns">
+    <div class="large-6 columns" style="color: #4d4d4d">
     Finit quand?</div>
-    </div>
-    <div class="large-6 columns left">
-       <div class="large-6 columns"><%= f.input :esdate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
-       <div class="large-3 columns"><%= f.input :esdate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 8}, :label => "heure" %></div>
-       <div class="large-3 columns"><%= f.input :esdate_min, placeholder: "#{Time.now.strftime("%M")}",input_html: {value: "00"}  , :label => ":    minute" %></div>
-    </div>
-    <div class="large-6 columns">
-      <div class="large-6 columns"><%= f.input :eedate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
-      <div class="large-3 columns"><%= f.input :eedate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 12}, :label => "heure" %></div>
-      <div class="large-3 columns"><%= f.input :eedate_min, placeholder: "#{Time.now.strftime("%M")}", input_html: {value: "00"}, selected: 2, :label => ": minute" %></div>
-    </div>
-      <hr></hr>
-      <div class='large-12 columns'>Il se passe où ? </div>
-      <div class="large-10 columns"><%= f.input :rue %></div>
-      <div class="large-2 columns"><%= f.input :nrrue, :label => "nr°" %></div>
-      <div class="large-4 columns"><%= f.input :ville %></div>
-      <div class="large-2 columns"><%= f.input :codepostal %></div>
-      <div class="large-2 columns"><%= f.input :pays, input_html: {value: "Belgique"}  %></div>
+  </div>
+  <div class="large-6 columns left">
+     <div class="large-6 columns"><%= f.input :esdate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
+     <div class="large-3 columns"><%= f.input :esdate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 8}, :label => "heure" %></div>
+     <div class="large-3 columns"><%= f.input :esdate_min, placeholder: "#{Time.now.strftime("%M")}",input_html: {value: "00"}  , :label => ":    minute" %></div>
+  </div>
+  <div class="large-6 columns">
+    <div class="large-6 columns"><%= f.input :eedate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
+    <div class="large-3 columns"><%= f.input :eedate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 12}, :label => "heure" %></div>
+    <div class="large-3 columns"><%= f.input :eedate_min, placeholder: "#{Time.now.strftime("%M")}", input_html: {value: "00"}, selected: 2, :label => ": minute" %></div>
+  </div>
     <hr></hr>
+    <div class='large-12 columns' style="color: #4d4d4d"> Il se passe où ?</div>
+    <div class="large-10 columns"><%= f.input :rue %></div>
+    <div class="large-2 columns"><%= f.input :nrrue, :label => "nr°" %></div>
+    <div class="large-4 columns"><%= f.input :ville %></div>
+    <div class="large-2 columns"><%= f.input :codepostal %></div>
+    <div class="large-2 columns"><%= f.input :pays, input_html: {value: "Belgique"}  %></div>
     <hr></hr>
     <div class="form-actions">
       <%= f.button :submit %>

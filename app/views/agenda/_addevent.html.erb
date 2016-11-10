@@ -4,10 +4,6 @@
 
   <div class="form-inputs container">
     <form>
-    <hr></hr>
-    <ladel>Flyer de l'événement<i class="fi-photo"></i>
-    <%= f.file_field :flyer, class: 'form-control'%>
-    </label>
     <div class="large-8 columns center">
     <%= f.input :enom, :label => "Nom de l'événement" %> </div>
     <div class="large-4 columns">
@@ -16,10 +12,21 @@
     <br>
     <div class="large-12 columns">
     <%= f.input :edesc, :label => "Déscription l'événement", input_html: {:style =>"color:#473f3f; min-height: 80px;"} %>
+    <br>
+    <font color="#4d4d4d">Ajouter le flyer de l'événement</font>
+    <div class="small-2 columns center" style="padding: 10px;">
+      <%= image_tag("flyer.png") %>
+    </div>
+    <div class="small-10 columns center">
+      <br>
+      <ladel>
+        <%= f.file_field :flyer, class: 'form-control'%>
+      </label>
+    </div>
     <br><hr></hr>
-    <div class="large-6 columns">
+    <div class="large-6 columns" style="color: #4d4d4d">
     Commence quand?</div>
-    <div class="large-6 columns">
+    <div class="large-6 columns" style="color: #4d4d4d">
     Finit quand?</div>
   </div>
   <div class="large-6 columns left">
@@ -33,7 +40,7 @@
     <div class="large-3 columns"><%= f.input :eedate_min, placeholder: "#{Time.now.strftime("%M")}", input_html: {value: "00"}, selected: 2, :label => ": minute" %></div>
   </div>
     <hr></hr>
-    <div class='large-12 columns'> Il se passe où ?</div>
+    <div class='large-12 columns' style="color: #4d4d4d"> Il se passe où ?</div>
     <div class="large-10 columns"><%= f.input :rue %></div>
     <div class="large-2 columns"><%= f.input :nrrue, :label => "nr°" %></div>
     <div class="large-4 columns"><%= f.input :ville %></div>
