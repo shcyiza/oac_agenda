@@ -6,7 +6,6 @@ before_action :authenticate_user!
       @foldates = Foldate.all
       @folevents = Folevent.all
       @orgns = Orgn.all
-
   end
 
 

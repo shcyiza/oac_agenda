@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     if user_signed_in?
-      unless current_user.id == @event.orgn.user.id
+      unless current_user.id == @event.user.id
         @folevent = Folevent.new(event_id: params[:id], user_id: current_user.id)
       else
       end

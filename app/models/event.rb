@@ -1,10 +1,9 @@
 class Event < ActiveRecord::Base
   belongs_to :orgn
+  has_one :user, through: :orgn
   has_many :folevents
+  has_many :resa
   has_many :activities, as: :trackable
-  has_many :resas
-  has_many :users, through: :folevents
-  has_many :users, through: :orgns
   has_and_belongs_to_many :tags
   extend TimeSplitter::Accessors
     split_accessor :esdate, :eedate
