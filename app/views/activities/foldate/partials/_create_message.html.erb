@@ -1,0 +1,6 @@
+
+
+    <%= activity.created_at %><br>
+    <%= link_to activity.user.username, activity.user %> de <%= link_to activity.user.orgns.first.oname, activity.user.orgns.first %>
+    suit la date du
+    <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.datefolwd do %><%= activity.trackable.datefolwd %><% end %>

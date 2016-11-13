@@ -1,0 +1,8 @@
+<div class="small-5 columns left">
+  Suivez la date du
+  <% current_user.foldates.where("created_at <= ?", activity.trackable.created_at ).each do |foldate| %>
+    <% if activity.trackable.days.include?(foldate.datefolwd) == true %>
+      <%= link_to :controller => :agenda, :action => :index, start_date: foldate.datefolwd  do %><%= foldate.datefolwd %><% end %>
+    <% end %>
+  <% end %>
+</div>

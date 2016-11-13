@@ -1,0 +1,5 @@
+<% if event.days.include?(date) == true && event.created_at <= activity.trackable.created_at %>
+  Vous avez l'événement <%= link_to event do %>
+  <%= event.enom %>
+  <% end %> ce jour la
+<% end %>

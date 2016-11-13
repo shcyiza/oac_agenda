@@ -40,6 +40,23 @@ class Event < ActiveRecord::Base
       self.orgn.user.id
     end
 
+    def days_left
+      days_left = 0
+      self.days.each do |date|
+        if date >= Date.today
+         days_left += 1
+        end
+      end
+      days_left
+    end
+
+    def self.still_relevent
+        events = []
+        Event.all.each { |event| events << event if event.days_left >= 1 }
+        return events
+    end
+
+
 
   after_create do
     hashtags = self.edesc.scan(/#\w+/)

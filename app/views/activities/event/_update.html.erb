@@ -1,4 +1,4 @@
-<% if @events.exists?(id: activity.trackable_id) %>
+<% if @events.exists?(id: activity.trackable_id) && @events.still_relevent.include?(activity.trackable) %>
   <% activities = Activity.order("created_at desc") %>
   <% tracked_event = Event.find(activity.trackable_id) %>
   <% if activity.id == activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => tracked_event.id).first.id %>
@@ -12,17 +12,18 @@
       <% end %>
     <% end %>
 
+    <% likes_that_day = 0 %>
+    <% current_user.foldates.where("created_at <= ?", activity.trackable.created_at ).each do |foldate| %>
+      <% if activity.trackable.days.include?(foldate.datefolwd) == true %>
+          <% likes_that_day  += 1 %>
+      <% end %>
+    <% end %>
+
       <% if current_user.folevents.where("created_at <= ?", activity.trackable.created_at ).where(event_id: activity.trackable.id).count > 0 && activity.user_id != current_user.id %>
-
-
           <div class="alert-box lists row">
             <hr>
               <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
-            <div class="small-5 columns left">
-              Vous suivez l'evenement <%= link_to activity.trackable do %>
-                <%= activity.trackable.enom %>
-              <% end %>
-            </div>
+              <%= render partial: "activities/event/partials/cause_event_followed", locals: {activity: activity}%>
           </div>
 
       <% elsif current_user.folorgs.where("created_at <= ?", activity.trackable.created_at ).where(orgn_id: activity.trackable.orgn_id).count > 0 && activity.user_id != current_user.id %>
@@ -30,43 +31,24 @@
           <div class="alert-box lists row">
             <hr>
                 <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
-              <div class="small-5 columns left">
-
-                Vous suivez la date du <%= link_to activity.trackable.orgn do %>
-                  <%= @orgns.find(activity.trackable.orgn_id).oname %>
-                <% end %>
-
-              </div>
+                <%= render partial: "activities/event/partials/cause_organisation_followed", locals: {activity: activity}%>
             </div>
 
-      <% elsif current_user.foldates.where("created_at >= ?", activity.trackable.created_at ).where(datefolwd: activity.trackable.esdate.to_date).count > 0 && activity.user_id != current_user.id %>
-
-
+      <% elsif likes_that_day > 0 && activity.user_id != current_user.id %>
         <div class="alert-box lists row">
           <hr>
             <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
-          <div class="small-5 columns left">
-
-            Vous suivez la date du <%= link_to :controller => :agenda, :action => :index, start_date: current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd do %>
-              <%= current_user.foldates.where(datefolwd: activity.trackable.esdate.to_date).first.datefolwd %>
-            <% end %>
-          </div>
-        </div>
+            <%= render partial: "activities/event/partials/cause_date_followed", locals: {activity: activity}%>
 
     <% elsif events_that_day > 0 && activity.trackable.user_id != current_user.id  %>
-
       <div class="alert-box lists row">
         <hr>
           <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
         <div class="small-5 columns left">
           <br>
           <% current_user.events.each do |event| %>
-          <% activity.trackable.days.each do |date| %>
-            <% if event.days.include?(date) == true && event.created_at <= activity.trackable.created_at %>
-              Vous avez l'événement <%= link_to event do %>
-              <%= event.enom %>
-              <% end %> ce jour la
-            <% end %>
+            <% activity.trackable.days.each do |date| %>
+              <%= render partial: 'activities/followable_partials/event_that_day', locals: {date: date, event: event, activity: activity} %>
             <% end %>
           <% end %>
         </div>
