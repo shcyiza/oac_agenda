@@ -26,6 +26,9 @@ class FoleventsController < ApplicationController
   def edit
   end
 
+  def eventwarning
+  end
+
   # POST /folevents
   # POST /folevents.json
   def create

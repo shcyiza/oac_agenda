@@ -1,0 +1,19 @@
+
+  <div id="eventwarning" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h3><b>Il y'a déja un ou des événement(s) le jour du <%= jour %>!</b></h3>
+    <br><br>
+    <h4 class="text-center style3bis"><i class="fi-alert"></i></h4>
+    <h5 class="text-center">il y'a déjà <font color="red" ><%= events_that_day(jour, @events) %></font> événement(s) planifé(s) a cette date.<br>
+    Etes vous sure de vouloir planifier votre événement le même jour?</h5>
+    <div class="row">
+      <div class="large-6 columns">
+          <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>">
+            <button class="button secondary"><b><i class="fi-alert"></i> <i class="fi-plus"></i> En ajouter quand même </b> <i class="fi-alert"></i></button>
+          </a>
+      </div>
+      <div class="large-6 columns">
+            <button class="close-reveal-modal button small success"><i class="fi-check"></i> On va éviter</button>
+      </div>
+    </div>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>

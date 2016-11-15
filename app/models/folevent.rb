@@ -4,4 +4,5 @@ class Folevent < ActiveRecord::Base
 
   validates :user_id, presence: true, uniqueness: { scope: :datefolwd, if: :new_record?, message: "Vous suivez déjà cette dates"}
 
+
 end

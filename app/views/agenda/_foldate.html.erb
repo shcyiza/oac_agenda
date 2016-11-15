@@ -1,6 +1,6 @@
 <div>
 
-<%= simple_form_for(@foldate) do |f| %>
+<%= simple_form_for(follow_in_agenda(jour)) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :user_id,:as => :hidden, :readonly => true %>

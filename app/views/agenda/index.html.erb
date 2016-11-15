@@ -47,10 +47,6 @@
           <% semaine.each do 	|jour| %>
 
           <td class="active">
-            <% @foldate = Foldate.new(datefolwd: jour, user_id: current_user.id) %>
-            <% @user_date = current_user.foldates.where(:datefolwd => jour) %>
-            <% @del_date = current_user.foldates.where(:datefolwd => jour).first %>
-            <% @followed_date = Foldate.where(:datefolwd => jour) %>
             <!--les dates anterieur au mois actuelle en gris-->
             <% if jour.month < Date.today.month && jour.year < Date.today.year %>
               <span class="day"><font color="grey"><del><%=l(jour, format: :justd)%></del></font><hr></hr></span>

@@ -1,8 +1,8 @@
 
 <a href="#" data-reveal-id="jour_<%= jour.day%>_<%= jour.month %>">
   <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';" title="Cliquez sur le coeur pour suivre cette date"><i class="fi-heart" ></i>
-    <% if @followed_date.count > 0 %>
-      <sup><%= @followed_date.count %></sup>
+    <% if followed_date(jour).count > 0 %>
+      <sup><%= followed_date(jour).count %></sup>
     <% end %>
   </font>
 </a>
@@ -11,8 +11,8 @@
   <br>
   <b>Suivre cette date?</b>
   <br>
-   <font color="#ff6600"><%= @followed_date.count %></font> organisation(s) sui(vent)s.<br>
+   <font color="#ff6600"><%= followed_date(jour).count %></font> organisation(s) sui(vent)s.<br>
   <br>
-    <%= render "foldate" %>
+    <%= render :partial => "foldate", locals: {jour: jour} %>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>

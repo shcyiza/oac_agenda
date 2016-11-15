@@ -20,6 +20,28 @@ module ApplicationHelper
     (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a
   end
 
+  def events_that_day(date,event_collection)
+   events_that_day = 0
+   event_collection.each do |event|
+     if event.days.include?(date) == true
+       events_that_day  += 1
+     end
+    end
+    events_that_day
+  end
+
+  def event_on_event_day(events_collection, tracked_event)
+     event_on_event_day = 0
+     events_collection.each do |event|
+       tracked_event.days.each do |date|
+         if event.days.include?(date) == true && event.created_at <= tracked_event.created_at
+          event_on_event_day  += 1
+           end
+         end
+       end
+      event_on_event_day
+    end
+
   def every_followed_dates
     Foldate.where('datefolwd > ?', Time.now).where(user: current_user).order(datefolwd: :asc)
   end

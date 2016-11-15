@@ -29,7 +29,7 @@ class FoldatesController < ApplicationController
     respond_to do |format|
       if @foldate.save
         track_activity @foldate
-        format.html { redirect_to :back, notice: 'Vous suivez desormais la date du #{current_user.foldates.last.datefolwd}' }
+        format.html { redirect_to :back, notice: 'Vous suivez desormais cette date.' }
         format.json { render :show, status: :created, location: @foldate }
       else
         format.html { redirect_to :back }
@@ -59,7 +59,7 @@ class FoldatesController < ApplicationController
     @foldate.destroy
     track_activity @foldate
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Foldate was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Vous ne suivez plus cette date.' }
       format.json { head :no_content }
     end
   end

@@ -4,14 +4,8 @@
     <b>Les info sur <%= l(jour, format: :long) %></b>
   </h3>
 <br>
-  <% events_that_day = 0 %>
-  <% @events.each do |event| %>
-    <% if event.day.include?(jour) == true %>
-      <% events_that_day  += 1 %>
-    <% end %>
-  <% end %>
 
-  <font color="red" ><%= events_that_day %></font> événement(s) planifé(s) a cette date: <br>
+  <font color="red" ><%= events_that_day(jour, @events) %></font> événement(s) planifé(s) a cette date: <br>
   <% @events.each do |event| %>
   <% if event.eedate != nil %>
     <% event.days.select{ |m| m == jour}.each do |ed| %>
