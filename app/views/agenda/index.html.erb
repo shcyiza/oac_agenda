@@ -1,4 +1,5 @@
 <!--Attach the Table CSS and Javascript-->
+<body onLoad="window.scroll(0, 150)">
 <div class="row calendar">
   <div class="large-2 columns show-for-medium-up">
   <br><br><br><br><br><br>
@@ -23,11 +24,24 @@
   <h2 class="text-center impress"> L'agenda</h2>
   <br>
     <div class="text-center">
-      <%= link_to start_date: date_range.first - 1.day do %><t class="button success tiny round"><b><</b></t><% end %>
-      <font style="text-transform: uppercase;"><%= l(start_date, format: :mname) %> </font>
-      <%= link_to start_date: date_range.last + 1.day do %><t class="button success tiny round"><b>></b></t><% end %>
-
-
+      <%= form_tag({"controller"=>"agenda", "action"=>"index"}, :method => "get", class: "row") do %>
+      <div class="small-4 columns"><%= link_to start_date: date_range.first - 1.day do %><t class="button success tiny round"><b><</b></t><% end %></div>
+      <div class="small-2 columns">
+        <%= select_tag :gotomonth, options_for_select(monthselect.collect{ |m| [l(monthsname(m), format: :mlong) , m] }, start_date.month) %>
+      </div>
+      <div class="small-2 columns">
+        <%= select_tag :gotoyear, options_for_select(yearselect.collect{ |y| [y , y] }, start_date.year) %>
+      </div>
+      <div class="small-1 columns">
+      <%= button_tag(type: "submit", :name => nil, class:"secondary tiny round")  do %>
+        <i class="fi-magnifying-glass" style="color: black;"></i>
+      <%end%>
+      </div>
+      <div class="small-3 columns">
+        <%= link_to start_date: date_range.last + 1.day do %><t class="button success tiny round"><b>></b></t><% end %>
+        <%= link_to start_date: today do %><t class="button secondary tiny round"><b><i class="fi-arrow-left">Aller à aujourd'hui</i></b></t><% end %>
+      </div>
+      <%end%>
     </div>
     <table class="calendar" style="border-spacing: 0">
       <thead>
@@ -46,27 +60,35 @@
         <tr>
           <% semaine.each do 	|jour| %>
 
-          <td class="active">
+          <td class="active verticalLine1">
             <!--les dates anterieur au mois actuelle en gris-->
-            <% if jour.month < Date.today.month && jour.year < Date.today.year %>
+            <% if jour.month < today.month && jour.year < today.year %>
               <span class="day"><font color="grey"><del><%=l(jour, format: :justd)%></del></font><hr></hr></span>
 
             <!--les dates posterieur au mois actuelle en gris avec l'option de suivre la dates-->
-            <% elsif jour.month > Date.today.month or jour.year > Date.today.year %>
-              <span class="day" >
-                <font color="grey"><%= l(jour, format: :justd) %></font>
-                  <%= render partial: 'datefonctions', :locals => {:jour => jour} %>
-              <hr></hr>
-              </span>
+            <% elsif jour.month > today.month or jour.year > today.year %>
+              <% if jour.month == start_date.month && jour.year == start_date.year %>
+                <span class="day" >
+                <font color="rgba(186, 186, 186, 0.41)"><%= l(jour, format: :justd) %></font>
+                    <%= render partial: 'datefonctions', :locals => {:jour => jour} %>
+                <hr></hr>
+                </span>
+              <% else %>
+                <span class="day" >
+                  <font color="grey" size = "1px"><%= l(jour, format: :justd) %></font>
+                    <%= render partial: 'datefonctions', :locals => {:jour => jour} %>
+                <hr></hr>
+                </span>
+              <% end %>
 
             <!--les dates du mois actuelle mais anterieur a today en verts barré-->
-            <% elsif jour < Date.today %>
+            <% elsif jour < today %>
               <span class="day"><del><font color="green"><%= l(jour, format: :justd) %>.</font></del><hr></hr></span>
 
             <!--today en bien visible avec l'option de suivre la dates-->
-            <% elsif jour == Date.today %>
+            <% elsif jour == today %>
               <span class="day">
-                <font color="orange"><b><%= l(jour, format: :justd) %>.</b></font>
+                <font color="white" style="background-color: orange" ><b><%= l(jour, format: :justd) %>.</b></font>
                   <%= render partial: 'datefonctions', :locals => {:jour => jour} %>
               <hr></hr>
               </span>
@@ -146,3 +168,4 @@
   $(document).ready(function(){$('#3etapes').foundation('reveal', 'open')});
   </script>
 <% end %>
+</body>

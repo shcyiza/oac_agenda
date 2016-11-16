@@ -26,6 +26,7 @@ fr:
       short: "%e %b"
       long: "%e %B %Y"
       mname: "%B %Y"
+      mlong: "%B"
       imois: "%m"
       ijour: "%d"
       panelformat: "%m%Y"

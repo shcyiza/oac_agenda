@@ -12,8 +12,16 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def today
+    Date.today
+  end
+
   def start_date
-    params.fetch(:start_date, Date.today).to_date
+    if params[:gotomonth]
+      params.fetch(:start_date, "01/#{params[:gotomonth]}/#{params[:gotoyear]}".to_date).to_date
+    else
+      params.fetch(:start_date, today).to_date
+    end
   end
 
   def date_range

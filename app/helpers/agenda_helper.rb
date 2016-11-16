@@ -16,4 +16,18 @@ module AgendaHelper
     Foldate.new(datefolwd: date, user_id: current_user.id)
   end
 
+  def yearselect
+    (Date.today.year..4.years.from_now.year).to_a
+  end
+
+  def monthselect
+    (Date.today.beginning_of_year.month..Date.today.end_of_year.month).to_a
+  end
+
+  def monthsname(month)
+    "01/#{month}/2016".to_date
+  end
+
+
+
 end

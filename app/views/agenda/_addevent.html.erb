@@ -30,12 +30,12 @@
     Finit quand?</div>
   </div>
   <div class="large-6 columns left">
-     <div class="large-6 columns"><%= f.input :esdate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
+     <div class="large-6 columns"><%= f.input :esdate_date, as: :string, placeholder: "#{today}", :label => "date" %></div>
      <div class="large-3 columns"><%= f.input :esdate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 8}, :label => "heure" %></div>
      <div class="large-3 columns"><%= f.input :esdate_min, placeholder: "#{Time.now.strftime("%M")}",input_html: {value: "00"}  , :label => ":    minute" %></div>
   </div>
   <div class="large-6 columns">
-    <div class="large-6 columns"><%= f.input :eedate_date, as: :string, placeholder: "#{Date.today}", :label => "date" %></div>
+    <div class="large-6 columns"><%= f.input :eedate_date, as: :string, placeholder: "#{today}", :label => "date" %></div>
     <div class="large-3 columns"><%= f.input :eedate_hour, placeholder: "#{Time.now.strftime("%H")}", input_html: {value: 12}, :label => "heure" %></div>
     <div class="large-3 columns"><%= f.input :eedate_min, placeholder: "#{Time.now.strftime("%M")}", input_html: {value: "00"}, selected: 2, :label => ": minute" %></div>
   </div>
