@@ -29,13 +29,13 @@ module ApplicationHelper
   end
 
   def events_that_day(date,event_collection)
-   events_that_day = 0
+   events_that_day = []
    event_collection.each do |event|
      if event.days.include?(date) == true
-       events_that_day  += 1
+       events_that_day  << event
      end
     end
-    events_that_day
+    return events_that_day
   end
 
   def event_on_event_day(events_collection, tracked_event)
@@ -43,11 +43,11 @@ module ApplicationHelper
      events_collection.each do |event|
        tracked_event.days.each do |date|
          if event.days.include?(date) == true && event.created_at <= tracked_event.created_at
-          event_on_event_day  += 1
+          event_on_event_day  << event
            end
          end
        end
-      event_on_event_day
+      return event_on_event_day
     end
 
   def every_followed_dates

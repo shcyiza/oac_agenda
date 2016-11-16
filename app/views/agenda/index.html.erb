@@ -37,9 +37,13 @@
         <i class="fi-magnifying-glass" style="color: black;"></i>
       <%end%>
       </div>
-      <div class="small-3 columns">
+      <div class="small-1 columns">
         <%= link_to start_date: date_range.last + 1.day do %><t class="button success tiny round"><b>></b></t><% end %>
+      </div>
+      <div class="small-2 columns">
+        <% unless date_range.include?(today) %>
         <%= link_to start_date: today do %><t class="button secondary tiny round"><b><i class="fi-arrow-left">Aller à aujourd'hui</i></b></t><% end %>
+        <% end %>
       </div>
       <%end%>
     </div>
@@ -164,7 +168,6 @@
         <a class="close-reveal-modal">&#215;</a>
   </div>
   <script type="text/javascript">
-  $(document).foundation();
   $(document).ready(function(){$('#3etapes').foundation('reveal', 'open')});
   </script>
 <% end %>

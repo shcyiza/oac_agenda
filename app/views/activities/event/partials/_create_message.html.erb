@@ -3,6 +3,5 @@
   <%= activity.created_at %><br>
   <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a crée l'évenement <%= link_to activity.trackable.enom, activity.trackable %>
   <br>
-  du <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.esdate  do %><%= activity.trackable.esdate %><% end %> au
-  <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.eedate  do %><%= activity.trackable.eedate %><% end %>
+  au <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.esdate  do %><%= activity.trackable.esdate %><% end %>
 </div>

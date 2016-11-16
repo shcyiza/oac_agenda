@@ -23,10 +23,6 @@ class Event < ActiveRecord::Base
       self.edesc.scan(/#\w+/)
     end
 
-    def previous_activity(activity)
-      Activity.where(:trackable_type => 'Event', :trackable_id => self.id).where("created_at < ?", activity.created_at).last
-    end
-
     def day
       days.each do |day|
       end

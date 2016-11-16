@@ -9,7 +9,7 @@
   <div class="row">
     <div class="large-6 columns">
       <% if current_user.orgns.count > 0 %>
-        <% if events_that_day(jour,@events) > 0 %>
+        <% if events_that_day(jour,@events).size > 0 %>
           <a href="#" data-reveal-id="eventwarning">
             <button class="button secondary"><b><i class="fi-alert"></i> ajouter un événement <i class="fi-alert"></i></b></button>
           </a>

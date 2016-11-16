@@ -8,8 +8,6 @@ before_action :authenticate_user!
       @orgns = Orgn.all
   end
 
-
-
   def folevent_params
     params.require(:activity).permit(:action, :trackable)
   end

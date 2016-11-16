@@ -6,8 +6,8 @@
   <%= render partial: 'folwd', locals: {jour: jour} %>
 <% end %>
 <% if current_user.orgns.count > 0 %>
-  <% if events_that_day(jour, @events) > 0 %>
-    <a href="#" data-reveal-id="eventwarning"><font color="#00cc99" onmouseover="this.style.color='#ffb000';" onmouseout="this.style.color='#00cc99';"><b><i class="fi-plus"></i></font></b></a>
+  <% if events_that_day(jour, @events).size > 0 %>
+    <a href="#" data-reveal-id="eventwarning_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99" onmouseover="this.style.color='#ffb000';" onmouseout="this.style.color='#00cc99';"><b><i class="fi-plus"></i></font></b></a>
     <%= render partial: 'eventwarning', locals: {jour: jour} %>
   <% else %>
     <a href="#" data-reveal-id="addevent_<%= jour.day%>_<%= jour.month %>"><font color="#00cc99" onmouseover="this.style.color='#ffb000';" onmouseout="this.style.color='#00cc99';"><b><i class="fi-plus"></i></font></b></a>

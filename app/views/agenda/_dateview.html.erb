@@ -5,7 +5,7 @@
   </h3>
 <br>
 
-  <font color="red" ><%= events_that_day(jour, @events) %></font> événement(s) planifé(s) a cette date: <br>
+  <font color="red" ><%= events_that_day(jour, @events).size %></font> événement(s) planifé(s) a cette date: <br>
   <% @events.each do |event| %>
   <% if event.eedate != nil %>
     <% event.days.select{ |m| m == jour}.each do |ed| %>

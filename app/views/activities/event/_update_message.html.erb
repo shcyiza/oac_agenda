@@ -1,6 +1,6 @@
 <% if tracked_event.activities.any? %>
 
-<% unless activity.event_start_end_dates == activity.trackable.previous_activity(activity).event_start_end_dates %>
+<% unless activity.event_start_end_dates == previous_activity(activity).event_start_end_dates %>
 <div class="large-1 columns left">
   <font size="6"><i class="fi-calendar"></i></font>
 </div>
@@ -8,10 +8,20 @@
     <%= activity.created_at %><br>
     <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié la date de l'evenement <%= link_to activity.trackable.enom, activity.trackable %>
     <br>
-    du <%= link_to :controller => :agenda, :action => :index, start_date: activity.trackable.previous_activity(activity).event_start_end_dates do %>
-          <%= activity.trackable.previous_activity(activity).event_start_end_dates %><% end %>
-    au <%= link_to :controller => :agenda, :action => :index, start_date: activity.event_start_end_dates do %>
-          <%= activity.event_start_end_dates %><% end %>
+    <% if activity.esdate != previous_activity(activity).esdate %>
+      Modification de la date commencement
+      du <%= link_to :controller => :agenda, :action => :index, start_date: previous_activity(activity).event_start_end_dates do %>
+            <%= previous_activity(activity).event_start_end_dates %><% end %>
+      au <%= link_to :controller => :agenda, :action => :index, start_date: activity.event_start_end_dates do %>
+            <%= activity.event_start_end_dates %><% end %>
+    <% end %>
+    <% if activity.eedate != previous_activity(activity).eedate %>
+      Modification de la date fin
+      du <%= link_to :controller => :agenda, :action => :index, start_date: previous_activity(activity).event_start_end_dates do %>
+            <%= previous_activity(activity).event_start_end_dates %><% end %>
+      au <%= link_to :controller => :agenda, :action => :index, start_date: activity.event_start_end_dates do %>
+            <%= activity.event_start_end_dates %><% end %>
+    <% end %>
 
   </div>
 

@@ -1,9 +1,9 @@
 
-  <div id="eventwarning" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div id="eventwarning_<%= jour.day%>_<%= jour.month %>" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h3><b>Il y'a déja un ou des événement(s) le jour du <%= jour %>!</b></h3>
     <br><br>
     <h4 class="text-center style3bis"><i class="fi-alert"></i></h4>
-    <h5 class="text-center">il y'a déjà <font color="red" ><%= events_that_day(jour, @events) %></font> événement(s) planifé(s) a cette date.<br>
+    <h5 class="text-center">il y'a déjà <font color="red" ><%= events_that_day(jour, @events).size %></font> événement(s) planifé(s) a cette date.<br>
     Etes vous sure de vouloir planifier votre événement le même jour?</h5>
     <div class="row">
       <div class="large-6 columns">
