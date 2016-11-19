@@ -1,4 +1,5 @@
 class Folevent < ActiveRecord::Base
+# model to link a user to an event and get activity feeds of it
   belongs_to :user
   belongs_to :event
 

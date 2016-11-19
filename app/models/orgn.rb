@@ -1,4 +1,5 @@
 class Orgn < ActiveRecord::Base
+  # "Orgn" is an abbreviation of organisation, wich
   belongs_to :user
   has_many :events
   has_many :foldates

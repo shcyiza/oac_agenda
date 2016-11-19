@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  #the controller where the mailform is setup
   def new
     @contact = Contact.new
     if user_signed_in?

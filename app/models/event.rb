@@ -8,26 +8,31 @@ class Event < ActiveRecord::Base
   extend TimeSplitter::Accessors
     split_accessor :esdate, :eedate
 
+#validation of the dates for events, events starts (=esdate) after the actual time and end date (=eedate) after event start
   validates :esdate, date: { after: Time.now, message: "Doit être après aujourd'hui" }
   validates :eedate, date: { after: :esdate, allow_blank: true, message: "Doit être après le debut de l'événement" }
 
-
+#default avatar when no images uploaded
   has_attached_file :flyer, styles: { medium: "300x270#", thumb: "100x90#" }, default_url: "/images/normal/missing_flyer.png"
   validates_attachment_content_type :flyer, content_type: /\Aimage\/.*\Z/
 
+# instance method to gather all the dates composing an event
     def days
       r = (self.esdate.to_date..self.eedate.to_date).to_a
     end
 
+# instance method to gather all the hashtags in the descpriction of the event
     def event_tags
       self.edesc.scan(/#\w+/)
     end
 
+# instance method if it's needed to separate the days from arrays
     def day
       days.each do |day|
       end
     end
 
+# instance method to get the month where the events happen its useful to group event by mouths like done in events#index
     def month
       self.esdate.strftime('%m%Y')
     end
@@ -36,6 +41,7 @@ class Event < ActiveRecord::Base
       self.orgn.user.id
     end
 
+# the instance method days left is made to now how much days there is left until the end of the events
     def days_left
       days_left = 0
       self.days.each do |date|
@@ -46,9 +52,10 @@ class Event < ActiveRecord::Base
       days_left
     end
 
+# class method written have an array of all the events that are not past
     def self.still_relevent
         events = []
-        Event.all.each { |event| events << event if event.days_left >= 1 }
+        Event.all.order(esdate: :asc).each { |event| events << event if event.eedate.to_date >= Date.today }
         return events
     end
 

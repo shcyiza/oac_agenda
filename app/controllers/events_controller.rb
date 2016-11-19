@@ -6,30 +6,39 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where('eedate > ?', Time.now).order(esdate: :asc)
+    # still_relevent and month are define in the model
+    @events = Event.still_relevent
     @event_months = @events.group_by(&:month)
     @page_by_mouths = @event_months.to_a.paginate(:page => params[:page], :per_page => 3)
   end
 
+  # GET /event/index_pro
   def index_pro
-      if current_user.orgns.count > 0
+  # vieuws where the organiszer will be able to see his events if he has an organisation
+    if current_user.orgns.count > 0
+
         if current_user.events.count > 0
           @events = current_user.events.order(esdate: :asc).paginate(:page => params[:page], :per_page => 10)
           @events_paged = @events.to_a.paginate(:page => params[:page], :per_page => 20)
         else
+        # if he doesn't have any events lead him to the event create page
           redirect_to new_event_path, :alert => "Vous avez pas encore d'événement"
         end
+
     elsif current_user.pro == true
+    # the user must be a pro to be able to create anything
       redirect_to new_orgn_path, :alert => "Vous avez pas encore d'organisation"
     else
-      #configuré les mails pour le rediriger vers les contact
+    # if he doesn't have any organisation lead him to the orgn create page
       redirect_to :back, :alert => "demande invalide"
     end
   end
+
   # GET /events/1
   # GET /events/1.json
   def show
     if user_signed_in?
+      # user must be signed in to follow an event and a event creator can't follow his own event but modify it
       unless current_user.id == @event.user.id
         @folevent = Folevent.new(event_id: params[:id], user_id: current_user.id)
       else
@@ -37,7 +46,9 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /event/hashtag/conferences
   def hashtags
+  # index to see all the event related to a specific #hashtag written in the event descpriction
     @tag = Tag.find_by(name: params[:name])
     @events = Tag.find_by(name: params[:name]).events.where('eedate > ?', Time.now).order(esdate: :asc).paginate(:page => params[:page], :per_page => 10)
   end
