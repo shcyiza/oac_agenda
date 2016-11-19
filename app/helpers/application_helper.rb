@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def start_date
-    if params[:gotomonth]
+    if params[:gotomonth] or params[:gotoyear]
       params.fetch(:start_date, "01/#{params[:gotomonth]}/#{params[:gotoyear]}".to_date).to_date
     else
       params.fetch(:start_date, today).to_date
