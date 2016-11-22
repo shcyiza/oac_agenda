@@ -24,7 +24,7 @@
             <!-- view of the syteme to follow organisation fyi the partials don't work for some reason i don't know -->
             <% if user_signed_in? %>
               <% unless current_user.id == orgn.user.id %>
-                <% if @your_likes.count < 1 %>
+                <% if your_likes(current_user, orgn).count < 1 %>
                   <!-- what happens when the oragisation is not followed_by current_user -->
                   <a href="#" data-reveal-id="folorgn_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
 

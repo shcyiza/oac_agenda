@@ -6,7 +6,6 @@ class OrgnsController < ApplicationController
   def index
     @orgns = Orgn.paginate(:page => params[:page], :per_page => 12)
     @folorgs = Folorg.all
-
   end
 
   # GET /orgns/1
