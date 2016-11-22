@@ -9,7 +9,7 @@
 <div class="left small-4 columns text-center">
   <% if user_signed_in? %>
     <% unless current_user.id == @orgn.user.id %>
-      <% if current_user.folorgs.where( orgn_id: @orgn.id).count < 1 %>
+      <% if @your_likes.count < 1 %>
         <%= render partial: 'folorg' %>
       <% else %>
         <%= render partial: 'folwd' %>

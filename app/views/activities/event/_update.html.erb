@@ -1,9 +1,8 @@
-  <% tracked_event = @events.find(activity.trackable_id) %>
-<% if @events.exists?(id: activity.trackable_id) && @events.still_relevent.include?(activity.trackable) && activity.user_id != current_user.id && activity.id == @activities.where(:created_at => (activity.created_at.beginning_of_day..activity.created_at.end_of_day), :trackable_id => @events.find(activity.trackable_id).id).first.id %>
 
+<% if @events.exists?(id: activity.trackable_id) && activity.last_update(current_user) %>
   <div class="alert-box lists row">
     <hr>
-    <%= render partial: "activities/event/update_message", locals: {activity: activity, tracked_event: tracked_event}%>
+    <%= render partial: "activities/event/partials/update_message", locals: {activity: activity, tracked_event: activity.tracked_event}%>
 
     <% if event_on_event_day(current_user.events, activity.trackable) > 0  %>
       <div class="small-5 columns left">

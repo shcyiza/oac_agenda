@@ -40,7 +40,7 @@ class EventsController < ApplicationController
     if user_signed_in?
       # user must be signed in to follow an event and a event creator can't follow his own event but modify it
       unless current_user.id == @event.user.id
-        @folevent = Folevent.new(event_id: params[:id], user_id: current_user.id)
+        @folevent = Folevent.new(event_id: @event.id, user_id: current_user.id)
       else
       end
     end

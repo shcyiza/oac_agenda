@@ -6,6 +6,7 @@ class OrgnsController < ApplicationController
   def index
     @orgns = Orgn.paginate(:page => params[:page], :per_page => 12)
     @folorgs = Folorg.all
+
   end
 
   # GET /orgns/1
@@ -16,6 +17,7 @@ class OrgnsController < ApplicationController
     if user_signed_in? && current_user.id != @orgn.user.id
       @newfolorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
       @folorg = @folorgs.where(user_id: current_user).first
+      @your_likes = @orgn.your_likes(current_user, @orgn)
     else
     end
   end
@@ -65,6 +67,7 @@ class OrgnsController < ApplicationController
 
     respond_to do |format|
       if @orgn.save
+        track_activity @orgn
         if current_user.orgns.count <= 1 && (Time.now - 20..Time.now).cover?(@orgn.created_at)
           format.html do
             redirect_to '/proagenda', notice: "Bienvenue sur le Ka'agenda"
@@ -85,7 +88,6 @@ class OrgnsController < ApplicationController
   def update
     respond_to do |format|
       if @orgn.update(orgn_params)
-        track_activity @orgn
         format.html { redirect_to @orgn, notice: 'Orgn was successfully updated.' }
         format.json { render :show, status: :ok, location: @orgn }
       else
@@ -99,7 +101,6 @@ class OrgnsController < ApplicationController
   # DELETE /orgns/1.json
   def destroy
     @orgn.destroy
-    track_activity @orgn
     respond_to do |format|
       format.html { redirect_to orgns_url, notice: 'Orgn was successfully destroyed.' }
       format.json { head :no_content }

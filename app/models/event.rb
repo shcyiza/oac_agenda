@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
       self.orgn.user.id
     end
 
-# the instance method days left is made to now how much days there is left until the end of the events
+# is gonna be usefull in the future to order
     def days_left
       days_left = 0
       self.days.each do |date|
@@ -54,9 +54,7 @@ class Event < ActiveRecord::Base
 
 # class method written have an array of all the events that are not past
     def self.still_relevent
-        events = []
-        Event.all.order(esdate: :asc).each { |event| events << event if event.eedate.to_date >= Date.today }
-        return events
+      where('eedate >= ?', Date.today.end_of_day )
     end
 
 
@@ -75,6 +73,15 @@ class Event < ActiveRecord::Base
     hashtags.uniq.map do   |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
       self.tags << tag
+    end
+  end
+
+  def self.find(*args)
+    if args.first.to_s == "random"
+      ids = connection.select_all("SELECT id FROM events")
+      super(ids[rand(ids.length)]["id"].to_i)
+    else
+      super
     end
   end
 

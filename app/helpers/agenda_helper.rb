@@ -28,6 +28,8 @@ module AgendaHelper
     "01/#{month}/2016".to_date
   end
 
-
+  def day_id(date)
+    "#{date.day}_#{date.month}"
+  end
 
 end

@@ -30,8 +30,4 @@ module ActivitiesHelper
       likes_same_day
     end
 
-    def previous_activity(activity)
-      Activity.where(:trackable_type => "#{activity.trackable_type}", :trackable_id => activity.trackable.id).where("created_at < ?", activity.created_at).last
-    end
-
 end
