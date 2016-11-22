@@ -16,7 +16,6 @@ class OrgnsController < ApplicationController
     if user_signed_in? && current_user.id != @orgn.user.id
       @newfolorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
       @folorg = @folorgs.where(user_id: current_user).first
-      @your_likes = @orgn.your_likes(current_user, @orgn)
     else
     end
   end
