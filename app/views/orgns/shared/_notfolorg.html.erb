@@ -1,13 +1,13 @@
 <%end%>
 <font color="grey" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
-  <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
-  <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
+  <% if Folorg.where(orgn_id: @orgn.id).count > 0 %>
+  <sup><%= Folorg.where(orgn_id: @orgn.id).count %> </sup>
   <% end %>
 </font></a>
 <div id="folevent_<%= event.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <b>suivre l'événement <%= event.enom %>?</b><br><br>
-  <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
-   <font color="red"><%= Folorg.where(orgn_id: orgn.id).count %></font> personnne(s) suis(suivent) cette événement.<br>
+  <% if Folorg.where(orgn_id: @orgn.id).count > 0 %>
+   <font color="red"><%= Folorg.where(orgn_id: @orgn.id).count %></font> personnne(s) suis(suivent) cette événement.<br>
   <% end %>
     <%= render partial: "folorg" %>
 </div>

@@ -1,0 +1,74 @@
+
+<% if params[:action] == "show" %>
+
+  <% if user_signed_in? %>
+    <% unless current_user.id == @orgn.user.id %>
+      <% if your_likes(@orgn).count < 1 %>
+      <!-- what happens when the oragisation is not followed_by current_user -->
+      <!-- follow organisation form -->
+        <%= render partial: 'orgns/shared/folorg', locals:{orgn: @orgn} %>
+      <% else %>
+      <!-- when a organisation is already followed_by current_user -->
+      <!-- unfollow modal caontaining an "are you sure" dialog -->
+        <a href="#" data-reveal-id="delfol_<%= @orgn.id %>" class="button alert round"title="Cliquez pour ne plus suivre l'événement">
+          <i class="fi-check"></i> vous suivez <%= @orgn.oname %>...
+        </a>
+        <!-- unfollow organisation link-->
+        <%= render partial: 'orgns/shared/folwd', locals:{orgn: @orgn} %>
+      <% end %>
+    <% else %>
+    <!-- when a organisation is owned by current_user -->
+      <%= render partial: 'orgns/shared/edit_link', locals:{orgn: @orgn} %>
+    <% end %>
+  <% end %>
+
+<% elsif params[:action] == "index" %>
+
+  <% if user_signed_in? %>
+    <% unless current_user.id == orgn.user.id %>
+      <% if your_likes(orgn).count < 1 %>
+        <!-- what happens when the oragisation is not followed_by current_user -->
+        <a href="#" data-reveal-id="folorgn_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
+
+          <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';"  title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart"></i>
+            <% if orgn.organisation_likes.count > 0 %>
+            <sup><%= orgn.organisation_likes.count.count %> </sup>
+            <% end %>
+          </font>
+
+        </a>
+        <!-- modal to follow -->
+        <div id="folorgn_<%= orgn.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <b>suivre l'organisation <%= orgn.oname %>?</b>
+          <br><br>
+          <% if orgn.organisation_likes.count > 0 %>
+            <font color="red"><%= Folorg.where(orgn_id: orgn.id).count %></font> personnne(s) suis(suivent) cette organisation.<br>
+          <% end %>
+          <!-- follow organisation form -->
+          <%= render partial: 'orgns/shared/folorg', locals:{orgn: orgn}%>
+          <!-- end form and modal-->
+        </div>
+      <!-- end when organisation not followed by -->
+      <% else %>
+      <!-- when a organisation is already followed_by current_user -->
+
+        <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
+          <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
+            <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
+              <sup><%= orgn.organisation_likes.count %> </sup>
+            <% end %>
+          </font>
+        </a>
+        <%= render partial: 'orgns/shared/folwd', locals:{orgn: orgn} %>
+      <!-- end when a organisation is already followed -->
+      <% end %>
+    <!-- when a organisation is owned by current_user -->
+    <% else %>
+    <br>
+      <%= render partial: 'orgns/shared/edit_link', locals:{orgn: orgn} %>
+    <!-- end when a organisation is owned by current_user -->
+    <% end %>
+    <!-- end view of the syteme to follow organisation -->
+  <% end %>
+
+<%end%>

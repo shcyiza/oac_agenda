@@ -12,6 +12,7 @@
 <div class="row">
 <% @orgns.each_slice(4) do |slice| %>
   <% slice.each do |orgn| %>
+
    <div class="large-3 columns left">
      <div class="service">
           <div class="service-icon-box">
@@ -21,68 +22,8 @@
           </div>
           <h3 class="service-heading"><b>
             <%= link_to orgn.oname, orgn %>
-            <!-- view of the syteme to follow organisation fyi the partials don't work for some reason i don't know -->
-            <% if user_signed_in? %>
-              <% unless current_user.id == orgn.user.id %>
-                <% if your_likes(current_user, orgn).count < 1 %>
-                  <!-- what happens when the oragisation is not followed_by current_user -->
-                  <a href="#" data-reveal-id="folorgn_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
-
-                    <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';"  title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart"></i>
-                      <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
-                      <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
-                      <% end %>
-                    </font>
-
-                  </a>
-                  <!-- modal to follow -->
-                  <div id="folorgn_<%= orgn.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                    <b>suivre l'organisation <%= orgn.oname %>?</b>
-                    <br><br>
-                    <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
-                      <font color="red"><%= Folorg.where(orgn_id: orgn.id).count %></font> personnne(s) suis(suivent) cette organisation.<br>
-                    <% end %>
-                    <!-- follow organisation form -->
-                    <% @newfolorg = Folorg.new(orgn_id: orgn.id, user_id: current_user.id) %>
-                    <%= simple_form_for(@newfolorg) do |f| %>
-                      <%= f.error_notification %>
-                      <%= f.input :user_id,:as => :hidden, :readonly => true %>
-                      <%= f.input :orgn_id,:as => :hidden, :readonly => true %>
-                      <div class="form-actions">
-                        <%= button_tag(type: 'submit', class: "left button secondary round") do %>
-                          <i class="icon fi-link"></i> suivre <%= orgn.oname %>
-                        <% end %>
-                      </div>
-                    <% end %>
-                    <!-- end form and modal-->
-                  </div>
-                <!-- end when organisation not followed by -->
-                <% else %>
-                <!-- when a organisation is already followed_by current_user -->
-                  <% @folorg = Folorg.where(user_id: current_user, orgn_id: orgn).first %>
-                  <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
-                    <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
-                      <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
-                        <sup><%= Folorg.where(orgn_id: orgn.id).count %> </sup>
-                      <% end %>
-                    </font>
-                  </a>
-
-                  <div id="delfol_<%= orgn.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                      <b>Vous suivez déjà <%= orgn.oname %></b><br>
-                      <%= link_to destroy_fo_path(@folorg.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre <%= orgn.oname %> ?</t><% end %>
-                  </div>
-                <!-- end when a organisation is already followed -->
-                <% end %>
-              <!-- when a organisation is owned by current_user -->
-              <% else %>
-              <br>
-              <%= link_to edit_orgn_path(orgn) do %><h6>
-                <font color="black"><i class="fi-page-edit"></i></font> Modifier l'organisation...<% end %></h6>
-              <!-- end when a organisation is owned by current_user -->
-              <% end %>
-            <!-- end view of the syteme to follow organisation -->
-            <% end %>
+            <!-- logic to follow an organisation in the partial beneath -->
+            <%= render partial: 'orgns/shared/main_logic', locals:{orgn: orgn} %>
           </b></h3>
 
           <% if orgn.odesc.size < 80 %>
@@ -96,7 +37,7 @@
    </div>
    <%end%>
    <hr style="border-color:white;">
-   <%end%>
+  <%end%>
    <br>
    <hr>
     <div class="apple_pagination">

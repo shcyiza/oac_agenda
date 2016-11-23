@@ -10,7 +10,6 @@ class Orgn < ActiveRecord::Base
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def organisation_likes
-    Folorgs.where(orgn_id: self.id)
+    self.folorgs
   end
-
 end

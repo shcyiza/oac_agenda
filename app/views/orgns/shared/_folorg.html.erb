@@ -1,4 +1,4 @@
-  <%= simple_form_for(@newfolorg) do |f| %>
+  <%= simple_form_for(followit(orgn)) do |f| %>
     <%= f.error_notification %>
 
     <%= f.input :user_id,:as => :hidden, :readonly => true %>
@@ -7,7 +7,7 @@
 
     <div class="form-actions">
       <%= button_tag(type: 'submit', class: "left button secondary round") do %>
-        <i class="icon fi-link"></i> suivre <%= @orgn.oname %>
+        <i class="icon fi-heart"></i> suivre <%= orgn.oname %>
     <% end %>
     </div>
   <% end %>

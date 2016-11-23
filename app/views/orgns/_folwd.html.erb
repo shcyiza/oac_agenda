@@ -1,7 +1,0 @@
-
-<a href="#" data-reveal-id="delfol_<%= @orgn.id %>" class="button alert round"title="Cliquez pour ne plus suivre l'événement">
-  <i class="fi-check"></i> vous suivez <%= @orgn.oname %>...</a>
-<div id="delfol_<%= @orgn.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-    <b>Vous suivez déjà <%= @orgn.oname %></b><br>
-    <%= link_to destroy_fo_path(@folorg.id) do %><t class="button alert"><i class="fi-trash"></i> ne plus suivre <%= @orgn.oname %> ?</t><% end %>
-</div>
