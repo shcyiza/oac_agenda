@@ -32,7 +32,7 @@
 
           <font color='grey' onmouseover="this.style.color='red';" onmouseout="this.style.color='grey';"  title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart"></i>
             <% if orgn.organisation_likes.count > 0 %>
-            <sup><%= orgn.organisation_likes.count.count %> </sup>
+            <sup><%= orgn.organisation_likes.count %> </sup>
             <% end %>
           </font>
 
@@ -54,7 +54,7 @@
 
         <a href="#" data-reveal-id="delfol_<%= orgn.id %>" title="Cliquez pour ne plus suivre l'organisation...">
           <font color="red"onmouseover="this.style.color='grey';" onmouseout="this.style.color='red'" title="Cliquez sur le coeur pour suivre l'organisation'"><i class="fi-heart" ></i>
-            <% if Folorg.where(orgn_id: orgn.id).count > 0 %>
+            <% if orgn.organisation_likes.count > 0 %>
               <sup><%= orgn.organisation_likes.count %> </sup>
             <% end %>
           </font>

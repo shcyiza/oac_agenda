@@ -1,5 +1,5 @@
 class Orgn < ActiveRecord::Base
-  # "Orgn" is an abbreviation of organisation, wich
+  # "Orgn" is an abbreviation of organisation, not really the rails way i understood
   belongs_to :user
   has_many :events
   has_many :foldates
@@ -12,4 +12,5 @@ class Orgn < ActiveRecord::Base
   def organisation_likes
     self.folorgs
   end
+
 end

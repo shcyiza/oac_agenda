@@ -14,7 +14,6 @@ class OrgnsController < ApplicationController
     @events = Event.where(orgn_id: params[:id]).order(esdate: :asc)
     @folorgs = Folorg.where(orgn_id: params[:id]).all
     if user_signed_in? && current_user.id != @orgn.user.id
-      @newfolorg = Folorg.new(orgn_id: params[:id], user_id: current_user.id)
       @folorg = @folorgs.where(user_id: current_user).first
     else
     end
