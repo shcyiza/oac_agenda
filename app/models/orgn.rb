@@ -13,4 +13,10 @@ class Orgn < ActiveRecord::Base
     self.folorgs
   end
 
+  def likes_counter
+    if self.organisation_likes.count > 0
+      self.organisation_likes.count
+    end
+  end
+
 end
