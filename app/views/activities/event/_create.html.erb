@@ -1,25 +1,34 @@
 <% if @events.exists?(id: activity.trackable_id)  %>
 
-  <div class="alert-box lists row">
-    <hr>
-    <%= render partial: 'activities/event/partials/plus', locals: {activity: activity} %>
-    <%= render partial: 'activities/event/partials/create_message', locals: {activity: activity} %>
 
-    <% if likes_that_day(activity.trackable) > 0 && event_on_event_day(current_user.events, activity.trackable) < 1 %>
-      <%= render partial: "activities/event/partials/cause_date_followed", locals: {activity: activity}%>
 
-    <% elsif current_user.folorgs.where("created_at <= ?", activity.trackable.created_at ).where(orgn_id: activity.trackable.orgn_id).count > 0 && event_on_event_day(current_user.events, activity.trackable) < 1 %>
-      <%= render partial: "activities/event/partials/cause_organisation_followed", locals: {activity: activity}%>
-
-    <% elsif event_on_event_day(current_user.events, activity.trackable) > 0 %>
-      <div class="small-5 columns left">
-        <br>
-        <% current_user.events.each do |event| %>
-          <% activity.trackable.days.each do |date| %>
-            <%= render partial: 'activities/followable_partials/event_that_day', locals: {date: date, event: event, activity: activity} %>
-          <% end %>
-        <% end %>
+    <% if likes_that_day(activity.trackable) > 0 && event_on_event_day(current_user.events, activity.trackable).size < 1 %>
+      <div class="alert-box lists row">
+        <hr>
+        <%= render partial: 'activities/event/partials/plus', locals: {activity: activity} %>
+        <%= render partial: 'activities/event/partials/create_message', locals: {activity: activity} %>
+        <%= render partial: "activities/event/partials/cause_date_followed", locals: {activity: activity}%>
       </div>
+    <% elsif current_user.folorgs.where("created_at <= ?", activity.trackable.created_at ).where(orgn_id: activity.trackable.orgn_id).count > 0 && event_on_event_day(current_user.events, activity.trackable).size < 1 %>
+      <div class="alert-box lists row">
+        <hr>
+        <%= render partial: 'activities/event/partials/plus', locals: {activity: activity} %>
+        <%= render partial: 'activities/event/partials/create_message', locals: {activity: activity} %>
+        <%= render partial: "activities/event/partials/cause_organisation_followed", locals: {activity: activity}%>
+      </div>
+    <% elsif event_on_event_day(current_user.events, activity.trackable).size > 0 %>
+      <div class="alert-box lists row">
+        <hr>
+        <%= render partial: 'activities/event/partials/plus', locals: {activity: activity} %>
+        <%= render partial: 'activities/event/partials/create_message', locals: {activity: activity} %>
+          <div class="small-5 columns left">
+            <br>
+            <% current_user.events.each do |event| %>
+              <% activity.trackable.days.each do |date| %>
+                <%= render partial: 'activities/followable_partials/event_that_day', locals: {date: date, event: event, activity: activity} %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
     <% end %>
-  </div>
 <% end %>

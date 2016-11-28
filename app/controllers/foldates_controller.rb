@@ -57,7 +57,6 @@ class FoldatesController < ApplicationController
   # DELETE /foldates/1.json
   def destroy
     @foldate.destroy
-    track_activity @foldate
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Vous ne suivez plus cette date.' }
       format.json { head :no_content }

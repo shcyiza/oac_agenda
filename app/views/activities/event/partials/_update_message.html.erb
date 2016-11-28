@@ -9,18 +9,18 @@
     <%= link_to activity.trackable.orgn.oname, activity.trackable.orgn %> a modifié la date de l'evenement <%= link_to activity.trackable.enom, activity.trackable %>
     <br>
     <% if activity.esdate != activity.previous_activity.esdate %>
-      Modification de la date commencement
+      Modification de la date de début
       du <%= link_to :controller => :agenda, :action => :index, start_date: activity.previous_activity.event_start_end_dates do %>
-            <%= activity.previous_activity.event_start_end_dates %><% end %>
+            <%= activity.previous_activity.esdate %><% end %>
       au <%= link_to :controller => :agenda, :action => :index, start_date: activity.event_start_end_dates do %>
-            <%= activity.event_start_end_dates %><% end %>
-    <% end %>
+            <%= activity.esdate %><% end %>
+    <% end %><br>
     <% if activity.eedate != activity.previous_activity.eedate %>
-      Modification de la date fin
+      Modification de la date de fin
       du <%= link_to :controller => :agenda, :action => :index, start_date: activity.previous_activity.event_start_end_dates do %>
-            <%= activity.previous_activity.event_start_end_dates %><% end %>
+            <%= activity.previous_activity.eedate %><% end %>
       au <%= link_to :controller => :agenda, :action => :index, start_date: activity.event_start_end_dates do %>
-            <%= activity.event_start_end_dates %><% end %>
+            <%= activity.eedate %><% end %>
     <% end %>
 
   </div>

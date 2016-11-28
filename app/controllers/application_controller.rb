@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :pro]) ## add the attributes you want to permit
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :pro, :last_click_at]) ## add the attributes you want to permit
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :pro]) ## add the attributes you want to permit
   end
 
@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   def store_current_location
     store_location_for(:user, request.url)
   end
+
 
   def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.

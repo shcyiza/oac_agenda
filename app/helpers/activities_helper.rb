@@ -12,7 +12,7 @@ module ActivitiesHelper
 
     def likes_that_day(tracked_event)
      likes_that_day = 0
-     current_user.foldates.where("created_at <= ?", tracked_event.updated_at ).each do |foldate|
+     current_user.foldates.where("created_at <= ?", tracked_event.updated_at || tracked_event.created_at  ).each do |foldate|
        if tracked_event.days.include?(foldate.datefolwd) == true
            likes_that_day  += 1
        end

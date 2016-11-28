@@ -24,9 +24,13 @@
 
   <ul class="right">
   <% if user_signed_in? %>
-        <li class="show-for-small-only"><a class="top-off-canvas-toggle" href="#"> navigation <font size='5'><i class="fi-thumbnails"></i></font></a></li>
+        <li class="show-for-small-only"><a class="top-off-canvas-toggle" href="#"> navigation <i class="fi-thumbnails"></i></a></li>
         <li class="show-for-medium-up"><a data-dropdown="dropmenu" aria-controls="dropmenu" aria-expanded="false"> navigation <font size='5'><i class="fi-thumbnails"></i></font></a></li>
-        <li><a href="/activities"> notifications <font size="5"><i class="fi-heart"></i></font></a></li>
+        <li><a href="/activities"> notifications<font size="4">
+          <i class="fi-heart"></i>
+          <sup><font><b><%= not_seen_compter %></b></font></sup>
+        </font>
+        </a></li>
         <li class="has-dropdown show-for-medium-up">
           <a data-dropdown="dropuser" aria-controls="dropuser" aria-expanded="false"> <%= current_user.username%> <font size="4"><i class="fi-torso"></i></font></a>
         </li>
@@ -50,7 +54,7 @@
     <li><%= link_to 'Changer mon compte', edit_user_registration_path %></li>
     <li><%= link_to 'Se déconnecter', destroy_user_session_path, :method=>'delete' %></li>
   </ul>
-  <div id="dropmenu" data-dropdown-content class="mega f-dropdown m-menu show-for-medium-up" aria-hidden="true" tabindex="-1">
+  <div id="dropmenu" data-dropdown-content class="mega f-dropdown content show-for-medium-up" aria-hidden="true" tabindex="-1">
     <%= render 'layouts/attop' %>
   </div>
   <% end %>
