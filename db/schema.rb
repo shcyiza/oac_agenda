@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20161128201502) do
     t.boolean  "pro"
     t.boolean  "is_admin"
     t.datetime "last_click_at"
-    t.datetime "last_seen_at",           default: '2016-11-28 20:23:36'
+    t.datetime "last_seen_at",           default: '2015-11-28 21:08:07'
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
