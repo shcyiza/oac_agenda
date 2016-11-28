@@ -4,21 +4,18 @@
 
     <% if likes_that_day(activity.trackable) > 0 && event_on_event_day(current_user.events, activity.trackable).size < 1 %>
       <div class="alert-box lists row">
-        <hr>
         <%= render partial: 'activities/event/partials/plus', locals: {activity: activity} %>
         <%= render partial: 'activities/event/partials/create_message', locals: {activity: activity} %>
         <%= render partial: "activities/event/partials/cause_date_followed", locals: {activity: activity}%>
       </div>
     <% elsif current_user.folorgs.where("created_at <= ?", activity.trackable.created_at ).where(orgn_id: activity.trackable.orgn_id).count > 0 && event_on_event_day(current_user.events, activity.trackable).size < 1 %>
       <div class="alert-box lists row">
-        <hr>
         <%= render partial: 'activities/event/partials/plus', locals: {activity: activity} %>
         <%= render partial: 'activities/event/partials/create_message', locals: {activity: activity} %>
         <%= render partial: "activities/event/partials/cause_organisation_followed", locals: {activity: activity}%>
       </div>
     <% elsif event_on_event_day(current_user.events, activity.trackable).size > 0 %>
       <div class="alert-box lists row">
-        <hr>
         <%= render partial: 'activities/event/partials/plus', locals: {activity: activity} %>
         <%= render partial: 'activities/event/partials/create_message', locals: {activity: activity} %>
           <div class="small-5 columns left">

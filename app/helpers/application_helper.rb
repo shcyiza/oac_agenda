@@ -93,7 +93,7 @@ module ApplicationHelper
 
     def default_values
       if current_user.last_click_at != nil
-        current_user.last_click_at
+        current_user.last_seen_at
       else
         current_user.created_at
       end

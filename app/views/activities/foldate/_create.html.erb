@@ -5,7 +5,6 @@
 
   <% if likes_at_event_days(current_user.events, activity.trackable) > 0 %>
     <div class="alert-box lists row">
-      <hr>
       <%= render partial: 'activities/foldate/partials/heart' %>
       <div class="large-6 columns left">
         <%= render partial: 'activities/foldate/partials/create_message', locals: {activity: activity} %>.
@@ -20,7 +19,6 @@
 
   <% elsif likes_same_day(current_user.foldates, activity.trackable) > 0 %>
     <div class="alert-box lists row">
-    <hr>
       <%= render partial: 'activities/foldate/partials/heart' %>
       <div class="large-6 columns left">
         <%= render partial: 'activities/foldate/partials/create_message', locals: {activity: activity} %> comme vous.
