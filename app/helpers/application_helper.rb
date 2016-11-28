@@ -91,10 +91,18 @@ module ApplicationHelper
       end
     end
 
+    def default_values
+      if current_user.last_click_at != nil
+        current_user.last_click_at
+      else
+        current_user.created_at
+      end
+    end
+
     def not_seen_activities
       not_seen_activity = []
       followed_activities.each do |activity|
-        if activity.created_at > current_user.last_click_at
+        if activity.created_at > default_values
           add_to_the_array(not_seen_activity, activity)
         end
       end

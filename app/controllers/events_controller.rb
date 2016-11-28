@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def index
     # still_relevent and month are define in the model
     @events = Event.still_relevent
-    @event_months = @events.group_by(&:month)
+    @event_months = @events.order(esdate: :asc).group_by(&:month)
     @page_by_mouths = @event_months.to_a.paginate(:page => params[:page], :per_page => 3)
   end
 
