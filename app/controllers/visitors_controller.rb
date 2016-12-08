@@ -11,6 +11,10 @@ class VisitorsController < ApplicationController
     end
   end
 
+  def mboka
+    @events = Event.still_relevent.order(esdate: :asc).take(7)
+  end
+
   def firstconnection
     if user_signed_in?
       @orgn = Orgn.new(user_id: current_user.id)

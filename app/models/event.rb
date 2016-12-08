@@ -76,6 +76,18 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.event_on_event_day(events_collection, tracked_event)
+     event_on_event = []
+     events_collection.each do |event|
+       tracked_event.days.each do |date|
+         if event.days.include?(date) == true && event.created_at <= tracked_event.created_at
+          event_on_event  << event
+           end
+         end
+       end
+      return event_on_event
+    end
+
   def self.find(*args)
     if args.first.to_s == "random"
       ids = connection.select_all("SELECT id FROM events")

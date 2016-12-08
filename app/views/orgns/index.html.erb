@@ -32,7 +32,7 @@
            <p class="service-description">
             <%= truncate_html(orgn.odesc, :length => 150, omission: (link_to '...', orgn)) %>
           </p>
-          <font color="grey"><font color="red"><%= orgn.events.where('esdate > ?', Time.now).count %></font> <i>événement planifié(s)</i></font>
+          <font color="grey"><font color="red"><%= orgn.events_counter %></font> <i>événement planifié(s)</i></font>
       </div>
    </div>
    <%end%>

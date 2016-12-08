@@ -23,4 +23,10 @@ class Activity < ActiveRecord::Base
     esdate and eedate
   end
 
+  def add_to_the_array(array)
+    if array.include?(self) == false
+      array << self
+    end
+  end
+
 end

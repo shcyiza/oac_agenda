@@ -1,52 +1,31 @@
-<%=link_to orgns_path do %><button class="button secondary small"><i class="fi-arrow-left"></i> Tous les organations</button><%end%>
-<div class="item-wrapper-event row">
-  <div class="left small-4  columns">
-    <font color="grey"><i class="fi-torso"></i> Responsable: <%= @orgn.user.username %></font>
-  </div>
-  <div class="left small-4  columns">
-    <font color="green"><strong><h1 class="text-center"><b><%= @orgn.oname %></b></h1></strong></font>
-  </div>
-  <div class="left small-4 columns text-center">
-    <%= render partial: 'orgns/shared/main_logic' %>
-  </div>
-</div>
 <div class="row">
-
-  <div class="item-wrapper-event large-6 columns">
-
-    <%= image_tag @orgn.avatar.url(:medium) %>
-    <div class="row">
-
-        <hr>
-        <font color="green"><h3 class="text-center">Contact:</h3></font> <hr>
-        <div class="large-6 large-left columns text-left">
-          <font size="6" color="#387956"><i class="fi-mail"></i></font> <font color="grey">e-mail:</font>
-          <br>
-          <a href="mailto:<%= @orgn.oemail %>" target="_top"><font size="4"><%= @orgn.oemail %></font></a>
-        </div>
-
-        <div class="large-6 large-left columns text-left">
-          <font size="6" color="#387956"><i class="fi-telephone"></i></font> <font color="grey">Téléphone:</font>
-          <br>
-          <a href="tel:<%= @orgn.onum %>"><font size="4"><%= @orgn.onum %></font></a>
-        </div>
+<div class="large-8 columns panel">
+  <ul class="orbit-content" data-orbit>
+    <li data-orbit-slide="headline-1">
+      <div>
+        <h2>Headline 1</h2>
+        <h3>Subheadline</h3>
       </div>
-
-    </div>
-
-  <br>
-  <div class="item-wrapper-event large-6 columns">
-    <%= simple_format(@orgn.odesc, :style =>"color:black;") %>
-    <br>
-  </div>
-
-  <br>
-
-<div>
-<% if @events.count > 0 %>
+    </li>
+    <li data-orbit-slide="headline-2">
+      <div>
+        <h2>Headline 2</h2>
+        <h3>Subheadline</h3>
+      </div>
+    </li>
+    <li data-orbit-slide="headline-3">
+      <div>
+        <h2>Headline 3</h2>
+        <h3>Subheadline</h3>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="large-4 columns panel">
+test
+</div>
+</div>
 <hr>
-<h3 class="impress"><strong>Evenement organisé par cette organisation</strong></h3>
-
 <% @events.each do | event| %>
   <div class="alert-box lists">
     <% if user_signed_in? && current_user.id == event.orgn.user.id %>
@@ -91,8 +70,4 @@
       </div>
 
   <%end%>
-<% end %>
 </div>
-</div>
-<br>
-<hr>

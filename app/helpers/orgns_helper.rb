@@ -5,8 +5,8 @@ module OrgnsHelper
   end
 
 
-    def followit(org)
-      Folorg.new(orgn_id: org.id, user_id: current_user.id)
-    end
+  def followit(org)
+    Folorg.new(orgn_id: org.id, user_id: current_user.id)
+  end
 
 end

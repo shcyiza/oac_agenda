@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/proagenda', to: 'agenda#index'
   get '/3etapes', to: 'visitors#firstconnection'
+  get '/mboka', to: 'visitors#mboka'
   get '/event/index_pro', to: 'events#index_pro'
   get '/orgn/index_pro', to: 'orgns#index_pro'
   get 'foldates/:id/destroy_fd' => 'foldates#destroy', as: :destroy_fd

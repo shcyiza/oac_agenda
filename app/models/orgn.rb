@@ -19,4 +19,12 @@ class Orgn < ActiveRecord::Base
     end
   end
 
+  def events_counter
+    self.events.still_relevent.count
+  end
+
+  def self.sort_by_events
+    all.sort {|a,b| b.events_counter <=> a.events_counter}
+  end
+
 end
