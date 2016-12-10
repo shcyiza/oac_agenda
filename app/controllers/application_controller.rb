@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     elsif trackable == @foldate
       current_user.activities.create! action: action, trackable: trackable, datefolwd: trackable.datefolwd
     elsif trackable == @orgn
-      current_user.activities.create! action: action, trackable: trackable, trackable_name: oname
+      current_user.activities.create! action: action, trackable: trackable, trackable_name: trackable.oname
     end
   end
 
