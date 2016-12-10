@@ -2,7 +2,6 @@ class Orgn < ActiveRecord::Base
   # "Orgn" is an abbreviation of organisation, not really the rails way i understood
   belongs_to :user
   has_many :events
-  has_many :foldates
   has_many :folorgs
   has_many :users, through: :folorgs
 
