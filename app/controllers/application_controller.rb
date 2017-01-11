@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def track_activity(trackable, action = params[:action])
     if trackable == @event
-      current_user.activities.create! action: action, trackable: trackable, trackable_name: enom, esdate: trackable.esdate, eedate: trackable.eedate
+      current_user.activities.create! action: action, trackable: trackable, trackable_name: trackable.enom, esdate: trackable.esdate, eedate: trackable.eedate
     elsif trackable == @foldate
       current_user.activities.create! action: action, trackable: trackable, datefolwd: trackable.datefolwd
     elsif trackable == @orgn
