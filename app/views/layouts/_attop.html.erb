@@ -7,19 +7,27 @@
       </label>
   </ul>
   <br>
-  <div class="row ">
-  <div class="large-6 columns">
-    <i class="fi-calendar style3bis"></i><br>
-      <ul>
-        <li><%=link_to events_path do %>tous les événements<%end%></li>
-        <li><a href="/folevents">événements que je suis <i class="fi-heart"></i></a></li>
-      </ul>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="large-4 columns panels">
+        <p><i class="fi-calendar center style3"></i></p>
+        <b><font size='5' color='grey'>Un Agenda</font></b><br>
+        <li><%=link_to proagenda_path do %><i class="fi-calendar"></i> Le calendrier pro<% end %></li>
+        <li><%=link_to events_path do %><i class="fi-calendar"></i> Tous les événements<% end %></li>
+        <li><%=link_to event_index_pro_path do %><i class="fi-calendar"></i> Mes événements<% end %></li>
+      </div>
+      <div class="large-4 columns panels">
+        <p><i class="fi-heart style2"></i></p>
+        <b><font size='5' color='grey'>Mes intêrets </font></b><br>
+        <li><%=link_to activities_path do %><i class="fi-heart"></i> Les activités suivies<%end%></li>
+        <li><a href="/folorgs"><i class="fi-torsos"></i> Organisation que je suis</a></li>
+        <li><a href="/folevents"><i class="fi-calendar"></i> Evénements que je suis</a></li>
+      </div>
+      <div class="large-4 columns panels">
+        <p><i class="fi-torsos-all style1"></i></p>
+        <b><font size='5' color='grey'> Un réseau </font></b><br>
+        <li><%=link_to orgns_path do %><i class="fi-torsos"></i> Toutes les organisations<%end%></li>
+        <li><%=link_to orgn_index_pro_path do %><i class="fi-torsos"></i> Mes organisations<%end%></li>
+      </div>
+    </div>
   </div>
-  <div class="large-6 columns ">
-    <i class="fi-torsos-all style1bis"></i><br>
-    <ul>
-      <li><%=link_to orgns_path do %>tous les organisations <%end%></li>
-      <li ><a href="/folorgs">organisation que je suis <i class="fi-heart"></i></a></li>
-    </ul>
-  </div>
-</div>

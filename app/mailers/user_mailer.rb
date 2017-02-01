@@ -5,4 +5,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: "Bienvenue sur le ka'agenda, veuillez confirmez votre email"
   end
+
+  def lancement(user)
+    @user = user
+    mail to: @user.email, subject: "Bienvenue sur le ka'agenda, veuillez confirmez votre email"
+  end
 end
