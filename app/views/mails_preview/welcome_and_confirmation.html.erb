@@ -1,0 +1,63 @@
+<html>
+  <body class="mailbg">
+    <br>
+    <div class="row">
+      <div class="large-5 large-centered small-12 columns mail_brand">
+        <div class="text-center">
+          <%= image_tag 'logo_small.png', class:'centered', size:"45x45" %>
+          <hr style="border-color:rgba(72, 143, 177, 0);">
+          <font color="white" size="6" align="center"><strong>Ka<font color="red">'</font></strong>agenda</font>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-5 large-centered small-12  columns mail_body">
+
+                <h3 class="text-center"><b><font color='#339966'>Bienvenue chez vous</font></b><br></h3>
+                Cher organisateur <%= @user.username %>, <br>
+                <p>
+                Merci de vous être inscrit sur le Ka’agenda, la plateforme qui participe à l’organisation des événements au sein de notre communauté.
+                Désormais, vous pourrez annoncer vos événements, et être informés sur les événements organisés dans la même période.
+                Suivez les événements, les organisateurs ou les jours qui vous intèressent et tenez-vous au courant grâce aux notifications <i class="fi-heart"></i>.
+              </p>
+                <h4 class="text-center">
+                  <b>
+                    <font color='#339966'>!!! Veuillez confirmer votre compte !!!</font><br>
+                  </b>
+                </h4>
+                <p>
+                  Pour vous offrir les meilleurs informations possible et pour des raisons de sécurité nous vous demandons de confirmer votre adresse email avec le lien ci-dessous:
+                </p>
+                <%= link_to confirmation_url(@user, confirmation_token: @user.confirmation_token) do %>
+                  <h5 class="text-center"><b>
+                    <font color='red'><i class="fi-alert"></i></font>
+                    <font color='#339966'><u>confirmer votre compte</u></font>
+                    <font color='red'><i class="fi-alert"></i></font>
+                  </b></h5>
+                <% end %>
+
+      </div>
+      <div class="large-5 large-centered small-12 columns mail_footer">
+        <i>
+          Cordialement,<br>
+          l'OACA asbl.
+        </i>
+
+        <h3 class="text-center">"<b>Don't agonize.</h1>
+        <h3 class="text-center"><font class=""><u>Or</u>g<u>anize</u></font>!</b>" <br><font size="4">-<i>Kwamé Ture</i>-</font></h1>
+        <div class="row">
+          <div class="small-4 columns">
+            <%= image_tag 'oaca.png' %>
+          </div>
+          <div class="small-4 columns">
+            <a href="https://www.facebook.com/AfroConsommActeurs/?fref=ts" target="_blank" style="font-size:80px;"><i class="fi-social-facebook"></i></a>
+          </div>
+          <div class="small-4 columns">
+            <a href="https://twitter.com/OacaAsbl" target="_blank" style="font-size:80px;"><i class="fi-social-twitter"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+</html>

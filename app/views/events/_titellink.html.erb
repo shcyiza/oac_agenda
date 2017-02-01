@@ -1,8 +1,4 @@
 
 <p><h4><b>
-<% if current_user.folevents.where(:event_id => event.id).count > 0 %>
-  <%= render partial: 'events/folwd', locals: {event: event} %>
-<% else %>
-  <%= render partial: 'events/notfolwd', locals: {event: event} %>
-<% end %>
+<%= title_section event %>
 </p></h4></b>

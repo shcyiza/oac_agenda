@@ -1,5 +1,5 @@
 <div class = "small-5 columns left">
   Vous suivez l'organisation <%= link_to activity.trackable.orgn do %>
-    <%= @orgns.find(activity.trackable.orgn_id).oname %>
+    <%= activity.trackable.orgn.oname %>
   <% end %>
 </div>

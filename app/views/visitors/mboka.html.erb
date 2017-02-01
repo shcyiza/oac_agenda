@@ -1,73 +1,161 @@
+
+<br>
+<h6 class="text-center"><strong>bienvenue sur le</strong></h6>
 <div class="row">
-<div class="large-8 columns panel">
-  <ul class="orbit-content" data-orbit>
-    <li data-orbit-slide="headline-1">
-      <div>
-        <h2>Headline 1</h2>
-        <h3>Subheadline</h3>
+  <div class="small-5 columns">
+    <%= image_tag 'logo.png', class:'right', size:"80x80" %>
+  </div>
+  <div class="small-7 columns">
+    <h1 class="headline text-left"><b>Ka<font color="red">'</font><font color="#5e5e5e">agenda</font></b></h1>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="large-4 columns panels">
+        <p><i class="fi-calendar center style3"></i></p>
+        <b><font size='5' color='grey'>Un Agenda</font></b><br>
+        <%=link_to proagenda_path do %><i class="fi-calendar"></i> Le calendrier pro<% end %><br>
+        <%=link_to events_path do %><i class="fi-calendar"></i> Tous les événements<% end %><br>
+        <%=link_to event_index_pro_path do %><i class="fi-calendar"></i> Mes événements<% end %><br>
       </div>
-    </li>
-    <li data-orbit-slide="headline-2">
-      <div>
-        <h2>Headline 2</h2>
-        <h3>Subheadline</h3>
+      <div class="large-4 columns panels">
+        <p><i class="fi-heart style2"></i></p>
+        <b><font size='5' color='grey'>Mes intêrets </font></b><br>
+        <%=link_to activities_path do %><i class="fi-heart"></i> Les activités suivies<%end%><br>
+        <a href="/folorgs"><i class="fi-torsos"></i> Organisation que je suis</a><br>
+        <a href="/folevents"><i class="fi-calendar"></i> Evénements que je suis</a>
       </div>
-    </li>
-    <li data-orbit-slide="headline-3">
-      <div>
-        <h2>Headline 3</h2>
-        <h3>Subheadline</h3>
+      <div class="large-4 columns panels">
+        <p><i class="fi-torsos-all style1"></i></p>
+        <b><font size='5' color='grey'> Un réseau </font></b><br>
+        <%=link_to orgns_path do %><i class="fi-torsos"></i> Toutes les organisations<%end%><br>
+        <%=link_to orgn_index_pro_path do %><i class="fi-torsos"></i> Mes organisations<%end%><br>
       </div>
-    </li>
-  </ul>
-</div>
-<div class="large-4 columns panel">
-test
-</div>
+    </div>
+  </div>
+<br>
+<hr>
+<h2 class="impress text-center"><strong>Quoi de neuf?</strong></h2>
+<div class="row">
+  <div class="large-12 columns panel">
+    <ul class="orbit-content minimum" data-orbit>
+      <% @activities.each do |activity| %>
+        <% if activity.still_relevent? %>
+        <li data-orbit-slide="headline-<%= activity.id %>">
+          <div>
+            <%= render partial: "activities/#{activity.trackable_type.underscore}/#{activity.action}", locals: {activity: activity} %>
+          </div>
+        </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
 <hr>
-<% @events.each do | event| %>
-  <div class="alert-box lists">
-    <% if user_signed_in? && current_user.id == event.orgn.user.id %>
-        <font size="6" color="green"><b><%= truncate_html(event.enom, :length => 30) %></b></font> <a href="/events/<%= event.id %>/edit" class="button secondary"><i class="fi-page-edit"></i> modifier l'evenement...</a>
-      <% elsif user_signed_in? %>
-      <% @del_event = current_user.folevents.where(event_id: event.id).first %>
-      <% @folevent = Folevent.new(event_id: event.id, user_id: current_user.id) %>
+<h2 class="impress text-center"><strong>Les prochains événements</strong></h2>
+<% @comming_events.each_slice(4) do |slice| %>
+    <% slice.each do |event| %>
+    <div class="large-3 large-centered columns left" >
+      <div class="item-wrapper" data-equalizer-watch>
+        <% if user_signed_in? %>
+        <% @del_event = current_user.folevents.where(event_id: event.id).first %>
+        <% @folevent = Folevent.new(event_id: event.id, user_id: current_user.id) %>
+          <% unless current_user.id == event.orgn.user.id %>
+            <div class="img-wrapper">
+            <a class="button expand add-to-cart" href="/events/<%= event.id %>">details de l'event...</a>
+            <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
+            </div>
+            <hr>
+          <% else %>
+            <div class="img-wrapper">
+            <a class="button expand add-to-cart" href="/events/<%= event.id %>/edit" d1ata-reveal-id="event_<%= event.id%>"><i class="fi-page-edit"></i> modifier l'evenement...</a>
+            <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
+            </div>
+            <hr>
+          <% end %>
           <%= render partial: "events/titellink", locals: {event: event} %>
-      <% elsif  %>
-        <%= render partial: "events/notsignedin", locals: {event: event} %>
-      <% end %>
-
-      <div class="row">
-        <div class="large-2 columns">
-          <i class="fi-torsos"></i>: <%= link_to event.orgn.oname, orgn_path(event.orgn) %><br>
+        <% else %>
+        <% @folevent = Folevent.new %>
+          <div class="img-wrapper">
+          <a class="button expand add-to-cart" href="/events/<%= event.id %>">details de l'event...</a>
           <a href="/events/<%= event.id%>"><%= image_tag event.flyer.url(:medium)%></a>
-        </div>
+          </div>
+          <%= render partial: "events/notsignedin", locals: {event: event} %>
+        <% end %>
+
+      <h8><font color="grey">
+      <div class="row">
         <div class="large-2 columns left">
-          <b>commence le:</b>
+          <i class="fi-calendar"></i> Du:
+        </div>
+
+        <div class="large-4 columns left">
           <font color="red"><%= event.esdate.to_date %></font>
           <br>
           à <i><%= event.esdate.strftime("%H:%M")%></i>
-          <% if event.eedate != nil %>
-            <br><b>fini le:</b>
-            <br><font color="red"><%= event.eedate.to_date %></font>
+        </div>
+        <% if event.eedate != nil %>
+          <div class="large-1 columns left">
+            fini le:
+          </div>
+
+          <div class="large-4 columns left">
+            <font color="red"><%= event.eedate.to_date %></font>
             <br>à <i><%= event.eedate.strftime("%H:%M") %></i>
-          <% end %>
-          <br><strong><%= event.ville %></strong> ,<%= event.pays %>
-
-        </div>
-        <div class="large-2 columns">
-          <b>Thèmes:</b><br>
-          <% event.event_tags.each do |word| %>
-            <%= link_to word, "/event/hashtag/#{word.downcase.delete('#')}" %>
-          <% end %>...
-        </div>
-        <div class="large-6 columns">
-          <b>déscription:</b><br>
-          <%= truncate_html(render_hashtags(event.edesc), :length => 450, omission: (link_to '...', event)) %>
-        </div>
+          </div>
+        <% end %>
       </div>
-      </div>
-
+      <i class="fi-torsos-all"></i> <%= link_to event.orgn.oname, event.orgn %>
+    </font></h8>
+      <hr>
+      Thèmes:<br>
+      <% event.event_tags.each do |word| %>
+        <%= link_to word, "/event/hashtag/#{word.downcase.delete('#')}" %>
+      <% end %>...
+    </div>
+  </div>
   <%end%>
+  <hr style="border-color:white;">
+<%end%>
+<hr>
+<br>
+<h2 class="impress text-center"><strong>Les organisations les plus actives</strong></h2>
+<div class="row">
+<% @orgns.each do |orgn| %>
+  <div class="large-3 columns left">
+    <div class="service">
+         <div class="service-icon-box">
+           <div class="small-11 columns left">
+           <%= link_to (image_tag orgn.avatar.url(:medium)), orgn %>
+         </div>
+         </div>
+         <h3 class="service-heading"><b>
+           <%= link_to orgn.oname, orgn %>
+           <!-- logic to follow an organisation in the partial beneath -->
+           <%= render partial: 'orgns/shared/main_logic', locals:{orgn: orgn} %>
+         </b></h3>
+
+         <% if orgn.odesc.size < 80 %>
+          <br><hr style="border-color:white;">
+         <% end %>
+          <p class="service-description">
+           <%= truncate_html(orgn.odesc, :length => 150, omission: (link_to '...', orgn)) %>
+         </p>
+         <font color="grey"><font color="red"><%= orgn.events_counter %></font> <i>événement planifié(s)</i></font>
+     </div>
+  </div>
+<%end%>
+ <br>
+ </div>
+<br>
 </div>
+<script>
+$(document).foundation({
+  orbit: {
+      timer_speed: 6000,
+      slide_number: true,
+      pause_on_hover: true,
+      navigation_arrows: true,
+      resume_on_mouseout: true
+  }
+});
+</script>

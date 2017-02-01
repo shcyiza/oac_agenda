@@ -16,6 +16,18 @@ class Event < ActiveRecord::Base
   has_attached_file :flyer, styles: { medium: "300x270#", thumb: "100x90#" }, default_url: "/images/normal/missing_flyer.png"
   validates_attachment_content_type :flyer, content_type: /\Aimage\/.*\Z/
 
+  searchable do
+    text :edesc, :ville, :enom, :days
+    text :orgn do
+      orgn.oname
+    end
+    text :tags do
+      tags.each do |tag|
+        tag.name
+      end
+    end
+  end
+
 # instance method to gather all the dates composing an event
     def days
       r = (self.esdate.to_date..self.eedate.to_date).to_a
@@ -82,11 +94,11 @@ class Event < ActiveRecord::Base
        tracked_event.days.each do |date|
          if event.days.include?(date) == true && event.created_at <= tracked_event.created_at
           event_on_event  << event
-           end
          end
        end
-      return event_on_event
-    end
+     end
+    return event_on_event
+  end
 
   def self.find(*args)
     if args.first.to_s == "random"

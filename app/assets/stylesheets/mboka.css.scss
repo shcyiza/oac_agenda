@@ -1,0 +1,47 @@
+.orbit-container .orbit-prev, .orbit-container .orbit-next {
+  position: absolute;
+  top: 95%;
+  width: 23px;
+  height: 25px;
+  line-height: 50px;
+  color: green;
+  background-color: #80b192;
+  text-indent: -9999px !important;
+  z-index: 10;
+}
+
+.orbit-prev,
+.orbit-next {
+    visibility: hidden;
+}
+.orbit-container:hover > .orbit-prev,
+.orbit-container:hover > .orbit-next {
+    visibility: visible;
+}
+
+.orbit-container .orbit-slide-number {
+    left: 47%;
+    background: transparent;
+    color: #0d4606;
+    font-size: 12px;
+    position: absolute;
+    top: 90%;
+}
+
+.orbit-bullets {
+    display: block;
+    float: none;
+    margin: 0 auto 30px auto;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    top: -10px;
+}
+
+.minimum{
+  min-height: 250px
+}
+
+.minimum2{
+  min-height: 342px
+}

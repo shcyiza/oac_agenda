@@ -54,7 +54,7 @@
       <% elsif user_signed_in? %>
       <% @del_event = current_user.folevents.where(event_id: event.id).first %>
       <% @folevent = Folevent.new(event_id: event.id, user_id: current_user.id) %>
-          <%= render partial: "events/titellink", locals: {event: event} %>
+        <%= render partial: "events/titellink", locals: {event: event} %>
       <% elsif  %>
         <%= render partial: "events/notsignedin", locals: {event: event} %>
       <% end %>

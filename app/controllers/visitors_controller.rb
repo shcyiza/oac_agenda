@@ -7,12 +7,17 @@ class VisitorsController < ApplicationController
       elsif current_user.sign_in_count <= 1 && (Time.now - 20..Time.now).cover?(current_user.updated_at) && current_user.orgns.count < 1
         redirect_to '/3etapes'
       else
+        redirect_to mboka_path
       end
     end
   end
 
   def mboka
-    @events = Event.still_relevent.order(esdate: :asc).take(7)
+    @events = Event.still_relevent
+    @comming_events = Event.still_relevent.order(esdate: :asc).take(8)
+    @orgns = Orgn.sort_by_events.take(4)
+    @folorgs = Folorg.all
+    @activities = Activity.whatsnew_activities
   end
 
   def firstconnection

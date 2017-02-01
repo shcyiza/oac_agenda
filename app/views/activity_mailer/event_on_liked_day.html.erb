@@ -1,0 +1,14 @@
+
+<h3 class="text-center"><b><font color='#339966'>Il y'a un événement qui tombe le même au jour que vous suivez.</font></b><br></h3>
+Cher organisateur <%= @user.username %>, <br>
+<p>
+  <br><br>
+  L'equipe du Ka'agenda tient à vous prévenir qu'un (ou plusieurs) événements est prévu pour la date que vous <strong><%= @foldate.datefolwd %></strong> avez choisie.<br>
+  Il s'agit de l'événement <%= link_to @event.enom, event_path(@event) %> qui commence le <strong><%= @event.esdate %></strong> jusqu'au <strong><%= @event.eedate %></strong> <br>
+  Organisé par <%= mail_to @event.orgn.user.email, @event.orgn.user.username %> <br>
+  <hr>
+  Pour rappel, le Ka'agenda est une plate-forme qui a pour mission d'aider à une meilleure organisation afin d'éviter que plusieurs événements se déroulent aux même crenaux horaires.
+  <br>
+  Pour maximiser le succès de votre événement, nous vous conseillons de voir dans quelle mesure vous pourrez éventuellement contacter l'organisateur en question pour discuter à ce propos pour tenter de trouver une solution.
+  <br>
+</p>

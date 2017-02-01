@@ -17,6 +17,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_event_created_mail(event)
+    @event_on_event_day = Event.event_on_event_day(Event.still_relevent, event)
+    @liked_on_event_day = Foldate.on_event_days(event)
+    if @event_on_event_day.size > 0
+      @event_on_event_day.each do |that_event|
+        unless that_event.user_id == event.user_id
+          ActivityMailer.event_on_same_day(event, that_event).deliver_later
+        end
+      end
+    end
+    if @liked_on_event_day.size > 0
+      @liked_on_event_day.each do |like|
+        unless like.user_id == event.user_id
+          ActivityMailer.event_on_liked_day(event, like).deliver_later
+        end
+      end
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :pro, :last_click_at]) ## add the attributes you want to permit
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :pro]) ## add the attributes you want to permit

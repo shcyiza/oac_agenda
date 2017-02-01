@@ -29,4 +29,24 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  def self.whatsnew_activities
+    Activity.where("trackable_type = ? OR trackable_type = ? ", "Orgn", "Event").order(created_at: :desc).take(6)
+  end
+
+  def still_relevent?
+    if self.trackable_type == "Orgn"
+      if Orgn.exists?(id: self.trackable_id)
+        return true
+      else
+        return false
+      end
+    elsif self.trackable_type == "Event"
+      if Event.still_relevent.exists?(id: self.trackable_id)
+        return true
+      else
+        return false
+      end
+    end
+  end
+
 end

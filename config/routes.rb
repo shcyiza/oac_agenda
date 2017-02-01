@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :activities
   resources :resas
@@ -24,5 +25,6 @@ Rails.application.routes.draw do
   get 'folevents/:id/destroy_fe' => 'folevents#destroy', as: :destroy_fe
   get 'folorgs/:id/destroy_fo' => 'folorgs#destroy', as: :destroy_fo
   get 'event/hashtag/:name', to: 'events#hashtags'
+  get 'prevmail/1' , to: 'mails_preview#welcome_and_confirmation'
 
 end

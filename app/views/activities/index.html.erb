@@ -22,7 +22,7 @@
 <br>
 <h5 class="text-center"><p>Déjà vue(s)</p></h5>
 <hr>
-<% @activities.each do |activity| %>
+  <% @activities.each do |activity| %>
     <%= render "activities/#{activity.trackable_type.underscore}/#{activity.action}", activity: activity %>
   <% end %>
 <% end %>

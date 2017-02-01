@@ -87,6 +87,7 @@ class EventsController < ApplicationController
           track_activity @event
           format.html { redirect_to :back, notice: 'Event was successfully created.' }
           format.json { render :show, status: :created, location: @event }
+          after_event_created_mail @event
         else
           format.html { render :new }
           format.json { render json: @event.errors, status: :unprocessable_entity }

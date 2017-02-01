@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
   has_many :folevents
   has_many :foldates
   has_many :activities
+  has_many :messages
 
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
    def followed_activities
@@ -54,4 +55,16 @@ class User < ActiveRecord::Base
      end
    end
 
+   def is_admin?
+     if self.is_admin
+       return true
+     else
+       return false
+     end
+   end
+
+   after_create :send_admin_mail
+   def send_admin_mail
+     UserMailer.welcome_and_confirmation(self).deliver_later
+   end
 end

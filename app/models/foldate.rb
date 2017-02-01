@@ -1,12 +1,25 @@
 class Foldate < ActiveRecord::Base
   # Model made enable the user to follow an specific day in the calendar and having the feeds of all activities of happening in it
   belongs_to :user
-
   validates :user_id, presence: true, uniqueness: { scope: :datefolwd, if: :new_record?, message: "Vous suivez déjà cette date"}
   validates :datefolwd, presence: true, date: { after: Date.today - 1.day, message: "Doit être après aujourd'hui" }
 
   def month
     self.datefolwd.strftime('%m%Y')
+  end
+
+  def self.still_relevent
+    Foldate.where('datefolwd >= ?', Date.today)
+  end
+
+  def self.on_event_days(event)
+    likes_at_event_days = []
+    Foldate.still_relevent.each do |like|
+      if event.days.include?(like.datefolwd) == true
+        likes_at_event_days  << like
+      end
+    end
+    likes_at_event_days
   end
 
   def self.likes_at_event_days(selected_events, tracked_likes)

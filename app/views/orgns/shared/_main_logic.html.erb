@@ -25,7 +25,7 @@
     <% end %>
   <% end %>
 
-<% elsif params[:action] == "index" %>
+<% else %>
 
   <% if user_signed_in? %>
     <% unless current_user.id == orgn.user.id %>

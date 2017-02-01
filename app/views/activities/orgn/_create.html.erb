@@ -1,6 +1,6 @@
 
     <div class="alert-box lists row">
-      <%= render partial: 'activities/orgn/partials/torsos' %>
+      <%= render partial: 'activities/orgn/partials/torsos', locals: {activity: activity} %>
       <div class="large-6 columns left">
         <%= render partial: 'activities/orgn/partials/create_message', locals: {activity: activity} %> comme vous.
       </div>
