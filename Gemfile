@@ -39,8 +39,6 @@ gem 'sidekiq'
 gem 'action_mailer_auto_url_options'
 gem 'sync'
 gem 'faye'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
 group :development, :test do
   gem "letter_opener"
   gem 'capybara-email'
