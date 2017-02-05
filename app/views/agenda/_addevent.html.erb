@@ -11,7 +11,8 @@
     <%= collection_select(:event, :orgn_id, current_user.orgns, :id, :oname) %></div>
     <br>
     <div class="large-12 columns">
-    <%= f.input :edesc, :label => "Déscription l'événement", input_html: {:style =>"color:#473f3f; min-height: 80px;"} %>
+    <%= f.input :edesc, :label => "Déscription l'événement", input_html: {:style =>"color:#473f3f; min-height: 80px;"}, placeholder: "Utilisez des hashtags pour les #Themes de votre événement vous pouvez en utilisez #Plusieur comme sur twitter..." %>
+    <br>
     <br>
     <font color="#4d4d4d">Ajouter le flyer de l'événement</font>
     <div class="small-2 columns center" style="padding: 10px;">
