@@ -1,4 +1,5 @@
 class VisitorsController < ApplicationController
+before_action :authenticate_user!, only: [:mboka]
 
   def index
     if user_signed_in?

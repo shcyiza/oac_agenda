@@ -63,6 +63,14 @@ class User < ActiveRecord::Base
      end
    end
 
+   def is_pro?
+     if self.pro
+       return true
+     else
+       return false
+     end
+   end
+
    after_create :send_admin_mail
    def send_admin_mail
      UserMailer.welcome_and_confirmation(self).deliver_later

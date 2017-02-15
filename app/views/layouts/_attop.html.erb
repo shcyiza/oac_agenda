@@ -12,9 +12,12 @@
       <div class="large-4 columns panels">
         <p><i class="fi-calendar center style3"></i></p>
         <b><font size='5' color='grey'>Un Agenda</font></b><br>
-        <li><%=link_to proagenda_path do %><i class="fi-calendar"></i> Le calendrier pro<% end %></li>
+        <% if current_user.is_pro? %>
+          <li><%=link_to proagenda_path do %><i class="fi-calendar"></i> Le calendrier pro<% end %></li>
+          <li><%=link_to event_index_pro_path do %><i class="fi-calendar"></i> Mes événements<% end %></li>
+        <% end %>
         <li><%=link_to events_path do %><i class="fi-calendar"></i> Tous les événements<% end %></li>
-        <li><%=link_to event_index_pro_path do %><i class="fi-calendar"></i> Mes événements<% end %></li>
+
       </div>
       <div class="large-4 columns panels">
         <p><i class="fi-heart style2"></i></p>
@@ -27,7 +30,9 @@
         <p><i class="fi-torsos-all style1"></i></p>
         <b><font size='5' color='grey'> Un réseau </font></b><br>
         <li><%=link_to orgns_path do %><i class="fi-torsos"></i> Toutes les organisations<%end%></li>
-        <li><%=link_to orgn_index_pro_path do %><i class="fi-torsos"></i> Mes organisations<%end%></li>
+        <% if current_user.is_pro? %>
+          <li><%=link_to orgn_index_pro_path do %><i class="fi-torsos"></i> Mes organisations<%end%></li>
+        <% end %>
       </div>
     </div>
   </div>
