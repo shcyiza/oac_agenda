@@ -18,7 +18,7 @@
       <div class="large-4 columns panels">
         <p><i class="fi-calendar center style3"></i></p>
         <b><font size='5' color='white'>L'Agenda</font></b><br>
-        <% if current_user.is_pro? %>
+        <% if cucurrent_user && current_user.is_pro? %>
           <%=link_to proagenda_path do %><span style="background-color: white"><i class="fi-calendar"></i> Le calendrier pro</span><% end %><br>
           <%=link_to event_index_pro_path do %><span style="background-color: white"><i class="fi-calendar"></i> Mes événements</span><% end %><br>
         <% end %>
@@ -35,7 +35,7 @@
         <p><i class="fi-torsos-all style1"></i></p>
         <b><font size='5' color='white'> Le réseau </font></b><br>
         <%=link_to orgns_path do %><span style="background-color: white"><i class="fi-torsos"></i> Toutes les organisations<%end%></span><br>
-        <% if current_user.is_pro? %>
+        <% if current_user && current_user.is_pro? %>
           <%=link_to orgn_index_pro_path do %><span style="background-color: white"><i class="fi-torsos"></i> Mes organisations<%end%></span><br>
         <% end %>
       </div>
