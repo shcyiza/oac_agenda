@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   has_many :resa
   has_many :activities, as: :trackable
   has_and_belongs_to_many :tags
+  acts_as_paranoid column: :deleted_at
   extend TimeSplitter::Accessors
     split_accessor :esdate, :eedate
 

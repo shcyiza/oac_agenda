@@ -1,0 +1,17 @@
+
+  <div id="destroywarning_<%= event.id %>" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h4 class="text-center style3bis"><i class="fi-alert"></i></h4>
+    <h3 class="text-center">Êtes-vous sûr de vouloir supprimer l'événement <font color="green" ><strong><%= event.enom %></strong></font> planifé le <font color="green" ><strong><%= event.esdate %></strong></font>?</h3>
+    <br>
+    <div class="row">
+      <div class="large-6 columns">
+          <%= link_to destroy_path(event) do %>
+            <button class="button alert"><b></i> Supprimez-le! </b> <i class="fi-trash"></i></button>
+          <% end %>
+      </div>
+      <div class="large-6 columns">
+            <button class="close-reveal-modal button secondary"></i> On va éviter</button>
+      </div>
+    </div>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>

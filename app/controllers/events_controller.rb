@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     if current_user.orgns.count > 0
 
         if current_user.events.count > 0
-          @events = current_user.events.order(esdate: :asc).paginate(:page => params[:page], :per_page => 10)
+          @events = current_user.events.order(esdate: :desc).paginate(:page => params[:page], :per_page => 10)
           @events_paged = @events.to_a.paginate(:page => params[:page], :per_page => 20)
         else
         # if he doesn't have any events lead him to the event create page
@@ -120,7 +120,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

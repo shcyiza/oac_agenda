@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123115652) do
+ActiveRecord::Schema.define(version: 20170227180944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,10 @@ ActiveRecord::Schema.define(version: 20170123115652) do
     t.string   "flyer_content_type"
     t.integer  "flyer_file_size"
     t.datetime "flyer_updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "events", ["deleted_at"], name: "index_events_on_deleted_at", using: :btree
 
   create_table "events_tags", id: false, force: :cascade do |t|
     t.integer "event_id"
@@ -115,7 +118,10 @@ ActiveRecord::Schema.define(version: 20170123115652) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "orgns", ["deleted_at"], name: "index_orgns_on_deleted_at", using: :btree
 
   create_table "resas", force: :cascade do |t|
     t.integer  "user_id"

@@ -39,6 +39,7 @@ gem 'sidekiq'
 gem 'action_mailer_auto_url_options'
 gem 'sync'
 gem 'faye'
+gem "paranoia", github: "rubysherpas/paranoia", branch: "rails4"
 group :development, :test do
   gem "letter_opener"
   gem 'capybara-email'

@@ -11,7 +11,7 @@ class OrgnsController < ApplicationController
   # GET /orgns/1
   # GET /orgns/1.json
   def show
-    @events = Event.where(orgn_id: params[:id]).order(esdate: :asc)
+    @events = Event.still_relevent.where(orgn_id: params[:id]).order(esdate: :asc)
     @folorgs = Folorg.where(orgn_id: params[:id]).all
     if user_signed_in? && current_user.id != @orgn.user.id
       @folorg = @folorgs.where(user_id: current_user).first

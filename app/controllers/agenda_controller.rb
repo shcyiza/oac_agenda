@@ -3,7 +3,7 @@ before_action :authenticate_user!
 respond_to :html, :js
   def index
     if current_user.pro == true
-      @events = Event.all.order("esdate")
+      @events = Event.where(deleted_at: nil).order("esdate")
     else
       redirect_to :back, :alert => "demande invalide"
     end
