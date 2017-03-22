@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/paperclip.git
-  revision: 7c81e7813e75950d111885b44d33c08358e5e46c
+  revision: 093b4da18444d883de826f58628089c2f480d461
   specs:
     paperclip (5.1.0)
       activemodel (>= 4.2.0)
@@ -25,9 +25,9 @@ GIT
 
 GIT
   remote: https://github.com/mailjet/mailjet-gem.git
-  revision: c29c8a726ae1bcca27e836ca4e0f6df6fb4920ef
+  revision: 14cdc627b56e393f52551726e93c76321ebca882
   specs:
-    mailjet (1.4.9)
+    mailjet (1.4.12)
       activesupport (>= 3.1.0)
       rack (>= 1.4.0)
       rest-client
@@ -75,13 +75,13 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.4)
-    aws-sdk (2.7.3)
-      aws-sdk-resources (= 2.7.3)
-    aws-sdk-core (2.7.3)
+    aws-sdk (2.8.9)
+      aws-sdk-resources (= 2.8.9)
+    aws-sdk-core (2.8.9)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.7.3)
-      aws-sdk-core (= 2.7.3)
+    aws-sdk-resources (2.8.9)
+      aws-sdk-core (= 2.8.9)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -92,7 +92,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (9.0.6)
-    capybara (2.12.0)
+    capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -113,27 +113,27 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.4)
+    concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     cookiejar (0.3.3)
-    css_parser (1.4.8)
+    css_parser (1.4.10)
       addressable
     daemons (1.2.4)
     date_validator (0.9.0)
       activemodel
       activesupport
     debug_inspector (0.0.2)
-    devise (4.2.0)
+    devise (4.2.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.1.1)
-    devise_invitable (1.7.0)
-      actionmailer (>= 4.0.0)
+    devise-i18n (1.1.2)
+    devise_invitable (1.7.1)
+      actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
-    domain_name (0.5.20161129)
+    domain_name (0.5.20170223)
       unf (>= 0.0.5, < 1.0.0)
     em-http-request (1.1.5)
       addressable (>= 2.3.4)
@@ -144,7 +144,7 @@ GEM
     em-socksify (0.3.1)
       eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
-    eventmachine (1.2.2)
+    eventmachine (1.2.3)
     exception_notification (4.2.1)
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
@@ -157,7 +157,7 @@ GEM
       multi_json (>= 1.0.0)
       rack (>= 1.0.0)
       websocket-driver (>= 0.5.1)
-    faye-websocket (0.10.6)
+    faye-websocket (0.10.7)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     font-awesome-rails (4.7.0.1)
@@ -178,12 +178,12 @@ GEM
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
     hub (1.12.4)
-    i18n (0.8.0)
-    jbuilder (2.6.1)
-      activesupport (>= 3.0.0, < 5.1)
+    i18n (0.8.1)
+    jbuilder (2.6.3)
+      activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
     jmespath (1.3.1)
-    jquery-rails (4.2.2)
+    jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
@@ -213,14 +213,15 @@ GEM
     multi_json (1.12.1)
     nested_form (0.3.2)
     netrc (0.11.0)
-    nokogiri (1.7.0.1)
+    nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
-    pg (0.19.0)
+    pg (0.20.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
-    premailer (1.9.2)
-      css_parser (>= 1.4.8)
+    premailer (1.10.2)
+      addressable
+      css_parser (>= 1.4.10)
       htmlentities (>= 4.0.0)
     premailer-rails (1.9.5)
       actionmailer (>= 3, < 6)
@@ -286,7 +287,7 @@ GEM
     remotipart (1.3.1)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    rest-client (2.0.0)
+    rest-client (2.0.1)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -297,7 +298,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sidekiq (4.2.9)
+    sidekiq (4.2.10)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
@@ -325,8 +326,8 @@ GEM
       eventmachine (~> 1.0, >= 1.0.4)
       rack (>= 1, < 3)
     thor (0.19.4)
-    thread_safe (0.3.5)
-    tilt (2.0.6)
+    thread_safe (0.3.6)
+    tilt (2.0.7)
     time_splitter (1.1.0)
     truncate_html (0.9.3)
     turbolinks (5.0.1)
@@ -334,7 +335,7 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.4)
+    uglifier (3.1.9)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
