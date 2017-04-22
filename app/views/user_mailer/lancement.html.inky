@@ -1,8 +1,8 @@
 
-        <h3 class="text-center"><b><font color='#339966'>Bienvenue chez vous</font></b><br></h3>
+        <h3 class="text-center"><b><font color='#339966'>On lance la version officielle!</font></b><br></h3>
         Cher organisateur <%= @user.username %>, <br>
         <p>
-        Merci de vous être inscrit sur le Ka’agenda, la plateforme qui participe à l’organisation des événements au sein de notre communauté.
+        Merci d'avoir essayé la version bêta du Ka’agenda, la plateforme qui participe à l’organisation des événements au sein de notre communauté.
         Désormais, vous pourrez annoncer vos événements, et être informés sur les événements organisés dans la même période.
         Suivez les événements, les organisateurs ou les jours qui vous intèressent et tenez-vous au courant grâce aux notifications <i class="fi-heart"></i>.
       </p>

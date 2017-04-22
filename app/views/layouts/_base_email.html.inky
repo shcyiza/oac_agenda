@@ -1,0 +1,36 @@
+
+  <row>
+    <columns large="5" class="large-centered mail_brand">
+      <div class="text-center">
+        <%= email_image_tag 'logo_small.png', class:'centered', size:"45x45" %>
+        <hr style="border-color:rgba(72, 143, 177, 0);">
+        <font color="white" size="6" align="center"><strong>Ka<font color="red">'</font></strong>agenda</font>
+      </div>
+    </columns>
+  </row>
+  <row>
+    <columns large="5" class="large-centered mail_body">
+      <%= yield %>
+    </columns>
+  </row>
+  <row>
+    <columns large="5" class="large-centered mail_footer">
+    <columns large="5" class="large-centered mail_footer">
+    <i>
+      Cordialement,<br>
+      l'OACA asbl.
+    </i>
+      <h3 class="text-center">"<b>Don't agonize.</h1>
+      <h3 class="text-center"><font class=""><u>Or</u>g<u>anize</u></font>!</b>" <br><font size="4">-<i>Kwamé Ture</i>-</font></h1>
+      <row>
+        <columns small="4">
+          <%= email_image_tag 'oaca.png' %>
+        </columns>
+        <columns small="4">
+          <a href="https://www.facebook.com/AfroConsommActeurs/?fref=ts" target="_blank" style="font-size:80px;"><i class="fi-social-facebook"></i></a>
+        </columns>
+        <columns small="4">
+          <a href="https://twitter.com/OacaAsbl" target="_blank" style="font-size:80px;"><i class="fi-social-twitter"></i></a>
+        </columns>
+    </columns>
+  </row>

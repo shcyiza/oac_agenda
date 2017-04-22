@@ -1,0 +1,76 @@
+<container>
+
+<row>
+  <columns class="large-centered mail_brand">
+      <%= email_image_tag 'logo_small.png', class:'centered', size:"45x45" %>
+      <hr style="border-color:rgba(72, 143, 177, 0);">
+      <h2 class="text-center">
+        <font color="white"><strong>Ka<font color="red">'</font></strong>agenda</font>
+      </h2>
+  </columns>
+</row>
+
+<row>
+  <columns large="5" class="large-centered mail_body">
+
+        <h3 class="text-center"><b><font color='#339966'>Bienvenue chez vous</font></b><br></h3>
+        Cher organisateur <%= @user.username %>, <br>
+        <p>
+        Merci de vous être inscrit sur le Ka’agenda, la plateforme qui participe à l’organisation des événements au sein de notre communauté.
+        Désormais, vous pourrez annoncer vos événements, et être informés sur les événements organisés dans la même période.
+        Suivez les événements, les organisateurs ou les jours qui vous intèressent et tenez-vous au courant grâce aux notifications <i class="fi-heart"></i>.
+      </p>
+        <h4 class="text-center">
+          <b>
+            <font color='#339966'>!!! Veuillez confirmer votre compte !!!</font><br>
+          </b>
+        </h4>
+        <p>
+          Pour vous offrir les meilleurs informations possible et pour des raisons de sécurité nous vous demandons de confirmer votre adresse email avec le lien ci-dessous:
+        </p>
+        <%= link_to confirmation_url(@user, confirmation_token: @user.confirmation_token) do %>
+          <h5 class="text-center"><b>
+            <%= image_tag "https://cdn2.iconfinder.com/data/icons/freecns-cumulus/32/519791-101_Warning-128.png", size: "46x40" %>
+            <font color='#339966'><u>confirmer votre compte</u></font>
+            <%= image_tag "https://cdn2.iconfinder.com/data/icons/freecns-cumulus/32/519791-101_Warning-128.png", size: "46x40" %>
+          </b></h5>
+        <% end %>
+
+  </columns>
+</row>
+
+<row>
+  <columns large="5" class="large-centered mail_footer">
+  <i>
+    Cordialement,<br>
+    l'OACA asbl.
+  </i>
+    <h3 class="text-center">"<b>Don't agonize.</h1>
+    <h3 class="text-center"><font class=""><u>Or</u>g<u>anize</u></font>!</b>" <br><font size="4">-<i>Kwamé Ture</i>-</font></h1>
+
+    <row>
+      <columns small="4">
+        <%= email_image_tag 'oaca.png' %>
+      </columns>
+
+      <columns small="1">
+      </columns>
+      <columns small="3">
+      <%= link_to "https://www.facebook.com/AfroConsommActeurs/?fref=ts" do %>
+        <%= image_tag "http://simpleicon.com/wp-content/uploads/facebook-2.png" %>
+      <% end %>
+      </columns>
+
+      <columns small="1">
+      </columns>
+      <columns small="3">
+        <%= link_to "https://twitter.com/OacaAsbl" do %>
+          <%= image_tag "https://img.clipartfest.com/672f88933a5add7f407647d3ac640baf_circle-twitter-icon-twitter-icon-clipart_512-512.png"%>
+        <% end %>
+      </columns>
+    </row>
+
+  </columns>
+</row>
+
+</container>
