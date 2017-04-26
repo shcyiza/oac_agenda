@@ -19,7 +19,7 @@ module CalendarHelper
       yield builder.new(objects || [], self, calendar, options)
     end
   end
-
+#toi meme tu sais
   class CalendarBuilder < TableHelper::TableBuilder
     def initialize(objects, template, calendar, options)
       super(objects, template, options)

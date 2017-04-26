@@ -38,7 +38,6 @@ gem 'sync'
 gem 'faye'
 gem "paranoia", github: "rubysherpas/paranoia", branch: "rails4"
 # gem to handle email
-gem 'premailer-rails'
 gem 'inky-rb', require: 'inky'
 gem 'action_mailer_auto_url_options'
 gem 'premailer-rails' # Stylesheet inlining for email **
